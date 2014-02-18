@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <sys/types.h>
+
+#define MAX_COUNT 200
+
+void ChildProcess(void); /* child process prototype */
+
+void main(void)
+{
+ int temp;
+ pid_t pid;
+ temp = 1;
+ pid = fork();
+ if (pid == 0)
+ ChildProcess();
+}
+
+void ChildProcess(void)
+{
+ int n;
+
+ for (i = 1; i <= MAX_COUNT; i++)
+   temp = temp*n;
+   n=n-1;
+   if (n == 1)
+      printf("Resultado é", temp);
+      fork();
+}

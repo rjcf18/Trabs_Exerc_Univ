@@ -1,0 +1,79 @@
+#######################################
+# Sugestoes por insercao de uma letra #
+#######################################
+
+Palavra errada: Existem
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: vairações
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: pasagens
+  Sugestoes: 
+    -paisagens
+    -passagens
+    -passagens
+    -pastagens
+
+Palavra errada: Lorem
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: Ipsum
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: fomra
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: innjecção
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: palavrs
+  Sugestoes: 
+    -palavras
+
+Palavra errada: aleatóris
+  Sugestoes: 
+    -aleatórias
+    -aleatórios
+
+Palavra errada: praecem
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: suifcientemente
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: Lorem
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: Ipsum
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: Todos
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: Lorem
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: Ipsum
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: pré-definido
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: farzendo
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.

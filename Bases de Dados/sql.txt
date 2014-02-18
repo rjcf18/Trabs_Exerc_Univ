@@ -1,0 +1,380 @@
+#####
+#Create Turma
+#####
+create table turma(
+nomeT varchar(30),
+DataInAula date,
+HoraInAula time,
+primary key(nomeT,DataInAula,HoraInAula)
+);
+
+#####
+#Create Professor
+#####
+Create table professor(
+NBIp integer,
+NIF integer,
+nomeP varchar(30),
+morada varchar(30),
+TelefoneP integer,
+primary key(NBIp, NIF)
+);
+
+#####
+#Create Alunos
+#####
+create table alunos(
+NBIa integer,
+nomeA varchar(30),
+TelefoneA integer,
+primary key(NBIa)
+);
+
+#####
+#Create Individual
+#####
+create table individual(
+nomeT varchar(30),
+DataInAula date,
+HoraInAula time,
+TipoInstrumento varchar(30),
+primary key(nomeT,DataInAula,HoraInAula)
+);
+
+#####
+#Create Colectiva
+#####
+create table colectiva(
+nomeT varchar(30),
+DataInAula date,
+HoraInAula time,
+primary key(nomeT,DataInAula,HoraInAula)
+);
+
+
+#####
+#Create Regime Livre
+#####
+create table regime_livre(
+NBIa integer,
+primary key(NBIa),
+foreign key(NBIa) references Alunos on delete restrict
+);
+
+#####
+#Create Supletivo
+#####
+create table supletivo(
+NBIa integer,
+grau integer,
+primary key(NBIa),
+foreign key(NBIa) references alunos on delete restrict
+);
+
+#####
+#Create Integrado
+#####
+create table integrado(
+NBIa integer,
+grau integer,
+primary key(NBIa),
+foreign key(NBIa) references Alunos on delete restrict
+);
+
+#####
+#Create Iniciação
+#####
+create table iniciacao(
+NBIa integer,
+nomeA varchar(30),
+TelefoneA integer,
+primary key(NBIa),
+foreign key(NBIa) references Alunos on delete restrict
+);
+
+#####
+#Create Disciplina
+#####
+create table disciplina(
+trimestre integer,
+TipodeAula varchar(30),
+nota integer,
+primary key(trimestre,TipodeAula)
+);
+
+
+#####
+#Create R1
+#####
+create table r1(
+NBIa integer,
+nomeT varchar(30),
+DataInAula date,
+HoraInAula time,
+primary key(NBIa,nomeT,DataInAula,HoraInAula),
+foreign key(NBIa) references Alunos on delete restrict,
+foreign key(nomeT) references Turma on delete restrict,
+foreign key(DataInAula) references Turma on delete restrict,
+foreign key(HoraInAula) references Turma on delete restrict
+);
+
+#####
+#Create R2
+#####
+create table r2(
+NBIa integer,
+trimestre integer,
+TipodeAula varchar(30),
+grau integer,
+nota integer,
+primary key(NBIa,tipodeAula,trimestre,grau),
+foreign key(NBIa) references Alunos on delete restrict,
+foreign key(tipodeAula) references Disciplina on delete restrict,
+foreign key(trimestre) references Disciplina on delete restrict
+);
+
+#####
+#Create R3
+#####
+create table r3(
+NBIa integer,
+trimestre integer,
+TipodeAula varchar(30),
+grau integer,
+nota integer,
+primary key(NBIa,trimestre,TipodeAula,grau)
+foreign key(NBIa) references Alunos on delete restrict,
+foreign key(trimestre) references Disciplina on delete restrict
+foreign key(tipodeAula) references Disciplina on delete restrict,
+);
+
+#####
+#Create R4
+#####
+create table r4(
+NBIa integer,
+trimestre integer,
+TipodeAula varchar(30),
+primary key(NBIa,trimestre,TipodeAula)
+foreign key(NBIa) references Alunos on delete restrict,
+foreign key(trimestre) references Aula on delete restrict,
+foreign key(TipodeAula) references Aula on delete restrict
+);
+
+#####
+#Create R5
+#####
+create table r5(
+nomeT varchar(30),
+DataInAula varchar(30),
+HoraInAula varchar(30),
+TipodeAula varchar(30),
+aulasPrevistas varchar(30),
+primary key(NomeT,DataInAula,HoraInAula,tipodeAula,trimestre)
+foreign key(nomeT) references Turma on delete restrict,
+foreign key(DataInAula) references Turma on delete restrict,
+foreign key(HoraInAula) references Turma on delete restrict,
+foreign key(tipodeAula) references Aula on delete restrict,
+);
+
+#####
+#Create R6
+#####
+create table r6(
+NBIa integer,
+trimestre integer,
+TipodeAula varchar(30),
+primary key(NBIa,tipodeAula,trimestre)
+foreign key(NBIa) references Alunos on delete restrict,
+foreign key(tipodeAula) references Aula on delete restrict,
+foreign key(trimestre) references Aula on delete restrict
+);
+
+#####
+#Create R7
+#####
+create table r7(
+NBIa integer,
+nomeT varchar(30),
+DataInAula varchar(30),
+HoraInAula varchar(30),
+primary key(NBIa)
+foreign key(NBIa) references Alunos on delete restrict,
+foreign key(nomeT) references Turma on delete restrict,
+foreign key(DataInAula) references Turma on delete restrict
+foreign key(HoraInAula) references Turma on delete restrict,
+);
+
+#####
+#Create R8
+#####
+create table r8(
+NBIp integer,
+NIF integer,
+nomeT varchar(30),
+DataInAula varchar(30),
+HoraInAula varchar(30),
+primary key(NBIp,NIF),
+foreign key(NBIp) references Professor on delete restrict,
+foreign key(NIF) references Professor on delete restrict,
+foreign key(nomeT) references Turma on delete restrict,
+foreign key(DataInAula) references Turma on delete restrict
+foreign key(HoraInAula) references Turma on delete restrict,
+);
+
+#####
+#Create R9
+#####
+create table r9(
+TipoInstrumento varchar(30),
+NBIa integer,
+primary key(TipoInstrumento,NBIa),
+foreign key(NBIa) references Alunos on delete restrict,
+foreign key(TipoInstrumento) references Individual on delete restrict
+);
+
+#####
+#Create R10
+#####
+create table r10(
+NBIa integer,
+trimestre integer,
+TipodeAula varchar(30),
+presencas integer,
+primary key(tipodeAula,trimestre,NBIa)
+foreign key(NBIa) references Aluno on delete restrict,
+foreign key(trimestre) references Aula on delete restrict,
+foreign key(TipodeAula) references Aula on delete restrict,
+);
+
+#####
+#Create R11
+#####
+create table r11(
+tipodeAula varchar(30),
+trimestre integer,
+NBIp integer,
+NIF integer,
+primary key(trimestre,TipodeAula)
+foreign key(trimestre) references Aula on delete restrict,
+foreign key(TipodeAula) references Aula on delete restrict,
+foreign key(NBIp) references Professor on delete restrict,
+foreign key(NIF) references Professor on delete restrict
+);
+
+
+###########
+# Inserts #
+###########
+insert into Alunos values ('Manuel','00000001','210000001');
+insert into Alunos values ('Pedro','00000002','210000002');
+insert into Alunos values ('Susana','00000003','210000003');
+insert into Alunos values ('Catarina','00000004','210000004');
+insert into Alunos values ('João','00000005','210000005');
+insert into Alunos values ('Claudia','00000006','210000006');
+insert into Alunos values ('Luis','00000007','210000007');
+insert into Alunos values ('Maria','00000008','210000008');
+insert into Alunos values ('Ines','00000009','210000009');
+insert into Alunos values ('Sofia','00000010','210000010');
+insert into Alunos values ('Miguel','00000011','210000011');
+insert into Alunos values ('Carolina','00000017','210000012');
+
+
+insert into Professor values ('00000012','100000000', 'Susana', 'Rua Luis de Camoes','211111111');
+insert into Professor values ('00000013','100000001', 'Marta', 'Rua das Pizzas','211111112');
+insert into Professor values ('00000014','100000002', 'Marco','Rua Antonio Silva','211111113');
+insert into Professor values ('00000015','100000003','Silvia','Rua Eusebio','211111114');
+insert into Professor values ('00000016','100000004','Francisco','Rua Joao de Deus','211111115');
+
+9.
+   a)
+
+insert into Integrado values ('00000001', '3');
+insert into Integrado values ('00000002', '3');
+insert into Integrado values ('00000003', '2');
+insert into Integrado values ('00000004', '5');
+insert into Integrado values ('00000005', '5');
+insert into Integrado values ('00000006', '1');
+insert into Integrado values ('00000007', '6');
+insert into Integrado values ('00000008', '2');
+
+
+
+insert into R9 values ('Piano', 'A', '00000001');
+insert into R9 values ('Flauta de bisel', 'B', '00000002');
+insert into R9 values ('Piano', 'C', '00000003');
+insert into R9 values ('Viola', 'D', '00000004');
+   
+   b)
+
+insert into Supletivo values ('00000005', '5');
+insert into Supletivo values ('00000006', '1');
+insert into Supletivo values ('00000007', '6');
+insert into Supletivo values ('00000008', '2');
+
+insert into R9 values ('Flauta de bisel', 'E', '00000005');
+insert into R9 values ('Piano', 'F', '00000006');
+insert into R9 values ('Viola', 'G', '00000007');
+insert into R9 values ('Viola', 'H', '00000008');
+
+
+   c)
+
+insert into Iniciacao values ('00000009');
+insert into Iniciacao values ('00000010');
+
+insert into R9 values ('Piano', 'I', '00000009');
+insert into R9 values ('Piano', 'J', '00000010');
+
+   d)
+
+insert into RegimeLivre values ('00000011');
+insert into R9 values ('Viola', '00000011');
+insert into R4 values ('00000011', '1', 'Coro');
+insert into R4 values ('00000011', '2', 'Coro');
+insert into R4 values ('00000011', '3', 'Coro');
+
+
+
+insert into R11 values('1','Instrumento', '00000012')
+insert into R11 values('2','Instrumento', '00000012')
+insert into R11 values('3','Instrumento', '00000012')
+
+insert into R11 values('1','Coro', '00000013')
+insert into R11 values('2','Coro', '00000013')
+insert into R11 values('3','Coro', '00000013')
+
+
+
+insert into R8 values ('00000012', 'B');
+insert into R5 values ('B', '1','Instrumento', '119');
+
+
+insert into R10 ('00000002', '1', 'Flauta de bisel', '11');
+
+insert into R11 ('1', 'Instrumento', '00000012');
+insert into R11 ('2', 'Instrumento', '00000012');
+insert into R11 ('3', 'Instrumento', '00000012');
+
+insert into R11 ('1', 'Coro', '00000013');
+insert into R11 ('2', 'Coro', '00000013')
+insert into R11 ('3', 'Coro', '00000013')
+insert into R11 ('1', 'Formacao', '00000013');
+insert into R11 ('2', 'Formacao', '00000013');
+insert into R11 ('3', 'Formacao', '00000013');
+
+insert into R11 ('1', 'Coro', '00000014');
+insert into R11 ('2', 'Coro', '00000014');
+insert into R11 ('3', 'Coro', '00000014');
+
+insert into R11 ('1', 'Instrumento', '00000015');
+insert into R11 ('2', 'Instrumento', '00000015');
+insert into R11 ('3', 'Instrumento', '00000015');
+
+insert into R11 ('1', 'Instrumento', '00000016');
+insert into R11 ('2', 'Instrumento', '00000016');
+insert into R11 ('3', 'Instrumento', '00000016');
+
+
+
+

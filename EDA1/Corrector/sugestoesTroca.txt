@@ -1,0 +1,75 @@
+####################################
+# Sugestoes por troca de uma letra #
+####################################
+
+Palavra errada: Existem
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: vairações
+  Sugestoes: 
+    -variações
+
+Palavra errada: pasagens
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: Lorem
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: Ipsum
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: fomra
+  Sugestoes: 
+    -forma
+
+Palavra errada: innjecção
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: palavrs
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: aleatóris
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: praecem
+  Sugestoes: 
+    -parecem
+
+Palavra errada: suifcientemente
+  Sugestoes: 
+    -suficientemente
+
+Palavra errada: Lorem
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: Ipsum
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: Todos
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: Lorem
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: Ipsum
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: pré-definido
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.
+
+Palavra errada: farzendo
+  Sugestoes: 
+    - Nao existem sugestoes para esta palavra.

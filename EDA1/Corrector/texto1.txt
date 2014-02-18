@@ -1,0 +1,8 @@
+Existem muitas vairações das pasagens do Lorem Ipsum disponíveis,
+ mas a maior parte sofreu alterações de alguma fomra, pela innjecção
+ de humo, ou de palavrs aleatóris que nem sequer praecem 
+suifcientemente credíveis. se vai usar uma passagem do Lorem Ipsum,
+ deve ter a certeza que não contém nada de embaraçoso escondido no 
+meio do texto. Todos os geradores de Lorem Ipsum na Internet acabam 
+por repetir porções de texto pré-definido, como necessário, farzendo
+ com que este seja o primeiro verdadeiro gerador na Internet. 

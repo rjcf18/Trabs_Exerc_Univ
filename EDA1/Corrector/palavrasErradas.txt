@@ -1,0 +1,58 @@
+#########################################
+# Palavras Erradas e respectivas linhas #
+#########################################
+
+Palavra Errada: Existem
+Este erro ocorre na linha: 1
+
+Palavra Errada: vairações
+Este erro ocorre na linha: 1
+
+Palavra Errada: pasagens
+Este erro ocorre na linha: 1
+
+Palavra Errada: Lorem
+Este erro ocorre na linha: 1
+
+Palavra Errada: Ipsum
+Este erro ocorre na linha: 1
+
+Palavra Errada: fomra
+Este erro ocorre na linha: 2
+
+Palavra Errada: innjecção
+Este erro ocorre na linha: 2
+
+Palavra Errada: palavrs
+Este erro ocorre na linha: 3
+
+Palavra Errada: aleatóris
+Este erro ocorre na linha: 3
+
+Palavra Errada: praecem
+Este erro ocorre na linha: 3
+
+Palavra Errada: suifcientemente
+Este erro ocorre na linha: 4
+
+Palavra Errada: Lorem
+Este erro ocorre na linha: 4
+
+Palavra Errada: Ipsum
+Este erro ocorre na linha: 4
+
+Palavra Errada: Todos
+Este erro ocorre na linha: 6
+
+Palavra Errada: Lorem
+Este erro ocorre na linha: 6
+
+Palavra Errada: Ipsum
+Este erro ocorre na linha: 6
+
+Palavra Errada: pré-definido
+Este erro ocorre na linha: 7
+
+Palavra Errada: farzendo
+Este erro ocorre na linha: 7
+

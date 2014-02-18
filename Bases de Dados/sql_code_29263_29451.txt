@@ -1,0 +1,535 @@
+﻿
+####
+#Create MarcaAut
+####
+Create table MarcaAut (
+Marca varchar(30),
+Modelo varchar(30) primary key,
+NMaxP integer
+);
+
+
+####
+#Create Autocarro
+####
+Create table autocarro (
+Matricula varchar(20) primary key,
+Modelo varchar(20),
+foreign key (Modelo) references marcaAut on delete restrict,
+AnoMatricula integer
+);
+
+
+####
+#Create Motorista
+####
+Create table motorista (
+NBi integer primary key,
+Nome varchar(30),
+Morada varchar(30)
+);
+
+####
+#Create Percurso
+####
+Create table percurso (
+CodigoC integer primary key,
+NomeP varchar(30),
+NMaxP integer
+);
+
+####
+#Create parag
+####
+Create table parag (
+paragem varchar(30) primary key
+);
+
+####
+#Create PassoPercurso
+####
+Create table passopercurso (
+CodigoC integer,
+Minutos time,
+Paragem varchar(30),
+Primary key (CodigoC, Minutos, Paragem),
+foreign key (CodigoC) references percurso on delete restrict,
+foreign key (paragem) references parag on delete restrict
+);
+
+####
+#Create FezPercurso
+####
+Create table FezPercurso(
+CodigoC integer,
+NBi integer,
+Matricula varchar(20),
+DataInicio timestamp,
+DataFim timestamp,
+primary key (CodigoC,NBi),
+foreign key (NBi) references motorista on delete restrict,
+foreign key (Matricula) references autocarro on delete restrict
+);
+
+####
+#Create Bilhete
+####
+Create table bilhete(
+NBi integer,
+DataInicio timestamp,
+DataPass timestamp,
+Paragem varchar(30),
+primary key (NBi, DataPass),
+foreign key (NBi) references motorista on delete restrict,
+foreign key (Paragem) references parag on delete restrict
+);
+
+####
+#Dados inseridos da Marca de Autocarro
+####
+insert into MarcaAut values ('Man','A2','60');
+insert into MarcaAut values ('Man','A3','60');
+insert into MarcaAut values ('Mercedes','Benz','20');
+insert into MarcaAut values ('IVECO','1874D','45');
+insert into MarcaAut values ('IVECO','1874A','45');
+
+####
+#Dados inseridos do Autocarro
+####
+insert into autocarro values ('00-AA-00','A2','1983');
+insert into autocarro values ('00-AA-01','A3','1989');
+insert into autocarro values ('00-AA-02','Benz','2005');
+insert into autocarro values ('00-AA-03','1874D','1991');
+insert into autocarro values ('00-AA-04','1874A','2003');
+
+####
+#Dados inseridos dos dados dos motoristas
+####
+insert into motorista values ('11111111','Silva','Rua dos Pescadores');
+insert into motorista values ('11111112','Santos','Rua da Moeda');
+insert into motorista values ('11111113','Gomes','Rua Luis de Camoes');
+
+
+####
+#Dados inseridos do Percurso
+####'IVECO'
+insert into Percurso values ('21','Louredo-Largo Luis de Camoes','45');
+insert into Percurso values ('31','25 de Abril-Malagueira','20');
+
+####
+#insert  Paragem
+####
+
+insert into parag values ('Granito Estrada da Igrejinha');
+insert into parag values ('Louredo');
+insert into parag values ('Senhora dos Aflitos');
+insert into parag values ('Granito');
+insert into parag values ('Eb 2.3 Conde Vilalva');
+insert into parag values ('Largo Luis de Camoes');
+insert into parag values ('25 de Abril');
+insert into parag values ('Santo Antonio');
+insert into parag values ('Comenda');
+insert into parag values ('Avenida Leonor Fernandes');
+insert into parag values ('Praca Giraldes');
+insert into parag values ('ES André de Gouveia');
+insert into parag values ('Malagueira');
+insert into parag values ('Cartuxa');
+insert into parag values ('Vista Alegre');
+insert into parag values ('Nogueiras');
+
+
+
+####
+#Carreira 21
+####
+
+#Horario Primeira Carreira '21'
+insert into PassoPercurso values ('21','06:20:00','Granito Estrada da Igrejinha');
+insert into PassoPercurso values ('21','06:26:00','Louredo');
+insert into PassoPercurso values ('21','06:33:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','06:40:00','Granito');
+insert into PassoPercurso values ('21','06:47:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','06:54:00','Largo Luis de Camoes');
+
+#Horario Segunda Carreira '21'
+insert into PassoPercurso values ('21','07:20:00','Granito Estrada da Igrejinha');
+insert into PassoPercurso values ('21','07:26:00','Louredo');
+insert into PassoPercurso values ('21','07:32:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','07:40:00','Granito');
+insert into PassoPercurso values ('21','07:47:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','07:54:00','Largo Luis de Camoes');
+
+#Horario Terceira Carreira '21'
+insert into PassoPercurso values ('21','07:33:00','Granito Estrada da Igrejinha');
+insert into PassoPercurso values ('21','07:39:00','Louredo');
+insert into PassoPercurso values ('21','07:45:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','07:53:00','Granito');
+insert into PassoPercurso values ('21','08:00:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','08:07:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('21','08:13:00','Granito');
+insert into PassoPercurso values ('21','08:18:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','08:27:00','Louredo');
+insert into PassoPercurso values ('21','08:34:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','08:39:00','Granito');
+
+#Horario Quarta Carreira '21'
+insert into PassoPercurso values ('21','08:42:00','Granito');
+insert into PassoPercurso values ('21','08:49:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','08:57:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('21','09:03:00','Granito');
+insert into PassoPercurso values ('21','09:08:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','09:17:00','Louredo');
+insert into PassoPercurso values ('21','09:24:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','09:29:00','Granito');
+
+#Horario Quinta Carreira '21'
+insert into PassoPercurso values ('21','09:29:00','Granito');
+insert into PassoPercurso values ('21','09:40:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','09:47:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('21','10:03:00','Granito');
+insert into PassoPercurso values ('21','10:08:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','10:17:00','Louredo');
+insert into PassoPercurso values ('21','10:24:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','10:29:00','Granito');
+
+#Horario Sexta Carreira '21'
+insert into PassoPercurso values ('21','10:55:00','Granito');
+insert into PassoPercurso values ('21','11:02:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','11:09:00','Largo Luis de Camoes');
+
+#Horario Sexta Carreira '21'
+insert into PassoPercurso values ('21','11:45:00','Granito Estrada da Igrejinha');
+insert into PassoPercurso values ('21','11:51:00','Louredo');
+insert into PassoPercurso values ('21','11:57:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','12:05:00','Granito');
+insert into PassoPercurso values ('21','12:12:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','12:19:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('21','12:25:00','Granito');
+insert into PassoPercurso values ('21','12:30:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','12:39:00','Louredo');
+insert into PassoPercurso values ('21','12:46:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','12:51:00','Granito');
+
+#Horario Setima Carreira '21'
+insert into PassoPercurso values ('21','13:45:00','Granito Estrada da Igrejinha');
+insert into PassoPercurso values ('21','13:51:00','Louredo');
+insert into PassoPercurso values ('21','13:57:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','14:05:00','Granito');
+insert into PassoPercurso values ('21','14:12:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','14:19:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('21','14:25:00','Granito');
+insert into PassoPercurso values ('21','14:30:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','14:39:00','Louredo');
+insert into PassoPercurso values ('21','14:46:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','14:51:00','Granito');
+
+#Horario Oitava Carreira '21'
+insert into PassoPercurso values ('21','15:10:00','Granito');
+insert into PassoPercurso values ('21','15:22:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','15:29:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('21','15:35:00','Granito');
+insert into PassoPercurso values ('21','15:40:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','15:49:00','Louredo');
+insert into PassoPercurso values ('21','15:56:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','16:01:00','Granito');
+
+#Horario Nona Carreira '21'
+insert into PassoPercurso values ('21','15:45:00','Granito Estrada da Igrejinha');
+insert into PassoPercurso values ('21','15:51:00','Louredo');
+insert into PassoPercurso values ('21','15:57:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','16:05:00','Granito');
+insert into PassoPercurso values ('21','16:12:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','16:19:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('21','16:25:00','Granito');
+insert into PassoPercurso values ('21','16:39:00','Louredo');
+
+#Horario Decima Carreira '21'
+insert into PassoPercurso values ('21','17:05:00','Granito');
+insert into PassoPercurso values ('21','17:12:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','17:19:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('21','17:25:00','Granito');
+
+#Horario Decima Primeira Carreira '21'
+insert into PassoPercurso values ('21','18:05:00','Granito');
+insert into PassoPercurso values ('21','18:12:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','18:19:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('21','18:25:00','Granito');
+
+#Horario Decima Segunda Carreira '21'
+insert into PassoPercurso values ('21','18:33:00','Granito Estrada da Igrejinha');
+insert into PassoPercurso values ('21','18:39:00','Louredo');
+insert into PassoPercurso values ('21','18:45:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','18:53:00','Granito');
+insert into PassoPercurso values ('21','19:00:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','19:07:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('21','19:13:00','Granito');
+insert into PassoPercurso values ('21','19:18:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','19:27:00','Louredo');
+insert into PassoPercurso values ('21','19:34:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','19:39:00','Granito');
+
+#Horario Decima Terceira Carreira '21'
+insert into PassoPercurso values ('21','19:33:00','Granito Estrada da Igrejinha');
+insert into PassoPercurso values ('21','19:39:00','Louredo');
+insert into PassoPercurso values ('21','19:45:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','19:53:00','Granito');
+insert into PassoPercurso values ('21','20:00:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','20:07:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('21','20:13:00','Granito');
+insert into PassoPercurso values ('21','20:18:00','Eb 2.3 Conde Vilalva');
+insert into PassoPercurso values ('21','20:27:00','Louredo');
+insert into PassoPercurso values ('21','20:34:00','Senhora dos Aflitos');
+insert into PassoPercurso values ('21','20:39:00','Granito');
+
+
+####
+#Carreira 31
+####
+
+#Horario Primeira Carreira '31'
+insert into PassoPercurso values ('31','06:40:00','25 de Abril');
+insert into PassoPercurso values ('31','06:42:00','Santo Antonio');
+insert into PassoPercurso values ('31','06:44:00','Comenda');
+insert into PassoPercurso values ('31','06:47:00','Avenida Leonor Fernandes');
+insert into PassoPercurso values ('31','06:54:00','Praca Giraldes');
+
+
+#Horario Segunda Carreira '31'
+insert into PassoPercurso values ('31','07:40:00','25 de Abril');
+insert into PassoPercurso values ('31','07:42:00','Santo Antonio');
+insert into PassoPercurso values ('31','07:44:00','Comenda');
+insert into PassoPercurso values ('31','07:47:00','Avenida Leonor Fernandes');
+insert into PassoPercurso values ('31','07:54:00','Praca Giraldes');
+insert into PassoPercurso values ('31','08:00:00','ES Andre de Gouveia');
+insert into PassoPercurso values ('31','08:02:00','Malagueira');
+insert into PassoPercurso values ('31','08:06:00','Cartuxa');
+insert into PassoPercurso values ('31','08:08:00','Vista Alegre');
+insert into PassoPercurso values ('31','08:14:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('31','08:19:00','Nogueiras');
+insert into PassoPercurso values ('31','08:24:00','25 de Abril');
+
+#Horario Terceira Carreira '31'
+insert into PassoPercurso values ('31','07:58:00','25 de Abril');
+insert into PassoPercurso values ('31','08:00:00','Santo Antonio');
+insert into PassoPercurso values ('31','08:02:00','Comenda');
+insert into PassoPercurso values ('31','08:04:00','Avenida Leonor Fernandes');
+insert into PassoPercurso values ('31','08:07:00','Praca Giraldes');
+
+#Horario Segunda Carreira '31'
+insert into PassoPercurso values ('31','08:40:00','25 de Abril');
+insert into PassoPercurso values ('31','08:42:00','Santo Antonio');
+insert into PassoPercurso values ('31','08:44:00','Comenda');
+insert into PassoPercurso values ('31','08:47:00','Avenida Leonor Fernandes');
+insert into PassoPercurso values ('31','08:54:00','Praca Giraldes');
+insert into PassoPercurso values ('31','09:00:00','ES Andre de Gouveia');
+insert into PassoPercurso values ('31','09:02:00','Malagueira');
+insert into PassoPercurso values ('31','09:06:00','Cartuxa');
+insert into PassoPercurso values ('31','09:08:00','Vista Alegre');
+insert into PassoPercurso values ('31','09:14:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('31','09:19:00','Nogueiras');
+insert into PassoPercurso values ('31','09:24:00','25 de Abril');
+
+#Horario Terceira Carreira '31'
+insert into PassoPercurso values ('31','08:58:00','25 de Abril');
+insert into PassoPercurso values ('31','09:00:00','Santo Antonio');
+insert into PassoPercurso values ('31','09:02:00','Comenda');
+insert into PassoPercurso values ('31','09:04:00','Avenida Leonor Fernandes');
+insert into PassoPercurso values ('31','09:07:00','Praca Giraldes');
+
+#Horario Quarta Carreira '31'
+insert into PassoPercurso values ('31','09:20:00','25 de Abril');
+insert into PassoPercurso values ('31','09:22:00','Santo Antonio');
+insert into PassoPercurso values ('31','09:24:00','Comenda');
+insert into PassoPercurso values ('31','09:27:00','Avenida Leonor Fernandes');
+insert into PassoPercurso values ('31','09:34:00','Praca Giraldes');
+insert into PassoPercurso values ('31','09:40:00','ES Andre de Gouveia');
+insert into PassoPercurso values ('31','09:42:00','Malagueira');
+insert into PassoPercurso values ('31','09:44:00','Cartuxa');
+insert into PassoPercurso values ('31','09:46:00','Vista Alegre');
+insert into PassoPercurso values ('31','09:52:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('31','09:57:00','Nogueiras');
+insert into PassoPercurso values ('31','10:02:00','25 de Abril');
+
+#Horario Quinta Carreira '31'
+insert into PassoPercurso values ('31','11:20:00','25 de Abril');
+insert into PassoPercurso values ('31','11:22:00','Santo Antonio');
+insert into PassoPercurso values ('31','11:24:00','Comenda');
+insert into PassoPercurso values ('31','11:27:00','Avenida Leonor Fernandes');
+insert into PassoPercurso values ('31','11:34:00','Praca Giraldes');
+insert into PassoPercurso values ('31','11:40:00','ES Andre de Gouveia');
+insert into PassoPercurso values ('31','11:42:00','Malagueira');
+insert into PassoPercurso values ('31','11:44:00','Cartuxa');
+insert into PassoPercurso values ('31','11:46:00','Vista Alegre');
+insert into PassoPercurso values ('31','11:52:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('31','11:57:00','Nogueiras');
+insert into PassoPercurso values ('31','12:02:00','25 de Abril');
+
+#Horario Sexta Carreira '31'
+insert into PassoPercurso values ('31','12:58:00','25 de Abril');
+insert into PassoPercurso values ('31','13:00:00','Santo Antonio');
+insert into PassoPercurso values ('31','13:02:00','Comenda');
+insert into PassoPercurso values ('31','13:04:00','Avenida Leonor Fernandes');
+insert into PassoPercurso values ('31','13:07:00','Praca Giraldes');
+
+#Horario Quinta Carreira '31'
+insert into PassoPercurso values ('31','13:20:00','25 de Abril');
+insert into PassoPercurso values ('31','13:22:00','Santo Antonio');
+insert into PassoPercurso values ('31','13:24:00','Comenda');
+insert into PassoPercurso values ('31','13:27:00','Avenida Leonor Fernandes');
+insert into PassoPercurso values ('31','13:34:00','Praca Giraldes');
+insert into PassoPercurso values ('31','13:40:00','ES Andre de Gouveia');
+insert into PassoPercurso values ('31','13:42:00','Malagueira');
+insert into PassoPercurso values ('31','13:44:00','Cartuxa');
+insert into PassoPercurso values ('31','13:46:00','Vista Alegre');
+insert into PassoPercurso values ('31','13:52:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('31','13:57:00','Nogueiras');
+insert into PassoPercurso values ('31','14:02:00','25 de Abril');
+
+#Horario Setima Carreira '31'
+insert into PassoPercurso values ('31','14:58:00','25 de Abril');
+insert into PassoPercurso values ('31','15:00:00','Santo Antonio');
+insert into PassoPercurso values ('31','15:02:00','Comenda');
+insert into PassoPercurso values ('31','15:04:00','Avenida Leonor Fernandes');
+insert into PassoPercurso values ('31','15:07:00','Praca Giraldes');
+
+#Horario Oitava Carreira '31'
+insert into PassoPercurso values ('31','15:20:00','25 de Abril');
+insert into PassoPercurso values ('31','15:22:00','Santo Antonio');
+insert into PassoPercurso values ('31','15:24:00','Comenda');
+insert into PassoPercurso values ('31','15:27:00','Avenida Leonor Fernandes');
+insert into PassoPercurso values ('31','15:34:00','Praca Giraldes');
+insert into PassoPercurso values ('31','15:40:00','ES Andre de Gouveia');
+insert into PassoPercurso values ('31','15:42:00','Malagueira');
+insert into PassoPercurso values ('31','15:44:00','Cartuxa');
+insert into PassoPercurso values ('31','15:46:00','Vista Alegre');
+insert into PassoPercurso values ('31','15:52:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('31','15:57:00','Nogueiras');
+insert into PassoPercurso values ('31','16:02:00','25 de Abril');
+
+#Horario Nona Carreira '31'
+insert into PassoPercurso values ('31','17:20:00','25 de Abril');
+insert into PassoPercurso values ('31','17:22:00','Santo Antonio');
+insert into PassoPercurso values ('31','17:24:00','Comenda');
+insert into PassoPercurso values ('31','17:27:00','Avenida Leonor Fernandes');
+insert into PassoPercurso values ('31','17:34:00','Praca Giraldes');
+insert into PassoPercurso values ('31','17:40:00','ES Andre de Gouveia');
+insert into PassoPercurso values ('31','17:42:00','Malagueira');
+insert into PassoPercurso values ('31','17:44:00','Cartuxa');
+insert into PassoPercurso values ('31','17:46:00','Vista Alegre');
+insert into PassoPercurso values ('31','17:52:00','Largo Luis de Camoes');
+insert into PassoPercurso values ('31','17:57:00','Nogueiras');
+insert into PassoPercurso values ('31','18:02:00','25 de Abril');
+
+
+####
+#Dados inseridos do FezPercurso
+####
+insert into FezPercurso values ('21','11111113','00-AA-04','2009-11-12 06:20:00', '2009-11-12 06:47:04');
+insert into FezPercurso values ('31','11111111','00-AA-02','2009-11-12 11:20:00', '2009-11-12 11:57:05');  
+
+
+
+#Bilhetes de Carreira
+
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:20:00','Granito Estrada da Igrejinha');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:20:01','Granito Estrada da Igrejinha');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:20:03','Granito Estrada da Igrejinha');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:20:04','Granito Estrada da Igrejinha');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:20:06','Granito Estrada da Igrejinha');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:26:00','Louredo');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:26:03','Louredo');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:26:06','Louredo');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:33:00','Senhora dos Aflitos');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:40:00','Granito');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:40:01','Granito');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:40:02','Granito');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:40:03','Granito');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:47:00','Eb 2.3 Conde Vilalva');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:47:01','Eb 2.3 Conde Vilalva');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:47:02','Eb 2.3 Conde Vilalva');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:47:03','Eb 2.3 Conde Vilalva');
+insert into bilhete values ('11111113','2009-11-12 06:20:00','2009-11-12 06:47:04','Eb 2.3 Conde Vilalva');
+
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:20:00','25 de Abril');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:20:01','25 de Abril');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:20:02','25 de Abril');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:20:03','25 de Abril');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:22:00','Santo Antonio');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:22:01','Santo Antonio');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:22:02','Santo Antonio');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:22:03','Santo Antonio');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:22:04','Santo Antonio');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:24:00','Comenda');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:27:00','Avenida Leonor Fernandes');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:27:01','Avenida Leonor Fernandes');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:27:02','Avenida Leonor Fernandes');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:34:00','Praca Giraldes');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:42:00','Malagueira');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:42:01','Malagueira');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:42:02','Malagueira');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:44:00','Cartuxa');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:44:01','Cartuxa');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:44:02','Cartuxa');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:44:03','Cartuxa');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:44:04','Cartuxa');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:46:00','Vista Alegre');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:46:01','Vista Alegre');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:46:02','Vista Alegre');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:57:00','Nogueiras');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:57:01','Nogueiras');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:57:02','Nogueiras');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:57:03','Nogueiras');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:57:04','Nogueiras');
+insert into bilhete values ('11111111','2009-11-12 11:20:00','2009-11-12 11:57:05','Nogueiras');
+
+##################
+##### Querys #####
+##################
+
+a)
+select marca,modelo,matricula from marcaaut natural inner join autocarro natural inner join percurso where codigoc = '31';
+
+b)
+select marca,matricula from marcaaut natural inner join autocarro where anomatricula < '2002'; 
+
+c)
+select distinct codigoc,nomep from percurso natural inner join passopercurso where paragem = 'Largo Luis de Camoes';
+
+d)
+select distinct minutos,date(datainicio) as data from passopercurso natural inner join bilhete where codigoc = '21' and paragem = 'Louredo' order by minutos;
+
+e)
+(select CodigoC,nomep from passopercurso natural inner join percurso where paragem = 'Malagueira') intersect (select CodigoC,nomep from passopercurso natural inner join percurso where paragem = 'Vista Alegre');
+
+f)
+select nome from fezpercurso natural inner join motorista where codigoc='21' and datainicio between '2009-11-01' and '2009-11-30' and datafim  between '2009-11-01' and '2009-11-30';
+
+g)
+select count(*) as motoristas from (select distinct nome from fezpercurso natural inner join motorista where codigoc = '31') as num;
+ 
+h)
+select count (*) as passageiros from (select distinct datapass from bilhete natural inner join passopercurso where paragem = 'Granito' and codigoc ='21' and datainicio = '2009-11-12 06:20:00') as n;
+
+
+i)
+select count(datapass)as numero_de_bilhetes, codigoc from (select datapass, codigoc from bilhete natural inner join fezpercurso where datapass between '2009-11-01 0:00:00' and '2009-11-30 23:59:59' )as a group by codigoc order by 1 desc limit 1;
+
+
+j)
+select marca,modelo,matricula from fezpercurso natural inner join autocarro natural inner join marcaaut except select marca,modelo, matricula from fezpercurso natural inner join autocarro natural inner join marcaaut where codigoc = '21';
+
+k)
+select count(datapass) as passageiros,nome from (select datapass,nome from bilhete natural inner join fezpercurso natural inner join motorista where datapass between '2009-11-01 00:00:00' and '2009-11-30 23:59:59') as a group by nome order by 1 desc limit 1;
+
+l)
+select nbi,nome from motorista as a where not exists (select codigoc from fezpercurso except select codigoc from motorista natural inner join fezpercurso where a.nbi=nbi);
+
+m)
+select * from (select count(paragem)as paragens,codigoc from passopercurso group by codigoc) as num order by paragens desc limit 1;
+
+
+n)
+select numero_bilhetes * 0.50 as dinheiro_facturado from (select count(datapass)as numero_bilhetes from (select datapass, codigoc from bilhete natural inner join fezpercurso where datapass between '2009-11-01 00:00:00' and '2009-11-30 23:59:59' ) as a ) as b;
+
+
+
