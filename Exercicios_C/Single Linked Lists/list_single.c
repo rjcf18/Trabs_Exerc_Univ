@@ -4,9 +4,10 @@
   ########################################################
  */
 
-#include "listS.h"
+#include "list.h"
 #define TAM 50000
 
+//cria e inicializa uma nova lista ligada 
 LinkedList *list_new(){    //aloca e inicializa a lista com NULL's 
 	
 	LinkedList *list = malloc(sizeof(LinkedList)); //aloca o espaco necessario para a lista 
@@ -18,21 +19,40 @@ LinkedList *list_new(){    //aloca e inicializa a lista com NULL's
 	return list;
 }
 
-
-bool list_empty(LinkedList *list){
-	int size;
-	size =  list -> size;  
-	if(size == 0)
-		return true;
-	else
-		return false;
+//cria e inicializa um novo nó
+Node *node_new(){
+	Node *node = malloc(sizeof(Node));
+	node -> elem = 0;
+	node -> next = NULL;
+	return node;
 }
 
-bool list_insert(LinkedList *list, int value){
-	Node *node;
+//verifica se a lista está vazia
+bool list_empty(LinkedList *list){
+	return (list -> size) == 0;
+}
 
-	node = malloc(sizeof(struct Node));
+//insere um elemento à cabeça da lista
+bool list_insert(LinkedList *list, int value){
+	Node *node = node_new();
 	node -> elem = value;  
+	
+	// insere no inicio da lista, a cabeça passa a ser o novo no
+	node -> next = list -> head;
+	list -> head = node;
+	list -> size++;
+	return true;
+}
+
+// insere no fim da lista
+bool list_insertEnd(LinkedList *list, int value){
+	Node *node, *tmp;
+
+	node = node_new();
+	node -> elem = value;  
+
+	// coloca a cabeca num nó temporario
+	tmp = list -> head;
 
 	if(list -> head == NULL){
 		// se a lista estiver vazia a cabeca passa a ser o elemento que se prentende inserir
@@ -44,84 +64,88 @@ bool list_insert(LinkedList *list, int value){
 	}
 	else{
 
-		// insere no inicio da lista, a cabeça passa a ser o novo no
-		node -> next = list -> head;
-		list -> head = node;
+		// percorre a lista ate ao fim.
+    	while(tmp -> next != NULL)
+			tmp = tmp -> next;
+
+		// insere no fim da lista
+		node -> next = NULL;
+		tmp -> next = node;
 		list -> size++;
 		return true;
 	}	
 	return false;
 }
 
+// remove um elemento da lista
 bool list_remove(LinkedList *list, int value){
 	Node *previous, *current;
 	current = list -> head;
 	
-	while(current != NULL){
-
-		if(current -> elem == value){
-			// se o valor se encontrar na posicao 0, ou seja, se estiver à cabeca
-			// é removido e a cabeca passa a ser o elemento a seguir 
-			if(current == list -> head){
-				list -> head = current -> next;
-				list -> size--;
-				free(current);
-				return true;
-			}
-			
-			//caso o valor se encontrar no elemento actual e este nao seja a cabeca
-			// o elemento anterior ao actual passa a estar ligado ao seguinte e o actual e removido  
-			else{
-				previous -> next = current -> next;
-				list -> size--;
-				free(current);
-				return true;
-			}
-		}
-
-		//enquanto nao for encontrado o elemento continua-se a procurar o seguinte 
-		else{
-			previous = current;
-			current = current -> next;
-		}
+	while(current -> elem != value){
+		//enquanto nao for encontrado o elemento continua a pesquisa
+		previous = current;
+		current = current -> next;
 	}
+
+	/* se o valor se encontrar na posicao 0, ou seja,
+	 se estiver à cabeca é removido*/
+	if(current == list -> head){
+		list -> head = current -> next;
+		list -> size--;
+		free(current);
+		return true;
+	}
+			
+	/*caso o valor se encontrar no elemento actual e 
+	este nao seja a cabeca*/
+	 else{
+		previous -> next = current -> next;	
+		/*o elemento anterior ao actual passa a estar 
+		ligado ao seguinte e o actual e removido */
+		
+		list -> size--;
+		free(current);
+		return true;
+	}
+
 	return false;
 }
 
+// devolve o tamanho da lista
 int list_length(LinkedList *list){
-	// devolve o tamanho da lista
-	int size = list -> size;
-    return size;
+    return list -> size;
 }
 
+// imprime uma representação da lista para a consola
 void list_print(LinkedList *list){
 	Node *current = list -> head;
 
 	if(current == NULL){
 		// se a cabeca for NULL significa que a lista esta vazia
-		printf("\nA lista esta vazia.");
+		printf("\n[]");
 	}
 	
 	else{
 		printf("\n[");
-		//percorre a lista ate ao fim para imprimindo o elemento actual e passando para o proximo
+		//percorre a lista ate ao fim imprimindo cada elemento
 		while(current!=NULL){
-			printf(" %d ", current -> elem);
+			printf("%d", current -> elem);
+			if (current -> next == NULL){
+				printf("]");
+			}
+			else{
+				printf(" ");
+			}
 			current = current -> next;
 		}
-		
-		printf("]\n");
 	}
 }
 
+// verifica se encontra o valor na lista
 int list_find(LinkedList *list, int value){
 	Node *current = list -> head;
 	int i = 0; // indice
-
-	if(current == NULL){
-		// se a cabeca for NULL significa que a lista esta vazia
-		return -1;
-	}	
 
 	while(current != NULL){
 		//se encontrar o valor no nó actual devolve a sua posicao
@@ -133,32 +157,33 @@ int list_find(LinkedList *list, int value){
 			i++;
 		}
 	}
-	// se tiver percorrido a lista e nao tiver encontrado o elemento
-	// é porque nao o contem logo devolve -1
 	return -1;
 }
 
+// liberta todo o espaço em memória ocupado pela lista 
 void list_destroy(LinkedList *list){
-	free(list);	
+	Node *current = list -> head;
+	//liberta a memoria de cada no da lista
+	while(current -> next != NULL){
+		free(current);
+		current = current -> next;
+	}
+	free(current);
+
+	//liberta a memoria da lista
+	free(list);
 }
 
+// pesquisa o n-ésimo elemento da lista
 int list_nth(LinkedList *list, int n){
 	Node *current = list -> head;
 	int i = 0; // indice
 
-	if (n < 0 || n > (list -> size)-1 || current == NULL){
-		printf("\nIndice invalido!!\n");
-		return -1;
+	for(i=0; i<n; i++){
+		current = current -> next;
 	}
 
-	while(current != NULL){
-		//se encontrar o valor no nó actual devolve a sua posicao
-		// caso contrario continua a percorrer a lista
-		if (i == n)
-			return current -> elem;
-		current = current -> next;
-		i++;
-	}	
+	return current -> elem;	
 }
 
 // testes para verificar se faz tudo bem
@@ -173,7 +198,7 @@ void teste(){
 	list_remove(list, 4);
 	
 	list_print(list);
-	printf("Cabeca: %d\n", list -> head -> elem);
+	printf("\nCabeca: %d\n", list -> head -> elem);
 	
 	printf("Tamanho: %d\n\n", list_length(list));
 	printf("%d\n", list_empty(list));
@@ -196,6 +221,7 @@ int main(){
 	for (i = 0; i < TAM; i++)
 		list_nth(list, i);
 	list_destroy(list);
+	
 	//list_print(list);
 	return 0;
 }
