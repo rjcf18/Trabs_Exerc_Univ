@@ -4,10 +4,6 @@
   ########################################################
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-
 struct LinkedList *list_new();
 bool list_empty(struct LinkedList *list);
 bool list_insert(struct LinkedList *list, int value);
