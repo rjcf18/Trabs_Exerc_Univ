@@ -7,24 +7,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "listD.h"
-#define TAM 50000
+#include "list.h"
 
 //double linked lists
 
 typedef struct Node{                 // nó de uma lista ligada para qualquer tipo de dados
 
-  int elem;         //um elemento inteiro
-  struct Node *next;       //O proximo nó na lista
-  struct Node *prev;       //O nó anterior na lista
+	int elem;         //um elemento inteiro
+	struct Node *next;       //O proximo nó na lista
+	struct Node *prev;       //O nó anterior na lista
 
 } Node;
 
 typedef struct LinkedList{                    //uma lista simplesmente ligada de nós
 
-  Node *head;
-  Node *tail;
-  int size;
+	struct Node *head;
+	struct Node *tail;
+	int size;
 
 } LinkedList;
 
@@ -63,58 +62,50 @@ bool list_insert(LinkedList *list, int value){
 
 	if(list -> head == NULL){
 		// se a lista estiver vazia a cabeca e a cauda passam a ser
-		// o nó com o elemento que se prentende inserir
-		list -> head = node;
+		// o nó com o elemento que se prentende inserir	
 		list -> tail = node; 
-		list -> size++;
-		
-		return true;
 	}
+	
 	else{
 		// insere no inicio da lista, a cabeça passa a ser o novo no
 		list -> head -> prev = node;
 		node -> next = list -> head;
-		list -> head = node;
-		list -> size++;
-		return true;
-	}	
-	return false;
+	}
+
+	list -> head = node;
+	list -> size++;
+	return true;
 }
 
 // remove um elemento da lista
 bool list_remove(LinkedList *list, int value){
 	Node *current;
-	
 
-	//começa a verificar 
-	if (value < (list -> size) /2 -1){
-		current = list -> head;
-		//percorre a lista ate encontrar o elemento 
-		while(current != NULL && current -> elem != value)
-			current = current -> next;
-	}
-	else{
-		current = list -> tail;
-		//percorre a lista ate encontrar o elemento 
-		while(current != NULL && current -> elem != value)
-			current = current -> prev;	
-	}
+	current = list -> head;
+		
+	//percorre a lista ate encontrar o elemento 
+	while(current != NULL && current -> elem != value)
+		current = current -> next;
+
 
 	if (list -> size != 0 && current != NULL){
+		
 		/* se o valor se encontrar na posicao 0, ou seja,
 		 se estiver à cabeca é removido*/
 		if(current == list -> head){
 			current = list -> head;
+			
 			// o elemento que esta a cabeca passa a ser o proximo da cabeca
 			list -> head = current -> next;
-			current -> next -> prev = NULL; // o elemento a seguir a cabeca passa a ter como anterior NULL
+			current -> next -> prev = NULL; // ã cabeça fica sem nó anterior
 		}
 		
 		/*se o valor estiver no fim da lista, ou seja,
 		 se estiver na cauda é removido*/
 		else if(current == list -> tail){
 			current = list -> tail;
-			// o elemento anterior da cauda passa a ter como proximo NULL
+			
+			// o elemento anterior da cauda fica sem nó seguinte
 			current -> prev -> next = NULL;
 			list -> tail = list -> tail -> prev; // a cauda passa a ser o elemento anterior a antiga cauda
 		}		
@@ -123,10 +114,11 @@ bool list_remove(LinkedList *list, int value){
 		else{
 			//coloca o nó anterior ao actual como anterior do proximo do actual
 			current -> next -> prev = current -> prev;
-				
+	
 			//coloca o nó seguinte ao actual como o seguinte do anterior do nó actual
 			current -> prev -> next = current -> next;
-		}	
+		}
+
 		list -> size--;
 		free(current);
 		return true;
@@ -145,11 +137,13 @@ int list_find(LinkedList *list, int value){
 		// caso contrario continua a percorrer a lista
 		if(current -> elem == value)
 			return i;
+		
 		else{
 			current = current -> next;
 			i++;
 		}
 	}
+	
 	return -1;
 }
 
@@ -181,11 +175,12 @@ void list_print(LinkedList *list){
 
 // liberta todo o espaço em memória ocupado pela lista 
 void list_destroy(LinkedList *list){
-	Node *current = list -> head;
+	Node *previous, *current = list -> head;
 	//liberta a memoria de cada no da lista
 	while(current -> next != NULL){
-		free(current);
+		previous = current;
 		current = current -> next;
+		free(previous);
 	}
 	free(current);
 
@@ -195,7 +190,7 @@ void list_destroy(LinkedList *list){
 
 // pesquisa o n-ésimo elemento da lista
 int list_nth(LinkedList *list, int n){
-	Node *current = list -> head;
+	Node *current;
 	int i = 0; // indice
 
 	/*comeca a verificar a partir da cabeça
@@ -208,11 +203,12 @@ int list_nth(LinkedList *list, int n){
 			current = current -> next;
 		
 	}
+	/*comeca a verificar a partir da cauda*/
 	else{
 		current = list -> tail;
 
 		//percorre a lista ate encontrar o elemento 
-		for(i=n-1; i>=0; i--)
+		for(i= (list -> size)-1; i> n; i--)
 			current = current -> prev;
 	}
 
@@ -243,17 +239,3 @@ void teste(){
 	//list_print(list);
 }
 
-int main(){
-	//teste();
-	LinkedList *list = list_new();
-	int i;
-	for (i = 0; i < TAM; i++)
-		list_insert(list, i+1);
-
-	//demora aprox 4.8 segundos a pesquisar todos os elementos da lista 
-	for (i = 0; i < TAM; i++)
-		list_nth(list, i);
-	list_destroy(list);
-	//list_print(list);
-	return 0;
-}

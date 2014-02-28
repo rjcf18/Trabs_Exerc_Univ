@@ -11,16 +11,16 @@
 #define TAM 50000
 
 typedef struct Node{                 // nó de uma lista ligada para qualquer tipo de dados
-
-  int elem;         //um elemento inteiro
-  struct Node *next;       //O proximo nó na lista
+	
+	int elem;         //um elemento inteiro
+	struct Node *next;       //O proximo nó na lista
 
 } Node;
 
 typedef struct LinkedList{                    //uma lista simplesmente ligada de nós
 
-  struct Node *head;
-  int size;
+	struct Node *head;
+	int size;
 
 } LinkedList;
 
@@ -172,11 +172,12 @@ int list_find(LinkedList *list, int value){
 
 // liberta todo o espaço em memória ocupado pela lista 
 void list_destroy(LinkedList *list){
-	Node *current = list -> head;
+	Node *previous, *current = list -> head;
 	//liberta a memoria de cada no da lista
 	while(current -> next != NULL){
-		free(current);
+		previous = current;
 		current = current -> next;
+		free(previous);
 	}
 	free(current);
 
@@ -195,6 +196,7 @@ int list_nth(LinkedList *list, int n){
 
 	return current -> elem;	
 }
+
 
 // testes para verificar se faz tudo bem
 void teste(){
@@ -220,18 +222,3 @@ void teste(){
 	list_destroy(list);
 }
 
-int main(){
-	teste();
-	/*LinkedList *list = list_new();
-	int i;
-	for (i = 0; i < TAM; i++)
-		list_insert(list, i+1);
-
-	//demora aprox 5 segundos a pesquisar todos os elementos da lista 
-	for (i = 0; i < TAM; i++)
-		list_nth(list, i);
-	list_destroy(list);
-	*/
-	//list_print(list);
-	return 0;
-}
