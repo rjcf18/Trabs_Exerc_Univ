@@ -17,4 +17,7 @@ pesq_grafo:
 exe_pesq:
 	./a.out < $(F)
 
+clean:	
+	rm -rf *~
+
 

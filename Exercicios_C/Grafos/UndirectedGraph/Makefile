@@ -9,3 +9,6 @@ gdb:
 
 execute:
 	./a.out < $(F)
+
+clean:	
+	rm -rf *~
