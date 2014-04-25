@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "bintree.h"
-#define TAM 60000
+#define TAM 100000
 
 int main() {
 	BinTree *tree = tree_new();
@@ -28,16 +28,14 @@ int main() {
 	tree_print(tree);
 	tree_destroy(tree);
 	*/
-	/*int i;
+	int i;
 	for (i = 0; i < TAM; i++)
 		tree_insert(tree, i+1);
 
 	//demora aprox 11 segundos a pesquisar todos os elementos da lista 
-	for (i = TAM; i >= 1; i--)/
+	for (i = TAM; i >= 1; i--)
 		tree_find(tree, i);
-	*/
-	tree_insert_balanced(tree, 1, 49999);
-	tree_print(tree);
+	
 	tree_destroy(tree);
 	
 	return 0;

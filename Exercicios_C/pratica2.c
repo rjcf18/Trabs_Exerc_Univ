@@ -90,9 +90,9 @@ void exc9(){
 		vector[i] = i+1;
 	
 	//pesquisa linear ---> aprox 4.268s tempo real
-	for(i = 1; i <= TAM;i++){
+	/*for(i = 1; i <= TAM;i++){
 		pesqLin(vector, i);
-	}
+	}*/
 
 	//pesquisa binaria recursiva ---> aprox 0.028s tempo real
 	/*for(i = 1; i <= TAM;i++){
@@ -102,10 +102,10 @@ void exc9(){
 
 
 	//pesquisa binaria iterativa ---> aprox 0.024s tempo real
-	/*for(i = 1; i <= TAM;i++){
+	for(i = 1; i <= TAM;i++){
 		printf("%d\n", pesqBinIt(vector, i));
 		//pesqBinIt(vector, i);
-	} */
+	}
 
 }
 
@@ -148,7 +148,8 @@ long escreveFibonacci(long n){
 void exc11(){
 	long i;
 	for (i = 0; i < 60; i++)
-		printf("%ld\n", escreveFibonacci(i));
+		escreveFibonacci(i);
+		//printf("%ld\n", escreveFibonacci(i));
 }
 
 void selectionSort(int a[]){
@@ -362,7 +363,7 @@ void exc15(){
 
 int main() {
 	//exc12();
-	exc14();
+	exc11();
 	
 	//printf("%c %c %c\n", s[0], s[1], s[2]);
 	//printf("%d %d %d\n", s[0], s[1], s[2]);

@@ -9,7 +9,6 @@
 #include <stdbool.h>
 #include "list.h"
 
-
 typedef struct Node{                 // nó de uma lista ligada para qualquer tipo de dados
 	
 	int elem;         //um elemento inteiro
@@ -172,12 +171,11 @@ int list_find(LinkedList *list, int value){
 
 // liberta todo o espaço em memória ocupado pela lista 
 void list_destroy(LinkedList *list){
-	Node *previous, *current = list -> head;
+	Node *current = list -> head;
 	//liberta a memoria de cada no da lista
 	while(current -> next != NULL){
-		previous = current;
+		free(current);
 		current = current -> next;
-		free(previous);
 	}
 	free(current);
 

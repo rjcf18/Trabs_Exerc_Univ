@@ -16,178 +16,195 @@ typedef struct TNode { // no de uma arvore binaria
 	struct TNode *right, *left; 
 } TNode;
 
-typedef struct BinTree{ // arvore binaria com uma raiz
+typedef struct BinTree { // arvore binaria com uma raiz
 	TNode *root;
 	int size;
 } BinTree;
 
 //cria e inicializa um novo nó
-TNode *node_new(){
+TNode *node_new() {
 	TNode *node = malloc(sizeof(TNode));
-	node -> right = NULL;
-	node -> left = NULL;
+	node->right = NULL;
+	node->left = NULL;
 	return node;
 }
 
 //cria e inicializa uma arvore
-BinTree *tree_new(){
+BinTree *tree_new() {
 	BinTree *tree = malloc(sizeof(BinTree));
-	tree -> root = NULL;
-	tree -> size = 0;
+	tree->root = NULL;
+	tree->size = 0;
 	return tree;
 }
 
 //verifica se a arvore esta vazia
-bool tree_empty(BinTree *tree){
-	return tree -> root == NULL;
+bool tree_empty(BinTree *tree) {
+	return tree->root == NULL;
 }
 
 //insere um elemento na arvore
-bool tree_insert(BinTree *tree, int value){
-	TNode *tmp, *current; 
+bool tree_insert(BinTree *tree, int value) {
+	TNode *parent, *current; 
 
-	tmp = NULL; 
-	current = tree -> root;
+	parent = NULL; 
+	current = tree->root;
 
-	if (!(tree -> root)){
-		tree -> root = node_new();
-		tree -> root -> elem = value;
-		tree -> size++;
+	if (!tree->root) {
+		tree->root = node_new();
+		tree->root->elem = value;
+		tree->size++;
 		return true;
 	}
 	
-	while(current){
-		tmp = current;
-		if (value < current -> elem)
-			current = current -> left;
+	while (current) {
+		
+		parent = current;
+		
+		if (value < current->elem)
+			current = current->left;
 		else
-			current = current -> right; 
+			current = current->right; 
 	}
 
 	current = node_new();
-	current -> elem = value;
+	current->elem = value;
 
-	if (value < tmp -> elem)
-		tmp -> left = current;
-	
-	else if (value > tmp -> elem)
-		tmp -> right = current;	
-	
+	if (value < parent->elem)
+		parent->left = current;
+	else if (value > parent->elem)
+		parent->right = current;	
+	else if (value == parent->elem)
+		return false;
+
 	tree -> size++;
-	return true;
+	return true;	
+}
+
+//funcao que insere elementos de inicio até fim
+bool tree_insert_balanced(BinTree *tree, int inicio, int fim) {
+	int begin, end, meio, i;
+
+	meio = (inicio + fim)/2;
+	begin = meio;
+	end = fim;
+
+	while (i< 4) {
+		//devolve o indice do elemento que se esta a procurar 
+		tree_insert(tree, meio);
+		end = meio;
+		meio = (inicio + end)/2;
+		//tree_insert(tree, (begin+fim)/2);
+		//begin = meio;
+		i++;
+	}
+
 }
 
 //pesquisa um elemento na arvore
-bool tree_find(BinTree *tree, int value){
-	TNode *tmp, *current; 
+bool tree_find(BinTree *tree, int value) {
+	TNode *current; 
 
-	tmp = NULL; 
-	current = tree -> root;
-
-	if (!current){
-		return false;
-	}
+	current = tree->root;
 	
-	while(current){
-		tmp = current;
-		if (value < current -> elem)
-			current = current -> left;
-		else if(value > current -> elem)
-			current = current -> right; 
+	while (current) {
+		if (value < current->elem)
+			current = current->left;
+		else if(value > current->elem)
+			current = current->right; 
 		else
 			return true;
 	}
+	
+	return false;
 }
 
 //remove um elemento na arvore
-bool tree_remove(BinTree *tree, int value){
+bool tree_remove(BinTree *tree, int value) {
 
-	TNode *node, *prev, *tmp, *tmp2;
+	TNode *node, *parent, *tmp2;
 
-	prev = NULL;
-	node = tree -> root;
+	parent = NULL;
+	node = tree->root;
 
-	if (!node){
+	if (!node)
 		return false;
+	
+
+	while (node != NULL && (node->elem != value)) {
+		parent = node;
+		if (value < node->elem)
+			node = node->left;
+		else
+			node = node->right;	
 	}
 
-	while((node -> elem != value) && node != NULL){
-		
-		if(value < node-> elem){
-			prev = node;
-			node = node -> left;
-		}
-		
-		else if(value > node-> elem){
-			prev = node;
-			node = node -> left;
-		}	
-	}
+	if (node == NULL)
+		return false;
 
 	/* se o no a remover não for uma folha, ha que 
-	 garantir que a arvore fique em equilibrio, 
+	 garantir que a arvore não fique com buracos, 
 	 ou seja, que o menor elemento na sub arvore direita 
 	 passe a estar no sitio onde o no foi removido */
 
-	if((node->left) != NULL && (node->right) != NULL){
+	if (node->left != NULL && node->right != NULL) {
+		TNode *tmp;
 		tmp = node->right;
-		prev = node;
-		while((tmp->left) != NULL)
-		{
-			prev = tmp;	
+		parent = node;
+		
+		while (tmp->left != NULL) {
+			parent = tmp;	
 			tmp = tmp->left;
 		}
+		
 		node->elem = tmp->elem;
 		node = tmp;
 	}
+
 	tmp2 = node->left;
 
 	if(tmp2 == NULL)
 		tmp2 = node->right;
 	
-	if(prev == NULL)
+	if(parent == NULL)
 		tree -> root = tmp2;
-	
-	else if(prev->left == node)
-		prev->left = tmp2;
-	
+	else if(parent->left == node)
+		parent->left = tmp2;
 	else
-		prev->right = tmp2;
+		parent->right = tmp2;
 	
-	tree -> size--;
+	tree->size--;
 	free(node);
 	return true;	
 		
 }
 
-void tree_printAux(TNode *node, int level){
+void tree_printAux(TNode *node, int level) {
 	int i;
  
-	if (node == NULL) {
+	if (node == NULL)
 		return;
-	}
  
 	tree_printAux(node->right, level+1);
  
 	for (i = 0; i < level; i++)
 		printf ("   ");
 
-	printf("%d\n\n", node->elem);
+	printf("%d\n", node->elem);
 	
 	tree_printAux(node->left, level+1);  
 }
 
-void tree_print(BinTree *tree){
-	tree_printAux(tree -> root, 0);
+void tree_print(BinTree *tree) {
+	tree_printAux(tree->root, 0);
 }
 
 // calcula o numero de nos da arvore
-int tree_size(BinTree *tree){
-	return tree -> size;
+int tree_size(BinTree *tree) {
+	return tree->size;
 }
 
 //recebe 2 numeros como arg e devolve o maior desses 2
-int max(a, b){
+int max(int a, int b) {
 	if (a > b)
 		return a;
 	else
@@ -198,23 +215,23 @@ int max(a, b){
 int tree_heightAux(TNode *node) {
 	if (node == NULL)
 		return 0;
-	return 1 + max(tree_heightAux(node-> left), tree_heightAux(node-> right));
+	return 1 + max(tree_heightAux(node->left), tree_heightAux(node->right));
 }
 
-int tree_height(BinTree *tree){
-	tree_heightAux(tree -> root);
+int tree_height(BinTree *tree) {
+	return tree_heightAux(tree->root);
 }
 
 //liberta todo o espaço ocupado em memoria pela arvore
-void tree_destroyAux(TNode *node){
+void tree_destroyAux(TNode *node) {
 	if (node != NULL){
-		tree_destroyAux(node -> left);
-		tree_destroyAux(node -> right);
+		tree_destroyAux(node->left);
+		tree_destroyAux(node->right);
 		free(node);
 	}
 }
 
-void tree_destroy(BinTree *tree){
-	tree_destroyAux(tree -> root);
+void tree_destroy(BinTree *tree) {
+	tree_destroyAux(tree->root);
 	free(tree);
 }

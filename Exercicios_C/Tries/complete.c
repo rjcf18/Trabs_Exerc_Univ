@@ -70,6 +70,9 @@ char *words1[] = {
 int main(int argc, char *argv[])
 {
   struct trie *t = trie_new();
+	struct node *n = *t->root;
+	struct node *a = n->child;  
+/*
   int i;
 
   for (i = 0; i < NWORDS1; i++)
@@ -85,7 +88,9 @@ int main(int argc, char *argv[])
   //printf("\n\nPrint \n");
   trie_print(t);
   trie_destroy(t);
-
+*/
+struct node *node;
+  printf("%d", sizeof(a));
  
    return 1;
 }

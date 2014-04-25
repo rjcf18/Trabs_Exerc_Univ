@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "list.h"
-#define TAM 50000
+#define TAM 60000
 
 int main(){
 	//teste();
