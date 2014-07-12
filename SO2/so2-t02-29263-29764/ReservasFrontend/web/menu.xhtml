@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+     
+   <head>
+        <title>Reservas de Espaços: Menu</title>
+        
+        <link rel="stylesheet" href="css/reset.css"></link>
+        <link rel="stylesheet" href="css/animate.css"></link>
+        <link rel="stylesheet" href="css/styles.css"></link>
+        <link rel='shortcut icon' type='image/x-icon' href='classroom.ico' />
+        <link href="#{facesContext.externalContext.requestContextPath}/style_menu.css" rel="stylesheet" type="text/css" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    
+    <body>
+        <h:form>
+            <div style="padding-top: 150px">
+                <div align="center"> 
+                    <h:commandButton class="Button1" value="Listar Espaços" action="listarespacos?faces-redirect=true"/> 
+                </div>
+
+                <br/>
+
+                <div align="center">    
+                    <h:commandButton class="Button2" value="Disponibilidade Espaço" action="dispEsp?faces-redirect=true"/> 
+                </div>
+
+                <br/>
+
+                <div align="center">
+                    <h:commandButton class="Button3" value="Listar Reservas (Dia)" action="reservasdiaform?faces-redirect=true" />
+                </div>
+
+                <br/>
+                <div align="center">
+                    <h:commandButton class="Button4" value="Efectuar Reserva" action="addreservaForm?faces-redirect=true"/>
+                </div>
+
+                <br/>
+                <div align="center">
+                    <h:commandButton class="Button5" value="Listar Reservas (Pessoa)" action="reservasPessoaForm?faces-redirect=true"/>
+                </div>
+            </div>
+        </h:form>
+    </body>
+</html>

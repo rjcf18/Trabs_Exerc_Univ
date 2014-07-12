@@ -1,0 +1,138 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    color: #444;
+    -webkit-font-smoothing: antialiased;
+    background: url('http://cdn.allmywebneeds.com/wp-content/uploads/dark_background_2-wallpaper-1400x650.jpg') no-repeat center center fixed #000; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: auto;
+     
+}
+
+#container {
+    position: fixed;
+    width: 340px;
+    height: 280px;
+    top: 50%;
+    left: 50%;
+    margin-top: -140px;
+    margin-left: -170px;
+    background: #fff;
+    border-radius: 3px;
+    border: 3px solid #ccc;
+    border-bottom: 30px solid #ccc;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    -webkit-animation-name: bounceIn;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: bounceIn;
+    -moz-animation-fill-mode: both;
+    -moz-animation-duration: 1s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+    animation-name: bounceIn;
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+.datagrid table { 
+    border-collapse: collapse; 
+    width: 100%; 
+} 
+.datagrid {
+    position: fixed;
+    
+    top: 15%;
+    left: 37%;
+    
+    font: normal 12px/150% Arial, Helvetica, sans-serif; 
+    background: #fff; 
+    overflow: hidden; 
+    border: 1px solid #990000; 
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
+    border-radius: 3px; 
+}
+.datagrid table td, .datagrid table th { 
+    padding: 3px 10px; 
+}
+.datagrid table thead th {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #99050A), color-stop(1, #AB1D18) );
+    background:-moz-linear-gradient( center top, #99050A 5%, #AB1D18 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#99050A', endColorstr='#AB1D18');
+    background-color:#99050A; 
+    color:#FFFFFF; 
+    font-size: 15px; 
+    font-weight: bold; 
+    border-left: 1px solid #B80000; 
+} 
+.datagrid table thead th:first-child { 
+    border: none; 
+}
+.datagrid table tbody td { 
+    color: #7A0909; 
+    border-left: 1px solid #E1EEF4;
+    font-size: 12px;
+    font-weight: bold; 
+}
+.datagrid table tbody .alt td { 
+    background: #E1EEF4; 
+    color: #9E0909;
+}
+.datagrid table tbody td:first-child { 
+    border-left: none; 
+}
+.datagrid table tbody tr:last-child td { 
+    border-bottom: none; 
+}
+.datagrid table tfoot td div { 
+    border-top: 1px solid #990000;
+    background: #E1EEF4;
+} 
+.datagrid table tfoot td { 
+    padding: 0;
+    font-size: 12px 
+} 
+.datagrid table tfoot td div{ 
+    padding: 2px; 
+}
+.datagrid table tfoot td ul { 
+    margin: 0; 
+    padding:0; 
+    list-style: none; 
+    text-align: right;
+}
+.datagrid table tfoot  li { 
+    display: inline; 
+}.datagrid table tfoot li a { 
+    text-decoration: none; 
+    display: inline-block;  
+    padding: 2px 8px; 
+    margin: 1px;
+    color: #FFFFFF;
+    border: 1px solid #990808;
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
+    border-radius: 3px; 
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #C70808), color-stop(1, #D40404) );
+    background:-moz-linear-gradient( center top, #C70808 5%, #D40404 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#C70808', endColorstr='#D40404');background-color:#C70808; 
+}
+.datagrid table tfoot ul.active, .datagrid table tfoot ul a:hover { 
+    text-decoration: none;
+    border-color: #A60F0F; 
+    color: #FFFFFF; 
+    background: none; 
+    background-color:#8C0000;
+}
+div.dhtmlx_window_active, div.dhx_modal_cover_dv { 
+        position: fixed !important; 
+}

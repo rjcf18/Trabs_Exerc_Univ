@@ -1,0 +1,205 @@
+Estruturas de Dados e Algoritmos II Trabalho Pratico
+Departamento de Informatica Universidade de Evora
+
+
+
+Caca aos erros
+
+A entrada em vigor do novo acordo ortografico criou a necessidade de
+reescrever muitos textos existentes Esta necessidade e sentida por
+exemplo pelas editoras cujas novas impressoes de livros escritos
+anteriormente a adopcao do acordo devem seguir a nova ortografia
+
+Para ajudar na conversao dos textos foi lhe encomendada uma aplicacao
+que recorrendo a um dicionario identifique as ocorrencias de palavras
+que deverao ser consideradas incorrectas A encomenda inclui a
+exigencia de que a aplicacao deve nao so ser eficiente no
+processamento de textos completos mas tambem no tratamento de palavras
+isoladas para poder ser usada como um servico web de correccao
+ortografica Neste contexto o programa podera ser invocado multiplas
+vezes num curto espaco de tempo para processar somente uma ou duas
+palavras
+
+
+Especificacao
+
+A aplicacao a criar devera ler um texto da sua entrada normal stdin e
+apresentar na sua saida normal stdout a lista dos k erros mais
+frequentes encontrados no texto o numero de ocorrencias de cada um
+desses erros e as linhas onde ocorrem ate a um maximo de por cada erro
+
+Para identificar os erros o programa de identificacao dos erros
+recorrera a um dicionario previamente criado por outro programa a
+partir da lista das palavras correctas
+
+
+Criacao do dicionario
+
+A aplicacao incluira um programa escrito em C que processara uma lista
+de palavras e construira o dicionario de referencia para a
+identificacao dos erros
+
+Este programa lera da sua entrada normal uma sequencia de palavras as
+palavras correctas uma por linha As palavras consistirao somente de
+letras maiusculas e minusculas sem acentos nem cedilhas e terao um
+comprimento maximo de letras O numero maximo de palavras do dicionario
+sera Cada linha nao contera nada alem da palavra
+
+Este programa devera guardar o dicionario construido num ficheiro ou
+ficheiros que sera ou serao posteriormente consultado s pelo programa
+de identificacao de erros
+
+Alem do dicionario o programa nao tera nenhum output
+
+
+Identificacao de erros
+
+A aplicacao incluira um segundo programa igualmente escrito em C que
+fara a identificacao e a localizacao dos erros de um texto O programa
+acedera ao dicionario contido no s ficheiro s criados pelo programa de
+construcao do dicionario
+
+Este programa lera o texto da sua entrada normal como uma sequencia de
+linhas cada uma contendo zero ou mais palavras Como acima as palavras
+consistirao somente de letras maiusculas e minusculas sem acentos nem
+cedilhas e terao um comprimento maximo de letras Cada linha contera
+somente palavras e espacos em qualquer numero e em qualquer posicao e
+terminara com o caracter fim de linha Um texto tera entre zero e
+palavras com no maximo palavras distintas
+
+Depois de terminar de ler o texto o programa escrevera na sua saida
+normal a lista dos k erros mais frequentes um por linha por ordem
+decrescente de frequencia no seguinte formato
+
+  palavra N
+
+onde palavra e o erro encontrado N e o numero de ocorrencias desse
+erro no texto M sao as linhas onde se encontraram as primeiras M
+ocorrencias do erro por ordem nao decrescente M e o minimo entre N e e
+sao os parentesis curvos e representa exactamente um espaco Se nas
+primeiras M ocorrencias de um erro houver mais do que uma ocorrencia
+do erro nalguma linha o numero dessa linha aparecera tantas vezes
+quantas as ocorrencias do erro nessa linha A primeira linha lida sera
+a linha
+
+O valor de k sera indicado atraves do primeiro argumento do programa e
+estara entre e Se nao for passado nenhum argumento ao programa o valor
+de k sera Se forem encontrados menos do que k erros distintos o
+programa escrevera na sua saida so as linhas correspondentes aos erros
+encontrados Se forem encontrados mais do que k erros distintos o
+programa escrevera na sua saida exactamente k linhas
+
+A saida do programa estara ordenada decrescentemente pela frequencia
+dos erros encontrados Se dois erros tiverem o mesmo numero de
+ocorrencias aparecera primeiro aquele correspondente a palavra
+lexicograficamente menor Na ordem lexicografica A AA AAA AAB AZ Aa B
+BA Z a b z
+
+O programa nao produzira nada na saida alem do descrito acima e nao
+tera nenhum argumento alem do valor de k
+
+
+Erros
+
+Uma palavra que esta contida no dicionario de referencia tal e qual
+como escrita no texto nao e um erro Uma palavra que nao esta contida
+no dicionario de referencia tal como escrita no texto mas que esta
+contida no dicionario so composta por letras minusculas nao e um erro
+Qualquer palavra encontrada no texto que nao satisfaca uma das
+condicoes anteriores e um erro
+
+Por exemplo se o dicionario so contiver as palavras sim e Maria
+nenhuma das palavras sim SIM Sim sIm siM e sIM constitui um erro A
+palavra Maria tambem nao constitui um erro mas qualquer outra forma
+dessa palavra como maria MARIA e MaRiA constitui um erro Estas tres
+formas da palavra constituem erros distintos
+
+O dicionario pode conter a mesma palavra escrita de varias formas
+
+
+Exemplos
+
+Retirando os acentos e todos os simbolos que nao sao letras ao texto
+da primeira seccao deste enunciado obtem se
+
+Caca aos erros
+
+A entrada em vigor do novo acordo ortografico criou a necessidade de reescrever
+muitos textos existentes Esta necessidade e sentida por exemplo pelas editoras
+cujas novas impressoes de livros escritos anteriormente a adopcao do acordo
+devem seguir a nova ortografia
+
+Para ajudar na conversao dos textos foi lhe encomendada uma aplicacao que
+recorrendo a um dicionario identifique as ocorrencias de palavras que deverao
+ser consideradas incorrectas A encomenda inclui a exigencia de que a aplicacao
+deve nao so ser eficiente no processamento de textos completos mas tambem no
+tratamento de palavras isoladas para poder ser usada como um servico web de
+correccao ortografica Neste contexto o programa podera ser invocado multiplas
+vezes num curto espaco de tempo para processar somente uma ou duas palavras
+
+Aplicado a este texto e recorrendo a um dicionario pos acordo
+ortografico o programa de identificacao de erros produziria
+
+adopcao
+correccao
+incorrectas
+
+Para o paragrafo da seccao anterior na forma
+
+Por exemplo se o dicionario so contiver as palavras sim e Maria nenhuma das
+palavras sim SIM Sim sIm siM e sIM constitui um erro A palavra Maria tambem nao
+constitui um erro mas qualquer outra forma dessa palavra como maria MARIA e
+MaRiA constitui um erro Estas tres formas da palavra constituem erros distintos
+
+o resultado seria
+
+MARIA
+MaRiA
+maria
+
+Usando como dicionario de referencia um dicionario Ingles a saida do
+programa para o paragrafo acima com k seria
+
+constitui
+erro
+palavra
+palavras
+Estas
+
+
+Realizacao e entrega
+
+Seccao a expandir
+
+O trabalho sera realizado individualmente ou por grupos de dois
+elementos So serao considerados os trabalhos de grupos cujos elementos
+tenham todos obtido a pre qualificacao para o trabalho
+
+O codigo C entregue devera estar de acordo com o standard C poder ser
+compilado com o GCC e executado em Linux O codigo sera compilado com
+as opcoes std gnu Wall
+
+Todas as escritas e leituras de informacao em disco deverao ser
+controladas explicitamente pelo programa
+
+O dicionario de referencia para o Portugues usado neste enunciado e
+nalguns dos testes pode ser descarregado daqui
+
+  http www di uevora pt vp eda dic pt ao txt gz
+
+O trabalho sera submetido atraves do Mooshak uma aplicacao que
+compilara o codigo e testara o programa criado So serao aceites os
+programas que passarem todos os testes
+
+Alem do codigo devera ser entregue um relatorio em papel com
+  A expandir
+
+A data limite de entrega do programa e feira dia de Maio de
+
+A data limite de entrega do relatorio e feira dia de Maio de ate as h
+
+A data das discussoes e feira dia de Maio de
+
+
+
+			     Bom Trabalho

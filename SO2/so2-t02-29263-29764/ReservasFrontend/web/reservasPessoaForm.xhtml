@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+     
+   <head>
+        <title>Listar Reservas: Dia (Form)</title>
+        
+        <link rel="stylesheet" href="css/reset.css"></link>
+        <link rel="stylesheet" href="css/animate.css"></link>
+        <link rel="stylesheet" href="css/styles.css"></link>
+        <link rel='shortcut icon' type='image/x-icon' href='classroom.ico' />
+        <link href="#{facesContext.externalContext.requestContextPath}/styleForm.css" rel="stylesheet" type="text/css" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    
+    <body>
+        <div id="container">
+            <h:form class="basic-grey">
+                <h1>Listagem Reservas de Espacos (Pessoa)
+                    <span>Insira o nome da pessoa.</span>
+                </h1>
+                
+                <label>
+                    <span>Nome:</span>
+                    <h:inputText id="nome"
+                                 required="required"
+                                 requiredMessage="pessoa required"
+                                 value="#{reservasBean.nome}"/>
+                </label>
+                
+                <h:commandButton class="button" value="Submeter" action="listResPessoa?faces-redirect=true"/>
+                
+                <h:commandButton class="button button-right" value="Voltar" action="menu"/>
+                
+                
+            </h:form>
+        </div>
+    </body>
+</html>

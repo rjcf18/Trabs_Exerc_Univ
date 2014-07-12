@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Listar Espaços</title>
+        
+        <link rel="stylesheet" href="css/reset.css"></link>
+        <link rel="stylesheet" href="css/animate.css"></link>
+        <link rel="stylesheet" href="css/styles.css"></link>
+        <link rel='shortcut icon' type='image/x-icon' href='classroom.ico' />
+        <link href="#{facesContext.externalContext.requestContextPath}/tableStyle.css" rel="stylesheet" type="text/css" />
+        <link href="#{facesContext.externalContext.requestContextPath}/stylevoltar.css" rel="stylesheet" type="text/css" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    
+    <body>
+        <div class="datagrid">
+            <h:dataTable value="#{espacosBean.listagemEsp()}" var="espaco">
+                <h:column>    				
+                    <f:facet name="header">Nome</f:facet>    				
+                    #{espaco.nome}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Localização</f:facet>
+                    #{espaco.localizacao}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Área</f:facet>
+                    #{espaco.area}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Capacidade</f:facet>
+                    #{espaco.capacidade}
+                </h:column>
+                
+                <h:form style="alignment-adjust: middle">
+                    <div style="padding-left: ">
+                        <h:commandButton class="Button1" value="Voltar" action="menu"/>
+                    </div>
+                </h:form>
+                
+            </h:dataTable>
+        </div>
+        
+        
+        
+    </body>
+</html>

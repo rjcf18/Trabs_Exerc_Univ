@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+     
+   <head>
+        <title>Disponibilidade Espaço: Hora(Form)</title>
+        
+        <link rel="stylesheet" href="css/reset.css"></link>
+        <link rel="stylesheet" href="css/animate.css"></link>
+        <link rel="stylesheet" href="css/styles.css"></link>
+        <link rel='shortcut icon' type='image/x-icon' href='classroom.ico' />
+        <link href="#{facesContext.externalContext.requestContextPath}/styleForm.css" rel="stylesheet" type="text/css" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    
+    <body>
+        <div id="container2">
+            <h:form class="basic-grey">
+                <h1>Disponibilidade Espaços
+                    <span>Insira o nome do espaço, o ano, mês, dia, hora e minutos.</span>
+                </h1>
+                
+                <label>
+                    <span>Nome Espaço:</span>
+                    <h:inputText id="espaco" 
+                                 required="required"
+                                 requiredMessage="espaco required"
+                                 value="#{espacosBean.nome}"/>
+                </label>
+                
+                <label>
+                    <span>Ano:</span>
+                    <h:inputText id="ano" 
+                                 required="required"
+                                 requiredMessage="ano required"
+                                 value="#{espacosBean.ano}"/>
+                </label>
+
+                <label>
+                    <span>Mês (1-12):</span>
+                    <h:inputText id="mes" 
+                                 required="required"
+                                 requiredMessage="mes required"
+                                 value="#{espacosBean.mes}"/>
+                </label>
+                
+                <label>
+                    <span>Dia:</span>
+                    <h:inputText id="dia"
+                                 required="required"
+                                 requiredMessage="dia required"
+                                 value="#{espacosBean.dia}"/>
+                </label>
+                
+                <label>
+                    <span>Hora (0-24):</span>
+                    <h:inputText id="hora"
+                                 required="required"
+                                 requiredMessage="hora required"
+                                 value="#{espacosBean.hora}"/>
+                </label>
+                
+                <label>
+                    <span>Minutos (0-59):</span>
+                    <h:inputText id="minutos"
+                                 required="required"
+                                 requiredMessage="minutos required"
+                                 value="#{espacosBean.min}"/>
+                </label>
+                
+                
+                <h:commandButton class="button" value="Submeter" action="#{espacosBean.createTS()}"/>
+                
+                <h:commandButton class="button button-right" value="Voltar" action="menu"/>
+                
+                
+            </h:form>
+        </div>
+    </body>
+</html>

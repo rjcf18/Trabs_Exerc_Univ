@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+     
+   <head>
+        <title>Listar Reservas: Dia (Form)</title>
+        
+        <link rel="stylesheet" href="css/reset.css"></link>
+        <link rel="stylesheet" href="css/animate.css"></link>
+        <link rel="stylesheet" href="css/styles.css"></link>
+        <link rel='shortcut icon' type='image/x-icon' href='classroom.ico' />
+        <link href="#{facesContext.externalContext.requestContextPath}/styleForm.css" rel="stylesheet" type="text/css" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    
+    <body>
+        <div id="container">
+            <h:form class="basic-grey">
+                <h1>Listagem Reservas de Espaço(Dia)
+                    <span>Insira o nome do espaco, o ano, mês e dia.</span>
+                </h1>
+                
+                <label>
+                    <span>Espaço:</span>
+                    <h:inputText id="espaco" 
+                                 required="required"
+                                 requiredMessage="espaco required"
+                                 value="#{reservasBean.nomeEsp}"/>
+                </label>
+                
+                <label>
+                    <span>Ano:</span>
+                    <h:inputText id="ano" 
+                                 required="required"
+                                 requiredMessage="ano required"
+                                 value="#{reservasBean.ano}"/>
+                </label>
+
+                <label>
+                    <span>Mês (1-12):</span>
+                    <h:inputText id="mes" 
+                                 required="required"
+                                 requiredMessage="mes required"
+                                 value="#{reservasBean.mes}"/>
+                </label>
+                
+                <label>
+                    <span>Dia:</span>
+                    <h:inputText id="dia"
+                                 required="required"
+                                 requiredMessage="dia required"
+                                 value="#{reservasBean.dia}"/>
+                </label>
+                
+                
+                <h:commandButton class="button" value="Submeter" action="listar_reservas"/>
+                
+                <h:commandButton class="button button-right" value="Voltar" action="menu"/>
+                
+                
+            </h:form>
+        </div>
+    </body>
+</html>

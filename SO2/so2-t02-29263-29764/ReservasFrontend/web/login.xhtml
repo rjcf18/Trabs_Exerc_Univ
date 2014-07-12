@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+     
+   <head>
+        <title>Reservas de Espaços: Login</title>
+        
+        <link rel="stylesheet" href="css/reset.css"></link>
+        <link rel="stylesheet" href="css/animate.css"></link>
+        <link rel="stylesheet" href="css/styles.css"></link>
+        <link rel='shortcut icon' type='image/x-icon' href='classroom.ico' />
+        <link href="#{facesContext.externalContext.requestContextPath}/style.css" rel="stylesheet" type="text/css" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    
+    <h:body>
+        <div id="container">
+            <form method="POST" action="j_security_check">
+         
+                <label for="username">Username:</label>
+
+                <input id="username"
+                       type="text"
+                       name="j_username" 
+                       autocomplete="off"/>
+
+                <label for="password">Password:</label>
+
+
+                <p><a href="#">Forgot your password?</a></p>
+
+                <input id="password"
+                       name="j_password" 
+                       type="password"
+                       />
+
+                <div id="lower">
+
+                    <input type="submit" value="Login"/>
+
+                </div><!--/ lower-->
+              
+         
+            </form>
+        </div>
+    </h:body>
+</html>

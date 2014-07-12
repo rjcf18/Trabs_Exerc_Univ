@@ -1,0 +1,14 @@
+Caca aos erros
+
+A entrada em vigor do novo acordo ortografico criou a necessidade de reescrever
+muitos textos existentes Esta necessidade e sentida por exemplo pelas editoras
+cujas novas impressoes de livros escritos anteriormente a adopcao do acordo
+devem seguir a nova ortografia
+
+Para ajudar na conversao dos textos foi lhe encomendada uma aplicacao que
+recorrendo a um dicionario identifique as ocorrencias de palavras que deverao
+ser consideradas incorrectas A encomenda inclui a exigencia de que a aplicacao
+deve nao so ser eficiente no processamento de textos completos mas tambem no
+tratamento de palavras isoladas para poder ser usada como um servico web de
+correccao ortografica Neste contexto o programa podera ser invocado multiplas
+vezes num curto espaco de tempo para processar somente uma ou duas palavras

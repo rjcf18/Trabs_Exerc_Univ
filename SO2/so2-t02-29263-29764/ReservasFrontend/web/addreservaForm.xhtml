@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+     
+   <head>
+        <title>Efectuar Reserva (Form)</title>
+        
+        <link rel="stylesheet" href="css/reset.css"></link>
+        <link rel="stylesheet" href="css/animate.css"></link>
+        <link rel="stylesheet" href="css/styles.css"></link>
+        <link rel='shortcut icon' type='image/x-icon' href='classroom.ico' />
+        <link href="#{facesContext.externalContext.requestContextPath}/styleForm.css" rel="stylesheet" type="text/css" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    
+    <body>
+        <div id="container3">
+            <h:form class="basic-grey">
+                <h1>Efectuar Reserva
+                    <span>Insira o seu nome, o nome do espaco, o ano, mês, dia, início e fim da reserva.</span>
+                </h1>
+                
+                <label>
+                    <span>Nome:</span>
+                    <h:inputText id="nome" 
+                                 required="required"
+                                 requiredMessage="nome required"
+                                 value="#{reservasBean.nome}"/>
+                </label>
+                
+                <label>
+                    <span>Espaço:</span>
+                    <h:inputText id="espaco" 
+                                 required="required"
+                                 requiredMessage="espaco required"
+                                 value="#{reservasBean.nomeEsp}"/>
+                </label>
+                
+                <label>
+                    <span>Ano:</span>
+                    <h:inputText id="ano" 
+                                 required="required"
+                                 requiredMessage="ano required"
+                                 value="#{reservasBean.ano}"/>
+                </label>
+
+                <label>
+                    <span>Mês (1-12):</span>
+                    <h:inputText id="mes" 
+                                 required="required"
+                                 requiredMessage="mes required"
+                                 value="#{reservasBean.mes}"/>
+                </label>
+                
+                <label>
+                    <span>Dia:</span>
+                    <h:inputText id="dia"
+                                 required="required"
+                                 requiredMessage="dia required"
+                                 value="#{reservasBean.dia}"/>
+                </label>
+                
+                <label>
+                    <span>Hora e minutos inicio (Ex: '12:30'):</span>
+                    <h:inputText id="hora_in"
+                                 required="required"
+                                 requiredMessage="hora_in required"
+                                 value="#{reservasBean.inicio}"/>
+                </label>
+                
+                <label>
+                    <span>Hora e minutos fim (Ex: '12:30'):</span>
+                    <h:inputText id="hora_fim"
+                                 required="required"
+                                 requiredMessage="hora_fim required"
+                                 value="#{reservasBean.fim}"/>
+                </label>
+                
+                
+                <h:commandButton class="button" value="Submeter" action="addreservaDone?faces-redirect=true"/>
+                
+                <h:commandButton class="button button-right" value="Voltar" action="menu"/>
+                
+                
+            </h:form>
+        </div>
+    </body>
+</html>
