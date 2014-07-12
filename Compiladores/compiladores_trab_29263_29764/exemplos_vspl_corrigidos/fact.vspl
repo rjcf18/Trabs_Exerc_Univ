@@ -1,0 +1,15 @@
+fact = map (i;) [
+	? [ i<0 -> return 0;
+	  | i=0 -> return 1;
+	  |  *  -> return i * fact (i-1); ]
+];
+
+ifact = map (i;) [
+	res : int = 1;
+	k : int = i;
+	* [ k > 0 -> res = res*k;
+		     k = k-1; ]
+	
+];
+
+

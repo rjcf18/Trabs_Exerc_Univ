@@ -1,0 +1,20 @@
+# recursive quicksort
+
+#array : [100] { key: int; data: real; };
+size :  int;
+
+
+writeData = map () -> void [
+    writeChar(10);
+    i = 0;
+    * [ i<size -> writeInt(array[i].key);
+		  writeChar(32);
+		  writeReal(array[i].data);
+		  writeChar(10);
+		  i = i+1; ]
+];
+
+program = map () -> void [
+    readData ();
+    
+];

@@ -1,0 +1,1 @@
+sum  = map (a; b;) -> int [ return c+d; ];
