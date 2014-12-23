@@ -1,0 +1,149 @@
+
+###########################
+ ####  MENU PRINCIPAL ####
+###########################
+
+      ### Linetris ###
+
+    0 - Sair
+    1 - Humano vs Humano
+    2 - Humano vs AI
+
+Insira o número correspondente à opção:
+1
+
+Insira as dimensões N e M (NxM):
+
+N? 
+2
+
+M? 
+2
+
+
+Insira as dimensões N e M (NxM):
+
+N? 
+4
+
+M? 
+4
+
+      | . | . | . | . | 
+
+      | . | . | . | . | 
+
+      | . | . | . | . | 
+
+      | . | . | . | . | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | . | . | . | . | 
+
+      | . | . | . | . | 
+
+      | . | . | . | . | 
+
+      | p | . | . | . | 
+
+
+Jogador 2 insira a coluna onde jogar: 
+3
+
+      | . | . | . | . | 
+
+      | . | . | . | . | 
+
+      | . | . | . | . | 
+
+      | p | . | b | . | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | . | . | . | . | 
+
+      | . | . | . | . | 
+
+      | p | . | . | . | 
+
+      | p | . | b | . | 
+
+
+Jogador 2 insira a coluna onde jogar: 
+2
+
+      | . | . | . | . | 
+
+      | . | . | . | . | 
+
+      | p | . | . | . | 
+
+      | p | b | b | . | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | . | . | . | . | 
+
+      | p | . | . | . | 
+
+      | p | . | . | . | 
+
+      | p | b | b | . | 
+
+
+Jogador 2 insira a coluna onde jogar: 
+4
+
+      | . | . | . | . | 
+
+      | . | . | . | . | 
+
+      | p | . | . | . | 
+
+      | p | . | . | . | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | . | . | . | . | 
+
+      | p | . | . | . | 
+
+      | p | . | . | . | 
+
+      | p | . | . | . | 
+
+
+Jogador 2 insira a coluna onde jogar: 
+2
+
+      | . | . | . | . | 
+
+      | p | . | . | . | 
+
+      | p | . | . | . | 
+
+      | p | b | . | . | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | p | . | . | . | 
+
+      | p | . | . | . | 
+
+      | p | . | . | . | 
+
+      | p | b | . | . | 
+
+
+O vencedor é o jogador: 1
