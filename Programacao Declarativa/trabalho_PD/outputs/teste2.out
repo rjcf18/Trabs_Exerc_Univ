@@ -74,7 +74,7 @@ Jogador 2 insira a coluna onde jogar:
 
       | . | . | . | . | . | . | . | . | 
 
-      | p | b | . | . | . | . | . | . | 
+      | p | v | . | . | . | . | . | . | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -94,7 +94,7 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | p | . | . | . | . | . | . | 
 
-      | p | b | . | . | . | . | . | . | 
+      | p | v | . | . | . | . | . | . | 
 
 
 Jogador 2 insira a coluna onde jogar: 
@@ -114,7 +114,7 @@ Jogador 2 insira a coluna onde jogar:
 
       | . | p | . | . | . | . | . | . | 
 
-      | p | b | b | . | . | . | . | . | 
+      | p | v | v | . | . | . | . | . | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -134,7 +134,7 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | p | . | . | . | . | . | . | 
 
-      | p | b | b | p | . | . | . | . | 
+      | p | v | v | p | . | . | . | . | 
 
 
 Jogador 2 insira a coluna onde jogar: 
@@ -152,9 +152,9 @@ Jogador 2 insira a coluna onde jogar:
 
       | . | . | . | . | . | . | . | . | 
 
-      | . | p | b | . | . | . | . | . | 
+      | . | p | v | . | . | . | . | . | 
 
-      | p | b | b | p | . | . | . | . | 
+      | p | v | v | p | . | . | . | . | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -172,9 +172,9 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | . | p | . | . | . | . | . | 
 
-      | . | p | b | . | . | . | . | . | 
+      | . | p | v | . | . | . | . | . | 
 
-      | p | b | b | p | . | . | . | . | 
+      | p | v | v | p | . | . | . | . | 
 
 
 Jogador 2 insira a coluna onde jogar: 
@@ -192,9 +192,9 @@ Jogador 2 insira a coluna onde jogar:
 
       | . | . | p | . | . | . | . | . | 
 
-      | . | p | b | b | . | . | . | . | 
+      | . | p | v | v | . | . | . | . | 
 
-      | p | b | b | p | . | . | . | . | 
+      | p | v | v | p | . | . | . | . | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -212,9 +212,9 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | . | p | . | . | . | . | . | 
 
-      | . | p | b | b | . | . | . | . | 
+      | . | p | v | v | . | . | . | . | 
 
-      | p | b | b | p | p | . | . | . | 
+      | p | v | v | p | p | . | . | . | 
 
 
 Jogador 2 insira a coluna onde jogar: 
@@ -230,11 +230,11 @@ Jogador 2 insira a coluna onde jogar:
 
       | . | . | . | . | . | . | . | . | 
 
-      | . | . | p | b | . | . | . | . | 
+      | . | . | p | v | . | . | . | . | 
 
-      | . | p | b | b | . | . | . | . | 
+      | . | p | v | v | . | . | . | . | 
 
-      | p | b | b | p | p | . | . | . | 
+      | p | v | v | p | p | . | . | . | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -250,11 +250,11 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | . | . | . | . | . | . | . | 
 
-      | . | . | p | b | . | . | . | . | 
+      | . | . | p | v | . | . | . | . | 
 
-      | . | p | b | b | . | . | . | . | 
+      | . | p | v | v | . | . | . | . | 
 
-      | p | b | b | p | p | . | p | . | 
+      | p | v | v | p | p | . | p | . | 
 
 
 Jogador 2 insira a coluna onde jogar: 
@@ -270,11 +270,11 @@ Jogador 2 insira a coluna onde jogar:
 
       | . | . | . | . | . | . | . | . | 
 
-      | . | . | p | b | . | . | . | . | 
+      | . | . | p | v | . | . | . | . | 
 
-      | . | p | b | b | . | . | . | . | 
+      | . | p | v | v | . | . | . | . | 
 
-      | p | b | b | p | p | . | p | b | 
+      | p | v | v | p | p | . | p | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -290,11 +290,11 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | . | . | . | . | . | . | . | 
 
-      | . | . | p | b | . | . | . | . | 
+      | . | . | p | v | . | . | . | . | 
 
-      | . | p | b | b | . | . | . | . | 
+      | . | p | v | v | . | . | . | . | 
 
-      | p | b | b | p | p | p | p | b | 
+      | p | v | v | p | p | p | p | v | 
 
 
 O vencedor é o jogador: 1

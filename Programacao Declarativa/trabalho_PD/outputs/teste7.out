@@ -62,7 +62,7 @@ AI a jogar na coluna: 8
 
       | . | . | . | . | . | . | . | . | 
 
-      | . | . | . | . | . | . | . | b | 
+      | . | . | . | . | . | . | . | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -82,7 +82,7 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | . | . | . | . | . | . | . | 
 
-      | p | . | . | . | . | . | . | b | 
+      | p | . | . | . | . | . | . | v | 
 
 
 AI a calcular jogada... 
@@ -103,7 +103,7 @@ AI a jogar na coluna: 2
 
       | . | . | . | . | . | . | . | . | 
 
-      | p | b | . | . | . | . | . | b | 
+      | p | v | . | . | . | . | . | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -123,7 +123,7 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | p | . | . | . | . | . | . | 
 
-      | p | b | . | . | . | . | . | b | 
+      | p | v | . | . | . | . | . | v | 
 
 
 AI a calcular jogada... 
@@ -144,7 +144,7 @@ AI a jogar na coluna: 3
 
       | . | p | . | . | . | . | . | . | 
 
-      | p | b | b | . | . | . | . | b | 
+      | p | v | v | . | . | . | . | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -164,7 +164,7 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | p | p | . | . | . | . | . | 
 
-      | p | b | b | . | . | . | . | b | 
+      | p | v | v | . | . | . | . | v | 
 
 
 AI a calcular jogada... 
@@ -185,7 +185,7 @@ AI a jogar na coluna: 5
 
       | . | p | p | . | . | . | . | . | 
 
-      | p | b | b | . | b | . | . | b | 
+      | p | v | v | . | v | . | . | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -205,7 +205,7 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | p | p | . | . | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 AI a calcular jogada... 
@@ -224,9 +224,9 @@ AI a jogar na coluna: 5
 
       | . | . | . | . | . | . | . | . | 
 
-      | . | p | p | . | b | . | . | . | 
+      | . | p | p | . | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -244,9 +244,9 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | . | . | . | . | . | . | . | 
 
-      | p | p | p | . | b | . | . | . | 
+      | p | p | p | . | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 AI a calcular jogada... 
@@ -265,9 +265,9 @@ AI a jogar na coluna: 4
 
       | . | . | . | . | . | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -285,9 +285,9 @@ Jogador 1 insira a coluna onde jogar:
 
       | p | . | . | . | . | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 AI a calcular jogada... 
@@ -302,13 +302,13 @@ AI a jogar na coluna: 1
 
       | . | . | . | . | . | . | . | . | 
 
-      | b | . | . | . | . | . | . | . | 
+      | v | . | . | . | . | . | . | . | 
 
       | p | . | . | . | . | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -322,13 +322,13 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | . | . | . | . | . | . | . | 
 
-      | b | . | . | . | . | . | . | . | 
+      | v | . | . | . | . | . | . | . | 
 
       | p | p | . | . | . | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 AI a calcular jogada... 
@@ -343,13 +343,13 @@ AI a jogar na coluna: 5
 
       | . | . | . | . | . | . | . | . | 
 
-      | b | . | . | . | . | . | . | . | 
+      | v | . | . | . | . | . | . | . | 
 
-      | p | p | . | . | b | . | . | . | 
+      | p | p | . | . | v | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -363,13 +363,13 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | . | . | . | . | . | . | . | 
 
-      | b | . | . | . | . | . | . | . | 
+      | v | . | . | . | . | . | . | . | 
 
-      | p | p | p | . | b | . | . | . | 
+      | p | p | p | . | v | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 AI a calcular jogada... 
@@ -384,13 +384,13 @@ AI a jogar na coluna: 4
 
       | . | . | . | . | . | . | . | . | 
 
-      | b | . | . | . | . | . | . | . | 
+      | v | . | . | . | . | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -404,13 +404,13 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | . | . | . | . | . | . | . | 
 
-      | b | . | . | . | p | . | . | . | 
+      | v | . | . | . | p | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 AI a calcular jogada... 
@@ -425,13 +425,13 @@ AI a jogar na coluna: 4
 
       | . | . | . | . | . | . | . | . | 
 
-      | b | . | . | b | p | . | . | . | 
+      | v | . | . | v | p | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -445,13 +445,13 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | . | . | p | . | . | . | . | 
 
-      | b | . | . | b | p | . | . | . | 
+      | v | . | . | v | p | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 AI a calcular jogada... 
@@ -466,13 +466,13 @@ AI a jogar na coluna: 3
 
       | . | . | . | p | . | . | . | . | 
 
-      | b | . | b | b | p | . | . | . | 
+      | v | . | v | v | p | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -486,13 +486,13 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | . | . | p | . | . | . | . | 
 
-      | b | p | b | b | p | . | . | . | 
+      | v | p | v | v | p | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 AI a calcular jogada... 
@@ -505,15 +505,15 @@ AI a jogar na coluna: 2
 
       | . | . | . | . | . | . | . | . | 
 
-      | . | b | . | p | . | . | . | . | 
+      | . | v | . | p | . | . | . | . | 
 
-      | b | p | b | b | p | . | . | . | 
+      | v | p | v | v | p | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | p | p | b | b | . | . | . | 
+      | p | p | p | v | v | . | . | . | 
 
-      | p | b | b | p | b | . | . | b | 
+      | p | v | v | p | v | . | . | v | 
 
 
 O vencedor é: AI

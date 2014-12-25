@@ -64,7 +64,7 @@ AI a jogar na coluna: 2
 
       | . | . | . | . | . | 
 
-      | p | b | . | . | . | 
+      | p | v | . | . | . | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -78,7 +78,7 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | p | . | . | . | 
 
-      | p | b | . | . | . | 
+      | p | v | . | . | . | 
 
 
 AI a calcular jogada... 
@@ -93,7 +93,7 @@ AI a jogar na coluna: 3
 
       | . | p | . | . | . | 
 
-      | p | b | b | . | . | 
+      | p | v | v | . | . | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -107,7 +107,7 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | p | p | . | . | 
 
-      | p | b | b | . | . | 
+      | p | v | v | . | . | 
 
 
 AI a calcular jogada... 
@@ -122,7 +122,7 @@ AI a jogar na coluna: 5
 
       | . | p | p | . | . | 
 
-      | p | b | b | . | b | 
+      | p | v | v | . | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
@@ -136,7 +136,7 @@ Jogador 1 insira a coluna onde jogar:
 
       | . | p | p | . | p | 
 
-      | p | b | b | . | b | 
+      | p | v | v | . | v | 
 
 
 AI a calcular jogada... 
@@ -151,7 +151,7 @@ AI a jogar na coluna: 4
 
       | . | p | p | . | p | 
 
-      | p | b | b | b | b | 
+      | p | v | v | v | v | 
 
 
 O vencedor é: AI
