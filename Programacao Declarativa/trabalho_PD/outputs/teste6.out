@@ -14,10 +14,10 @@ Insira o número correspondente à opção:
 
 Insira as dimensões N e M (NxM):
 
-N? 
+N (>=4)? 
 5
 
-M? 
+M (>=4)? 
 5
 
 Jogador inicial:
@@ -27,450 +27,942 @@ Jogador inicial:
 Insira o número correspondente à opção:
 1
 
-      | . | . | . | . | . | 
+      | - | - | - | - | - | 
 
-      | . | . | . | . | . | 
+      | - | - | - | - | - | 
 
-      | . | . | . | . | . | 
+      | - | - | - | - | - | 
 
-      | . | . | . | . | . | 
+      | - | - | - | - | - | 
 
-      | . | . | . | . | . | 
-
-
-Jogador 1 insira a coluna onde jogar: 
-1
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | p | . | . | . | . | 
-
-
-AI a calcular jogada... 
-
-AI a jogar na coluna: 2
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | p | v | . | . | . | 
-
-
-Jogador 1 insira a coluna onde jogar: 
-3
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | p | v | p | . | . | 
-
-
-AI a calcular jogada... 
-
-AI a jogar na coluna: 2
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | v | . | . | . | 
-
-      | p | v | p | . | . | 
-
-
-Jogador 1 insira a coluna onde jogar: 
-2
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | p | . | . | . | 
-
-      | . | v | . | . | . | 
-
-      | p | v | p | . | . | 
-
-
-AI a calcular jogada... 
-
-AI a jogar na coluna: 3
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | p | . | . | . | 
-
-      | . | v | v | . | . | 
-
-      | p | v | p | . | . | 
+      | - | - | - | - | - | 
 
 
 Jogador 1 insira a coluna onde jogar: 
 1
 
-      | . | . | . | . | . | 
+      | - | - | - | - | - | 
 
-      | . | . | . | . | . | 
+      | - | - | - | - | - | 
 
-      | . | p | . | . | . | 
+      | - | - | - | - | - | 
 
-      | p | v | v | . | . | 
+      | - | - | - | - | - | 
 
-      | p | v | p | . | . | 
-
-
-AI a calcular jogada... 
-
-AI a jogar na coluna: 4
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | p | . | . | . | 
-
-      | p | v | v | . | . | 
-
-      | p | v | p | v | . | 
-
-
-Jogador 1 insira a coluna onde jogar: 
-2
-
-      | . | . | . | . | . | 
-
-      | . | p | . | . | . | 
-
-      | . | p | . | . | . | 
-
-      | p | v | v | . | . | 
-
-      | p | v | p | v | . | 
-
-
-AI a calcular jogada... 
-
-AI a jogar na coluna: 4
-
-      | . | . | . | . | . | 
-
-      | . | p | . | . | . | 
-
-      | . | p | . | . | . | 
-
-      | p | v | v | v | . | 
-
-      | p | v | p | v | . | 
-
-
-Jogador 1 insira a coluna onde jogar: 
-5
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | p | . | . | . | 
-
-      | . | p | . | . | . | 
-
-      | p | v | v | v | . | 
-
-
-AI a calcular jogada... 
-
-AI a jogar na coluna: 3
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | p | . | . | . | 
-
-      | . | p | v | . | . | 
-
-      | p | v | v | v | . | 
-
-
-Jogador 1 insira a coluna onde jogar: 
-5
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | p | . | . | . | 
-
-      | . | p | v | . | . | 
-
-
-AI a calcular jogada... 
-
-AI a jogar na coluna: 3
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | p | v | . | . | 
-
-      | . | p | v | . | . | 
-
-
-Jogador 1 insira a coluna onde jogar: 
-1
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | p | v | . | . | 
-
-      | p | p | v | . | . | 
-
-
-AI a calcular jogada... 
-
-AI a jogar na coluna: 3
-
-      | . | . | . | . | . | 
-
-      | . | . | . | . | . | 
-
-      | . | . | v | . | . | 
-
-      | . | p | v | . | . | 
-
-      | p | p | v | . | . | 
-
-
-Jogador 1 insira a coluna onde jogar: 
-3
-
-      | . | . | . | . | . | 
-
-      | . | . | p | . | . | 
-
-      | . | . | v | . | . | 
-
-      | . | p | v | . | . | 
-
-      | p | p | v | . | . | 
-
-
-AI a calcular jogada... 
-
-AI a jogar na coluna: 2
-
-      | . | . | . | . | . | 
-
-      | . | . | p | . | . | 
-
-      | . | v | v | . | . | 
-
-      | . | p | v | . | . | 
-
-      | p | p | v | . | . | 
-
-
-Jogador 1 insira a coluna onde jogar: 
-1
-
-      | . | . | . | . | . | 
-
-      | . | . | p | . | . | 
-
-      | . | v | v | . | . | 
-
-      | p | p | v | . | . | 
-
-      | p | p | v | . | . | 
-
-
-AI a calcular jogada... 
-
-AI a jogar na coluna: 2
-
-      | . | . | . | . | . | 
-
-      | . | v | p | . | . | 
-
-      | . | v | v | . | . | 
-
-      | p | p | v | . | . | 
-
-      | p | p | v | . | . | 
-
-
-Jogador 1 insira a coluna onde jogar: 
-1
-
-      | . | . | . | . | . | 
-
-      | . | v | p | . | . | 
-
-      | p | v | v | . | . | 
-
-      | p | p | v | . | . | 
-
-      | p | p | v | . | . | 
-
-
-AI a calcular jogada... 
-
-AI a jogar na coluna: 1
-
-      | . | . | . | . | . | 
-
-      | v | v | p | . | . | 
-
-      | p | v | v | . | . | 
-
-      | p | p | v | . | . | 
-
-      | p | p | v | . | . | 
-
-
-Jogador 1 insira a coluna onde jogar: 
-3
-
-      | . | . | p | . | . | 
-
-      | v | v | p | . | . | 
-
-      | p | v | v | . | . | 
-
-      | p | p | v | . | . | 
-
-      | p | p | v | . | . | 
-
-
-AI a calcular jogada... 
-
-AI a jogar na coluna: 2
-
-      | . | v | p | . | . | 
-
-      | v | v | p | . | . | 
-
-      | p | v | v | . | . | 
-
-      | p | p | v | . | . | 
-
-      | p | p | v | . | . | 
-
-
-Jogador 1 insira a coluna onde jogar: 
-4
-
-      | . | v | p | . | . | 
-
-      | v | v | p | . | . | 
-
-      | p | v | v | . | . | 
-
-      | p | p | v | . | . | 
-
-      | p | p | v | p | . | 
+      | p | - | - | - | - | 
 
 
 AI a calcular jogada... 
 
 AI a jogar na coluna: 5
 
-      | . | . | . | . | . | 
+      | - | - | - | - | - | 
 
-      | . | v | p | . | . | 
+      | - | - | - | - | - | 
 
-      | v | v | p | . | . | 
+      | - | - | - | - | - | 
 
-      | p | v | v | . | . | 
+      | - | - | - | - | - | 
 
-      | p | p | v | . | . | 
+      | p | - | - | - | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
-5
+3
 
-      | . | . | . | . | . | 
+      | - | - | - | - | - | 
 
-      | . | v | p | . | . | 
+      | - | - | - | - | - | 
 
-      | v | v | p | . | . | 
+      | - | - | - | - | - | 
 
-      | p | v | v | . | . | 
+      | - | - | - | - | - | 
 
-      | p | p | v | . | p | 
+      | p | - | p | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 5
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | p | - | p | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+2
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | p | p | p | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 4
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | p | - | - | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 3
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | p | - | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+2
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | p | p | v | - | v | 
 
 
 AI a calcular jogada... 
 
 AI a jogar na coluna: 1
 
-      | . | . | . | . | . | 
+      | - | - | - | - | - | 
 
-      | v | v | p | . | . | 
+      | - | - | - | - | - | 
 
-      | v | v | p | . | . | 
+      | - | - | - | - | - | 
 
-      | p | v | v | . | . | 
+      | v | - | - | - | - | 
 
-      | p | p | v | . | p | 
+      | p | p | v | - | v | 
 
 
 Jogador 1 insira a coluna onde jogar: 
 5
 
-      | . | . | . | . | . | 
+      | - | - | - | - | - | 
 
-      | v | v | p | . | . | 
+      | - | - | - | - | - | 
 
-      | v | v | p | . | . | 
+      | - | - | - | - | - | 
 
-      | p | v | v | . | p | 
+      | v | - | - | - | p | 
 
-      | p | p | v | . | p | 
+      | p | p | v | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 5
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | v | - | - | - | p | 
+
+      | p | p | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+5
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | p | 
+
+      | - | - | - | - | v | 
+
+      | v | - | - | - | p | 
+
+      | p | p | v | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 5
+
+      | - | - | - | - | v | 
+
+      | - | - | - | - | p | 
+
+      | - | - | - | - | v | 
+
+      | v | - | - | - | p | 
+
+      | p | p | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | - | - | - | - | v | 
+
+      | - | - | - | - | p | 
+
+      | p | - | - | - | v | 
+
+      | v | - | - | - | p | 
+
+      | p | p | v | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 1
+
+      | - | - | - | - | v | 
+
+      | v | - | - | - | p | 
+
+      | p | - | - | - | v | 
+
+      | v | - | - | - | p | 
+
+      | p | p | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+3
+
+      | - | - | - | - | v | 
+
+      | v | - | - | - | p | 
+
+      | p | - | - | - | v | 
+
+      | v | - | p | - | p | 
+
+      | p | p | v | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 3
+
+      | - | - | - | - | v | 
+
+      | v | - | - | - | p | 
+
+      | p | - | v | - | v | 
+
+      | v | - | p | - | p | 
+
+      | p | p | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | p | - | - | - | v | 
+
+      | v | - | - | - | p | 
+
+      | p | - | v | - | v | 
+
+      | v | - | p | - | p | 
+
+      | p | p | v | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 3
+
+      | p | - | - | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | - | v | - | v | 
+
+      | v | - | p | - | p | 
+
+      | p | p | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | p | - | - | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | - | v | - | v | 
+
+      | v | - | p | - | p | 
+
+      | p | p | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+3
+
+      | p | - | p | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | - | v | - | v | 
+
+      | v | - | p | - | p | 
+
+      | p | p | v | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 4
+
+      | - | - | - | - | - | 
+
+      | p | - | p | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | - | v | - | v | 
+
+      | v | - | p | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+4
+
+      | - | - | - | - | - | 
+
+      | p | - | p | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | - | v | - | v | 
+
+      | v | - | p | p | p | 
 
 
 AI a calcular jogada... 
 
 AI a jogar na coluna: 2
 
-      | . | v | . | . | . | 
+      | - | - | - | - | - | 
 
-      | v | v | p | . | . | 
+      | - | - | - | - | - | 
 
-      | v | v | p | . | . | 
+      | p | - | p | - | v | 
 
-      | p | v | v | . | p | 
+      | v | - | v | - | p | 
 
-      | p | p | v | . | p | 
+      | p | - | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+5
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | p | 
+
+      | p | - | p | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | - | v | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 5
+
+      | - | - | - | - | v | 
+
+      | - | - | - | - | p | 
+
+      | p | - | p | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | - | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | - | - | - | - | v | 
+
+      | p | - | - | - | p | 
+
+      | p | - | p | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | - | v | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 3
+
+      | - | - | - | - | v | 
+
+      | p | - | v | - | p | 
+
+      | p | - | p | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | - | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+2
+
+      | - | - | - | - | v | 
+
+      | p | - | v | - | p | 
+
+      | p | - | p | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | p | v | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 1
+
+      | v | - | - | - | v | 
+
+      | p | - | v | - | p | 
+
+      | p | - | p | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | p | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | v | - | - | - | v | 
+
+      | p | - | v | - | p | 
+
+      | p | - | p | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | p | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+2
+
+      | v | - | - | - | v | 
+
+      | p | - | v | - | p | 
+
+      | p | - | p | - | v | 
+
+      | v | p | v | - | p | 
+
+      | p | p | v | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 4
+
+      | - | - | - | - | - | 
+
+      | v | - | - | - | v | 
+
+      | p | - | v | - | p | 
+
+      | p | - | p | - | v | 
+
+      | v | p | v | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+2
+
+      | - | - | - | - | - | 
+
+      | v | - | - | - | v | 
+
+      | p | - | v | - | p | 
+
+      | p | p | p | - | v | 
+
+      | v | p | v | - | p | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 5
+
+      | - | - | - | - | v | 
+
+      | v | - | - | - | v | 
+
+      | p | - | v | - | p | 
+
+      | p | p | p | - | v | 
+
+      | v | p | v | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+2
+
+      | - | - | - | - | v | 
+
+      | v | - | - | - | v | 
+
+      | p | p | v | - | p | 
+
+      | p | p | p | - | v | 
+
+      | v | p | v | - | p | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 2
+
+      | - | - | - | - | v | 
+
+      | v | v | - | - | v | 
+
+      | p | p | v | - | p | 
+
+      | p | p | p | - | v | 
+
+      | v | p | v | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+4
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | v | v | - | - | v | 
+
+      | p | p | v | - | p | 
+
+      | p | p | p | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 4
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | v | v | - | - | v | 
+
+      | p | p | v | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | p | - | - | - | v | 
+
+      | v | v | - | - | v | 
+
+      | p | p | v | - | p | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 5
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | p | - | - | - | v | 
+
+      | v | v | - | - | v | 
+
+      | p | p | v | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+5
+
+      | - | - | - | - | p | 
+
+      | - | - | - | - | v | 
+
+      | p | - | - | - | v | 
+
+      | v | v | - | - | v | 
+
+      | p | p | v | - | p | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 3
+
+      | - | - | - | - | p | 
+
+      | - | - | - | - | v | 
+
+      | p | - | - | - | v | 
+
+      | v | v | v | - | v | 
+
+      | p | p | v | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+2
+
+      | - | - | - | - | p | 
+
+      | - | - | - | - | v | 
+
+      | p | p | - | - | v | 
+
+      | v | v | v | - | v | 
+
+      | p | p | v | - | p | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 3
+
+      | - | - | - | - | p | 
+
+      | - | - | - | - | v | 
+
+      | p | p | v | - | v | 
+
+      | v | v | v | - | v | 
+
+      | p | p | v | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+3
+
+      | - | - | - | - | p | 
+
+      | - | - | p | - | v | 
+
+      | p | p | v | - | v | 
+
+      | v | v | v | - | v | 
+
+      | p | p | v | - | p | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 3
+
+      | - | - | v | - | p | 
+
+      | - | - | p | - | v | 
+
+      | p | p | v | - | v | 
+
+      | v | v | v | - | v | 
+
+      | p | p | v | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | - | - | v | - | p | 
+
+      | p | - | p | - | v | 
+
+      | p | p | v | - | v | 
+
+      | v | v | v | - | v | 
+
+      | p | p | v | - | p | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 1
+
+      | v | - | v | - | p | 
+
+      | p | - | p | - | v | 
+
+      | p | p | v | - | v | 
+
+      | v | v | v | - | v | 
+
+      | p | p | v | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+2
+
+      | v | - | v | - | p | 
+
+      | p | p | p | - | v | 
+
+      | p | p | v | - | v | 
+
+      | v | v | v | - | v | 
+
+      | p | p | v | - | p | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 4
+
+      | - | - | - | - | - | 
+
+      | v | - | v | - | p | 
+
+      | p | p | p | - | v | 
+
+      | p | p | v | - | v | 
+
+      | v | v | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+4
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | v | - | v | - | p | 
+
+      | p | p | p | - | v | 
+
+      | p | p | v | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 5
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | p | p | - | v | 
+
+      | p | p | v | - | v | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+4
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | v | - | v | - | p | 
+
+      | p | p | p | - | v | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 4
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | v | - | v | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+2
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | v | p | v | - | p | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 5
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | - | - | - | - | v | 
+
+      | v | p | v | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+2
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | - | p | - | - | v | 
+
+      | v | p | v | - | p | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 2
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | v | - | - | v | 
+
+      | - | p | - | - | v | 
+
+      | v | p | v | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+3
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | - | 
+
+      | - | v | - | - | v | 
+
+      | - | p | p | - | v | 
+
+      | v | p | v | - | p | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 5
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | - | v | - | - | v | 
+
+      | - | p | p | - | v | 
+
+      | v | p | v | - | p | 
+
+
+Jogador 1 insira a coluna onde jogar: 
+1
+
+      | - | - | - | - | - | 
+
+      | - | - | - | - | v | 
+
+      | - | v | - | - | v | 
+
+      | p | p | p | - | v | 
+
+      | v | p | v | - | p | 
+
+
+AI a calcular jogada... 
+
+AI a jogar na coluna: 5
+
+      | - | - | - | - | v | 
+
+      | - | - | - | - | v | 
+
+      | - | v | - | - | v | 
+
+      | p | p | p | - | v | 
+
+      | v | p | v | - | p | 
 
 
 O vencedor é: AI

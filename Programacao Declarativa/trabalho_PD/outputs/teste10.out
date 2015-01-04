@@ -14,136 +14,136 @@ Insira o número correspondente à opção:
 
 Insira as dimensões N e M (NxM):
 
-N? 
+N (>=4)? 
 2
 
-M? 
+M (>=4)? 
 2
 
 
 Insira as dimensões N e M (NxM):
 
-N? 
+N (>=4)? 
 4
 
-M? 
+M (>=4)? 
 4
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
 
 Jogador 1 insira a coluna onde jogar: 
 1
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
 
 Jogador 2 insira a coluna onde jogar: 
 3
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | p | . | v | . | 
+      | p | - | v | - | 
 
 
 Jogador 1 insira a coluna onde jogar: 
 1
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
-      | p | . | v | . | 
+      | p | - | v | - | 
 
 
 Jogador 2 insira a coluna onde jogar: 
 2
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
-      | p | v | v | . | 
+      | p | v | v | - | 
 
 
 Jogador 1 insira a coluna onde jogar: 
 1
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
-      | p | v | v | . | 
+      | p | v | v | - | 
 
 
 Jogador 2 insira a coluna onde jogar: 
 4
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
 
 Jogador 1 insira a coluna onde jogar: 
 1
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
 
 Jogador 2 insira a coluna onde jogar: 
 2
 
-      | . | . | . | . | 
+      | - | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
-      | p | v | . | . | 
+      | p | v | - | - | 
 
 
 Jogador 1 insira a coluna onde jogar: 
 1
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
-      | p | . | . | . | 
+      | p | - | - | - | 
 
-      | p | v | . | . | 
+      | p | v | - | - | 
 
 
 O vencedor é: Jogador 1
