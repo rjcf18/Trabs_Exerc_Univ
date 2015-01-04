@@ -4,6 +4,20 @@ tamanho(N,[_|R]):-
     tamanho(M,R),
     N is M+1.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+soma([], 0).
+soma([H|Lista], SomaDaLista):-
+	soma(Lista, Soma),
+	SomaDaLista is Soma+H.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+double_list([],[]).
+double_list([H1|T1],[H2|T2]):-
+	H2 is H1 +H1,	
+	double_list(T1,T2).
+
 %%%%%%%%%%%%%%%%%%%%%%%
 
 nth_el(1,[X|_],X).
@@ -14,7 +28,7 @@ nth_el(N,[_|L],X):-
 %%%%%%%%%%%%%%%%%%%%%%%
 
 is_binary_tree(leaf).
-is_binary_tree(tree(Left,Element,Right)):-
+is_binary_tree(tree(Left,_,Right)):-
 	is_binary_tree(Left) 	,
 	is_binary_tree(Right).
 
