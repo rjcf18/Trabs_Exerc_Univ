@@ -1,0 +1,31 @@
+%retira(X,L,L1) 
+retira(X,[X|R],R). 
+retira(X,[A|R],[A|S]) :- 
+	retira(X,R,S). 
+
+%retira permutações
+retiraN(R,R,L,L):- 
+	R\=[]. 
+
+%retira permutações
+retiraN(R,R1,L,L1):- 
+	retira(X,L,L11), 
+	soma(R,X,140), 
+	retiraN([X|R], R1,L11,L1). 
+
+soma([],Y,K):- !, Y< K. 
+soma([X|R],Y,K):- 
+	Y1 is Y+X, 
+	Y1 <K, 
+	soma(R,Y1,K). 
+
+%todas as particoes sem repetidos 
+p(Li,K1):- 
+	findall(X1-L1,(retiraN([],X,Li,L),sort(X,X1),sort(L,L1)),K),
+	sort(K,K1),length(K1,N), write(N). 
+
+p2(L, K):- member(K,L).	 
+
+%Experimente com % p([28,65,45,57,98,120,34,12,36,78],L).
+
+
