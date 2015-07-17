@@ -1,0 +1,3 @@
+[submodule "Msc/Engenharia de Software/facturas_restapi"]
+	path = Msc/Engenharia de Software/facturas_restapi
+	url = ssh://git@stash.xdi.uevora.pt:20/rmb/restapi.git
