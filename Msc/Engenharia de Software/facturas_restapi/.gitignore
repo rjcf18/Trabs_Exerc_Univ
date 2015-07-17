@@ -1,0 +1,6 @@
+*~
+.idea/
+/scope_settings.xml
+/uiDesigner.xml
+*.iml
+node_modules
