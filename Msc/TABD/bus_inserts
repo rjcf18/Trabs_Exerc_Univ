@@ -1,0 +1,25 @@
+﻿INSERT INTO Employee_BusDriver VALUES (DEFAULT,'12112','Manuel Silva', 'Rua de Machede', true);
+INSERT INTO Employee_BusDriver VALUES (DEFAULT,'11512','João Ribeiro', 'Rua Antonio Miguel', false);
+INSERT INTO Employee_BusDriver VALUES (DEFAULT,'13112','Jorge Santos', 'Rua de Machede', true);
+INSERT INTO Employee_BusDriver VALUES (DEFAULT,'14112','Luís Miguel', 'Rua de Machede', false);
+INSERT INTO Employee_BusDriver VALUES (DEFAULT,'11212','Miguel Calisto', 'Rua de Machede', true);
+INSERT INTO Employee_BusDriver VALUES (DEFAULT,'11113','Pedro Nuno', 'Rua de Machede', true);
+
+INSERT INTO Brand VALUES ('Mercedes');
+INSERT INTO Brand VALUES ('Toyota');
+INSERT INTO Brand VALUES ('Audi');
+INSERT INTO Brand VALUES ('Ford');
+INSERT INTO Brand VALUES ('Wolkswagen');
+INSERT INTO Brand VALUES ('Renault');
+INSERT INTO Brand VALUES ('Chevrolet');
+
+INSERT INTO Model VALUES ('Express', 'Chevrolet');
+INSERT INTO Model VALUES ('Venture', 'Chevrolet');
+INSERT INTO Model VALUES ('Transit', 'Ford');
+INSERT INTO Model VALUES ('Sprinter', 'Mercedes');
+
+INSERT INTO Bus VALUES ('03-AJ-27', '20', 'Chevrolet','Express', '2001');
+INSERT INTO Bus VALUES ('23-IF-83', '25', 'Ford', 'Transit', '2005');
+INSERT INTO Bus VALUES ('53-EF-11', '15', 'Mercedes', 'Sprinter', '2007');
+INSERT INTO Bus VALUES ('31-LA-40', '18', 'Chevrolet', 'Venture', '1999');
+

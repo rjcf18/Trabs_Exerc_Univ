@@ -1,0 +1,89 @@
+﻿
+DROP DOMAIN IF EXISTS Plate CASCADE;
+DROP TABLE IF EXISTS Employee CASCADE;
+DROP TABLE IF EXISTS Brand CASCADE;
+DROP TABLE IF EXISTS Model CASCADE;
+DROP TABLE IF EXISTS Bus CASCADE;
+DROP TABLE IF EXISTS Route CASCADE;
+DROP TABLE IF EXISTS Trip CASCADE;
+DROP TABLE IF EXISTS Trip_Entrance CASCADE;
+
+CREATE DOMAIN Plate AS TEXT
+CHECK(
+	VALUE ~ '^[0-9]{2}-[A-Z]{2}-[0-9]{2}$'
+);
+
+
+CREATE TABLE IF NOT EXISTS Employee_BusDriver(
+	ID serial PRIMARY KEY NOT NULL,
+	Social_Sec_Number smallint NOT NULL,
+	Name_E text NOT NULL,
+	Address text NOT NULL,
+	Driver boolean NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Brand(
+	Brand_Name text PRIMARY KEY NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Model(
+	Model_Name text PRIMARY KEY NOT NULL,
+	Brand_Name text NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Bus(
+	Plate_Number Plate PRIMARY KEY NOT NULL,
+	Max_Passengers smallint NOT NULL,
+	Brand text NOT NULL,
+	Model text NOT NULL,
+	First_Reg_Year smallint NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Route(
+	ID serial PRIMARY KEY NOT NULL,
+	Bus_Stops text[] ,
+	Max_Passengers smallint NOT NULL,
+	Estimated_Time time NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Trip(
+	Driver_ID smallint NOT NULL,
+	Bus_Plate Plate NOT NULL,
+	Route_ID smallint NOT NULL,
+	Trip_Date date NOT NULL,
+	Start_Time time NOT NULL,
+	End_Time time NOT NULL,
+	PRIMARY KEY (Driver_ID, Bus_Plate, Route_ID),
+
+	FOREIGN KEY (Bus_Plate)
+	REFERENCES Bus(Plate_Number),
+
+	FOREIGN KEY (Driver_ID)
+	REFERENCES Employee_BusDriver(ID),
+
+	FOREIGN KEY (Route_ID)
+	REFERENCES Route(ID)
+
+);
+
+CREATE TABLE IF NOT EXISTS Passenger_Entrance(
+	Entrance_Date DATE NOT NULL,
+	Entrance_Time TIME NOT NULL,
+	Stop TEXT NOT NULL ,
+	PRIMARY KEY (Entrance_Date, Entrance_Time, Stop)
+);
+
+CREATE TABLE IF NOT EXISTS Trip_Entrance_Rel(
+	Trip_Driver_ID smallint NOT NULL ,
+	Trip_Bus_ID Plate NOT NULL ,
+	Trip_Route_ID smallint NOT NULL ,
+	Passenger_Entrance_Entrance_Date DATE NOT NULL ,
+	Passenger_Entrance_Entrance_Time TIME NOT NULL ,
+	Passenger_Entrance_Stop TEXT NOT NULL ,
+	PRIMARY KEY (Trip_Driver_ID, Trip_Bus_ID, Trip_Route_ID, Passenger_Entrance_Entrance_Date, Passenger_Entrance_Entrance_Time, Passenger_Entrance_Stop) ,
+	FOREIGN KEY (Trip_Driver_ID, Trip_Bus_ID, Trip_Route_ID)
+	REFERENCES Trip(Driver_ID, Bus_Plate, Route_ID),
+	FOREIGN KEY (Passenger_Entrance_Entrance_Date, Passenger_Entrance_Entrance_Time, Passenger_Entrance_Stop)
+	REFERENCES Passenger_Entrance(Entrance_Date, Entrance_Time, Stop)
+);
+

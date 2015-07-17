@@ -1,0 +1,8 @@
+﻿DROP FUNCTION IF EXISTS number_buses();
+
+CREATE FUNCTION number_buses()
+	RETURNS bigint AS $$
+	SELECT COUNT(plate_number) FROM bus;
+$$ LANGUAGE SQL;
+
+SELECT number_buses();

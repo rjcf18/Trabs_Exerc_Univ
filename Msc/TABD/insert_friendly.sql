@@ -1,0 +1,1 @@
+﻿INSERT INTO "social_network".Highschooler VALUES (1700, 'Friendly', 9);
