@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">KMeal</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_board">BoardActivity</string>
+    <string name="start">Start</string>
+    <string name="exit">Exit</string>
+    <string name="author">Ricardo Fusco</string>
+    <string name="game">Game</string>
+    <string name="board">Game Board</string>
+    <string name="title_activity_logged_menu">LoggedMenuActivity</string>
+
+</resources>
+

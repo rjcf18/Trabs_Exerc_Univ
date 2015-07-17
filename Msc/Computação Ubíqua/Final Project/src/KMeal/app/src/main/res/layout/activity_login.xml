@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@drawable/background"
+    tools:context=".LoginScreen">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_square"
+        android:alpha="0.9"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/logo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/kmeallogo"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/logo2"
+            android:layout_marginBottom="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:layout_centerInParent="true">
+
+                <EditText
+                    android:hint="Username"
+                    android:id="@+id/username"
+                    android:layout_margin="10dp"
+                    android:textSize="15dp"
+                    android:textColorHint="@android:color/white"
+                    android:textColor="@android:color/white"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:layout_margin="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/pword"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Password"
+                    android:layout_below="@+id/username"
+                    android:textSize="15dp"
+                    android:textColorHint="@android:color/white"
+                    android:textColor="@android:color/white"
+                    />
+
+                <Button
+                    android:id="@+id/login2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pword"
+                    android:background="@drawable/rounded_square2"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="15dp"
+                    android:text="Login"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/background_light" />
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

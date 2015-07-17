@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">APPCU1</string>
+
+    <string name="hello_world">Olá mundo!</string>
+    <string name="action_settings">Opções</string>
+    <string name="title_activity_board">BoardActivity</string>
+    <string name="start">Iniciar</string>
+    <string name="exit">Sair</string>
+    <string name="author">Ricardo Fusco</string>
+    <string name="game">Jogo</string>
+    <string name="board">Tabuleiro</string>
+</resources>

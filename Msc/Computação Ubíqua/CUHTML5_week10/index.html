@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Restaurantes</title>
+        <link rel="stylesheet" href="normalize.css">
+        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="table.css">
+
+    </head>
+
+    <body onload="getdata()">
+
+        <form>
+
+            <a name="top"><h1>Restaurantes App</h1></a>
+
+            <a href="#search"><button type="button">Pesquisar Restaurante</button></a>
+            <h1></h1>
+            <a href="#insert"><button type="button">Inserir Restaurante</button></a>
+            <h1></h1>
+            <a href="#resttable"><button type="button" onclick="refreshRestaurants()">Listar todos os restaurantes</button></a>
+
+
+        </form>
+
+        <h1></h1>
+        <form>
+
+            <fieldset>
+                <a name="search"><legend><span class="number">1</span>Insira o que deseja pesquisar:</legend></a>
+            </fieldset>
+
+        </form>
+
+        <form name="restaurant-search-form-name" id="restaurant-search-form-name" method="POST" action="#">
+            <fieldset>
+
+                <label for="restaurant-search-name">Nome do restaurante:</label>
+                <input type="text" id="restaurant-search-name" name="restaurant-search-name" placeholder="Nome">
+                <a href="#resttable"><button type="submit">Pesquisar</button></a>
+            </fieldset>
+        </form>
+
+        <form name="restaurant-search-form-type" id="restaurant-search-form-type" method="POST" action="#">
+            <fieldset>
+                <label for="restaurant-search-type">Tipo de comida:</label>
+                <input type="text" id="restaurant-search-type" name="restaurant-search-form" placeholder="Tipo">
+                <a href="#resttable"><button type="submit">Pesquisar</button></a>
+            </fieldset>
+        </form>
+
+        <form name="restaurant-search-form-price" id="restaurant-search-form-price" method="POST" action="#">
+            <fieldset>
+                <label for="restaurant-search-minprice">Mínimo da gama de preços:</label>
+                <input type="number" id="restaurant-search-minprice" name="restaurant-search-minprice" placeholder="Preço Mínimo (€)">
+                <label for="restaurant-search-maxprice">Máximo da gama de preços:</label>
+                <input type="number" id="restaurant-search-maxprice" name="restaurant-search-maxprice" placeholder="Preço Máximo (€)">
+                <a href="#resttable"><button type="submit">Pesquisar</button></a>
+            </fieldset>
+        </form>
+
+        <form>
+            <button onclick="getLocation()">Obter localização</button>
+        </form>
+            <div id="mapholder" style="text-align: center"></div>
+
+            <script>
+                var x = document.getElementById("demo");
+
+                function getLocation() {
+
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPosition, showError);
+                    } else {
+                        x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                }
+
+                function showPosition(position) {
+                    var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+                    var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="
+                            +latlon+"&zoom=14&size=400x300&sensor=false";
+                    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+                }
+
+                function showError(error) {
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            x.innerHTML = "User denied the request for Geolocation."
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            x.innerHTML = "Location information is unavailable."
+                            break;
+                        case error.TIMEOUT:
+                            x.innerHTML = "The request to get user location timed out."
+                            break;
+                        case error.UNKNOWN_ERROR:
+                            x.innerHTML = "An unknown error occurred."
+                            break;
+                    }
+                }
+
+                function storedata(){
+                    var restaurantName = document.getElementById("restaurant-search-name");
+                    var foodType = document.getElementById("restaurant-search-type");
+                    var pricemax = document.getElementById("restaurant-search-maxprice");
+                    var pricemin = document.getElementById("restaurant-search-minprice");
+
+                    localStorage.setItem("Restaurant_Name", restaurantName.value);
+                    localStorage.setItem("Food_Type", foodType.value);
+                    localStorage.setItem("Price_Max", pricemax.value);
+                    localStorage.setItem("Price_Min", pricemin.value);
+                }
+
+                function getdata(){
+                    var restaurantName = document.getElementById("restaurant-search-name");
+                    var foodType = document.getElementById("restaurant-search-name");
+                    var pricemax = document.getElementById("restaurant-search-maxprice");
+                    var pricemin = document.getElementById("restaurant-search-minprice");
+
+                    restaurantName.value = localStorage.getItem("Restaurant_Name");
+                    foodType.value = localStorage.getItem("Food_Type");
+                    pricemax.value = localStorage.getItem("Price_Max");
+                    pricemin.value = localStorage.getItem("Price_Min");
+                }
+            </script>
+
+            <h1></h1>
+
+
+        <form name="new-restaurant-form" id="new-restaurant-form" method="POST" action="#">
+
+            <fieldset>
+                <a name="insert"><legend><span class="number">2</span>Dados do restaurante a inserir:</legend></a>
+                <label for="new-restaurant-name">Nome do restaurante:</label>
+                <input type="text" name="new-restaurant-name" id="new-restaurant-name" placeholder="Nome" required>
+
+                <label for="new-restaurant-type">Tipo de comida:</label>
+                <input type="text" id="new-restaurant-type" name="new-restaurant-type" placeholder="Tipo" required>
+
+                <label for="new-restaurant-price">Preço médio dos pratos:</label>
+                <input type="number" id="new-restaurant-price" name="new-restaurant-price" placeholder="Preco (€)" required>
+
+            </fieldset>
+
+            <h1></h1>
+
+            <button type="submit" >Submeter</button>
+
+        </form>
+
+        <h1></h1>
+
+
+
+        <div class="table-title">
+            <h3>Tabela Restaurantes</h3>
+        </div>
+
+        <a name="resttable">
+            <table id="table" class="table-fill">
+                <thead>
+                <tr>
+                    <th class="text-center">Eliminar?</th>
+                    <th class="text-center">Nome</th>
+                    <th class="text-center">Tipo de Comida</th>
+                    <th class="text-center">Média Preços (€)</th>
+                    <th class="text-center">ID</th>
+
+                </tr>
+                </thead>
+                <tbody id="table_body" class="table-hover">
+                </tbody>
+            </table>
+        </a>
+
+        <script src="db.js"></script>
+        <script src="app.js"></script>
+
+        <h1></h1>
+
+        <form>
+            <a href="#top"><button type="button">Voltar ao topo</button></a>
+        </form>
+
+    </body>
+
+</html>

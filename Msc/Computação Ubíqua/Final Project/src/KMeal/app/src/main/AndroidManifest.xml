@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="rjfusco.kmeal" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/kmeallogo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".SplashScreenActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainScreenActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:allowTaskReparenting="true"
+            android:label="Login"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainScreenActivity" />
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:allowTaskReparenting="true"
+            android:label="Register"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainScreenActivity" />
+        </activity>
+
+        <activity
+            android:name=".LoggedMenuActivity"
+            android:label="Main Menu"
+            android:allowTaskReparenting="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".FavoritesActivity"
+            android:label="Favorites"
+            android:allowTaskReparenting="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoggedMenuActivity" />
+        </activity>
+
+        <activity
+            android:name=".SearchResultsActivity"
+            android:label="Search results"
+            android:allowTaskReparenting="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoggedMenuActivity" />
+        </activity>
+
+        <activity
+            android:name=".RecipeActivity"
+            android:label="Recipe"
+            android:launchMode="singleTop"
+            android:allowTaskReparenting="true"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+    </application>
+
+</manifest>

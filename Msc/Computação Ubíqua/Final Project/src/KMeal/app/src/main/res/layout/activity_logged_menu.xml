@@ -1,0 +1,211 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@drawable/background"
+    android:orientation="vertical" android:gravity="center"
+    tools:context=".SubMenu" >
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:alpha="0.9"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_square"
+        android:layout_centerInParent="true"
+        >
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/kmeallogo"
+            />
+
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:stretchColumns="*"
+            android:layout_centerHorizontal="true"
+            android:weightSum="3"
+            android:layout_below="@id/logo"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_margin="15dp">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="3">
+
+                <Button
+                    android:id="@+id/favorites"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_square2"
+                    android:drawableTop="@drawable/favorites"
+                    android:padding="10dp"
+                    android:text="Favorites"
+                    android:textSize="11sp"
+                    android:textColor="@android:color/background_light"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp" />
+
+                <Button
+                    android:id="@+id/simplesearch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_square2"
+                    android:drawableTop="@drawable/search2"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textSize="11sp"
+                    android:onClick="showSearchDialog"
+                    android:text="Search"
+                    android:textColor="@android:color/background_light"
+                    android:layout_gravity="center" />
+
+                <Button
+                    android:id="@+id/advancedsearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_square2"
+                    android:drawableTop="@drawable/advancedsearch"
+                    android:textSize="10sp"
+                    android:padding="5dp"
+                    android:text="Advanced \nSearch"
+                    android:textColor="@android:color/background_light"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:weightSum="3">
+
+                <Button
+                    android:id="@+id/newrecipebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_square2"
+                    android:drawableTop="@drawable/newrecipe"
+                    android:textSize="11sp"
+                    android:text="New Recipe"
+                    android:textColor="@android:color/background_light"
+                    android:elegantTextHeight="false"
+                    android:clickable="false"
+                    android:layout_gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_margin="4dp" />
+
+                <Button
+                    android:id="@+id/randomrecipebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_square2"
+                    android:drawableTop="@drawable/recipe"
+                    android:layout_margin="4dp"
+                    android:textSize="11sp"
+                    android:text="Random Recipe"
+                    android:textColor="@android:color/background_light"
+                    android:layout_gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
+                <Button
+                    android:id="@+id/shoppinglistsbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_square2"
+                    android:drawableTop="@drawable/shoppinglists"
+                    android:textSize="11sp"
+                    android:text="Shopping Lists"
+                    android:textColor="@android:color/background_light"
+                    android:layout_gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_margin="4dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:weightSum="3" >
+
+                <Button
+                    android:id="@+id/mealplannerbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_square2"
+                    android:drawableTop="@drawable/mealplanner"
+                    android:textSize="10sp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Meal Planner"
+                    android:textColor="@android:color/background_light"
+                    android:layout_gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp" />
+
+                <Button
+                    android:id="@+id/settingsbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_square2"
+                    android:drawableTop="@drawable/settings"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:textSize="11sp"
+                    android:text="Settings"
+                    android:textColor="@android:color/background_light"
+                    android:layout_gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/logoutbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_square2"
+                    android:layout_toRightOf="@id/settingsbtn"
+                    android:drawableTop="@drawable/logout"
+                    android:textSize="11sp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Logout"
+                    android:textColor="@android:color/background_light"
+                    android:layout_gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp" />
+            </TableRow>
+        </TableLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

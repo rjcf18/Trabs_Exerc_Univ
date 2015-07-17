@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@drawable/background"
+     tools:context=".MainMenu">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_square"
+        android:alpha="0.9"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/kmeallogo"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/logo"
+            android:layout_marginBottom="15dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:layout_centerInParent="true"
+                android:weightSum="1">
+
+                <Button
+                    android:id="@+id/login"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_square2"
+                    android:drawableTop="@drawable/login"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:layout_margin="4dp"
+                    android:text="Login"
+                    android:layout_weight="0.33"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/background_light" />
+
+                <Button
+                    android:id="@+id/simplesearch"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_square2"
+                    android:layout_toRightOf="@id/login"
+                    android:drawableTop="@drawable/search"
+                    android:padding="15dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="0.33"
+                    android:textSize="12sp"
+                    android:text="Search"
+                    android:onClick="showSearchDialog"
+                    android:textColor="@android:color/background_light"/>
+
+                <Button
+                    android:id="@+id/register"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_square2"
+                    android:layout_toRightOf="@id/simplesearch"
+                    android:drawableTop="@drawable/register"
+                    android:padding="15dp"
+                    android:textSize="12sp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="0.33"
+                    android:text="Register"
+                    android:textColor="@android:color/background_light"
+                    />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
