@@ -1,0 +1,29 @@
+var int n = 26;
+
+# returns i1 - i2 (this is stupid, really)
+fun int sub(int i1, int i2) = i1 - i2;
+
+# computes the nth Fibonacci number
+fun int fibonacci(int n)
+[
+  var int r;
+
+  if (n == 0 || n == 1)
+    r = n;
+  else
+    r = fibonacci(n - 1) + fibonacci(sub(n, 2));
+
+  ^ r
+]
+
+fun int main()
+[
+  var int fib = fibonacci(n);
+
+  # all three should print the same
+  print fib;
+  print fibonacci(14 + 3 * 4);
+  print 121393;
+
+  ^ 0 # return 0 to the system
+]

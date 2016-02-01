@@ -1,0 +1,15 @@
+fun int triangular(int n)
+[
+  var int a;
+  var int b;
+
+  a = n;
+
+  if (a > 0)
+  [
+    b = triangular(n - 1);
+    a = a + b;
+  ]
+
+  ^ a
+]

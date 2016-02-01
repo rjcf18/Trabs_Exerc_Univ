@@ -1,0 +1,27 @@
+id(n, var, int, 26).
+id(sub, fun, int, [id(i1,int), id(i2,int)], []).
+id(fibonacci, fun, int, [id(n,int)], [id(r,int)]).
+id(main, fun, int, [], [id(fib,int)]).
+
+function(sub, [
+  i_return(i_sub(t2, i_aload(t0, i1), i_aload(t1, i2)))]).
+
+function(fibonacci, [
+  cjump(i_eq(t2, i_aload(t0, n), i_value(t1, 0)), l0, l3),
+  label(l3),
+  cjump(i_eq(t5, i_aload(t3, n), i_value(t4, 1)), l0, l1),
+  label(l0),
+  i_lstore(r, i_aload(t6, n)),
+  jump(l2),
+  label(l1),
+  i_lstore(r, i_add(t15, i_call(t10, fibonacci, [i_sub(t9, i_aload(t7, n), i_value(t8, 1))]), i_call(t14, fibonacci, [i_call(t13, sub, [i_aload(t11, n), i_value(t12, 2)])]))),
+  label(l2),
+  i_return(i_lload(t16, r))]).
+
+function(main, [
+  i_lstore(fib, i_call(t1, fibonacci, [i_load(t0, n)])),
+  i_print(i_lload(t2, fib)),
+  i_print(i_call(t8, fibonacci, [i_add(t7, i_value(t3, 14), i_mul(t6, i_value(t4, 3), i_value(t5, 4)))])),
+  i_print(i_value(t9, 121393)),
+  i_return(i_value(t10, 0))]).
+

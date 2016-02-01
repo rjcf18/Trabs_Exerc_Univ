@@ -1,0 +1,518 @@
+	.data
+global1:	.word 32
+global2:	.space 4
+gbool:	.word 1
+
+	.text
+p:	sw    $fp, -4($sp)
+	addiu $fp, $sp, -4
+	sw    $ra, -4($fp)
+	addiu $sp, $fp, -4
+	lw    t0, 4($fp)
+	i_print$ t0
+	lw    t1, 4($fp)
+	ori   t2, $0, 1
+	subu  t3, t1, t2
+	sltiu t3, t3, 1
+	beq   t3, $0, l1
+	j     l0
+l0:	ori   t4, $0, 1
+	b_print$ t4
+	ori   t5, $0, 1
+	ori   t6, $0, 1
+	subu  t7, t5, t6
+	sltiu t7, t7, 1
+	b_print$ t7
+	ori   t8, $0, 1
+	ori   t9, $0, 2
+	subu  t10, t8, t9
+	sltu  t10, $0, t10
+	b_print$ t10
+	ori   t11, $0, 1
+	ori   t12, $0, 2
+	slt   t13, t11, t12
+	b_print$ t13
+	ori   t14, $0, 4
+	ori   t15, $0, 5
+	slt   t16, t15, t14
+	xori  t16, t16, 1
+	b_print$ t16
+	ori   t17, $0, 3
+	ori   t18, $0, 4
+	subu  t19, $0, t18
+	slt   t20, t19, t17
+	b_print$ t20
+	ori   t21, $0, 9
+	ori   t22, $0, 9
+	slt   t23, t21, t22
+	xori  t23, t23, 1
+	b_print$ t23
+	ori   t24, $0, 1
+	ori   t25, $0, 2
+	slt   t26, t25, t24
+	xori  t27, t26, 1
+	b_print$ t27
+	j     l3
+l3:	ori   t28, $0, 1
+	b_print$ t28
+	j     l5
+l4:	ori   t29, $0, 0
+	b_print$ t29
+l5:	ori   t30, $0, 1
+	ori   t31, $0, 1
+	subu  t32, t30, t31
+	sltiu t32, t32, 1
+	beq   t32, $0, l7
+	j     l6
+l6:	ori   t33, $0, 1
+	b_print$ t33
+	j     l8
+l7:	ori   t34, $0, 0
+	b_print$ t34
+l8:	ori   t35, $0, 1
+	ori   t36, $0, 2
+	subu  t37, t35, t36
+	sltiu t37, t37, 1
+	beq   t37, $0, l9
+	j     l10
+l9:	ori   t38, $0, 1
+	b_print$ t38
+	j     l11
+l10:	ori   t39, $0, 0
+	b_print$ t39
+l11:	ori   t40, $0, 1
+	ori   t41, $0, 2
+	slt   t42, t40, t41
+	beq   t42, $0, l13
+	j     l12
+l12:	ori   t43, $0, 1
+	b_print$ t43
+	j     l14
+l13:	ori   t44, $0, 0
+	b_print$ t44
+l14:	ori   t45, $0, 4
+	ori   t46, $0, 5
+	slt   t47, t46, t45
+	beq   t47, $0, l15
+	j     l16
+l15:	ori   t48, $0, 1
+	b_print$ t48
+	j     l17
+l16:	ori   t49, $0, 0
+	b_print$ t49
+l17:	ori   t50, $0, 3
+	ori   t51, $0, 4
+	subu  t52, $0, t51
+	slt   t53, t52, t50
+	beq   t53, $0, l19
+	j     l18
+l18:	ori   t54, $0, 1
+	b_print$ t54
+	j     l20
+l19:	ori   t55, $0, 0
+	b_print$ t55
+l20:	ori   t56, $0, 9
+	ori   t57, $0, 9
+	slt   t58, t56, t57
+	beq   t58, $0, l21
+	j     l22
+l21:	ori   t59, $0, 1
+	b_print$ t59
+	j     l23
+l22:	ori   t60, $0, 0
+	b_print$ t60
+l23:	ori   t61, $0, 1
+	ori   t62, $0, 2
+	slt   t63, t62, t61
+	beq   t63, $0, l24
+	j     l25
+l24:	ori   t64, $0, 1
+	b_print$ t64
+	j     l26
+l25:	ori   t65, $0, 0
+	b_print$ t65
+l26:	j     l2
+l1:	ori   t66, $0, 0
+	b_print$ t66
+	ori   t67, $0, 1
+	ori   t68, $0, 0
+	subu  t69, t67, t68
+	sltiu t69, t69, 1
+	b_print$ t69
+	ori   t70, $0, 3
+	ori   t71, $0, 3
+	subu  t72, t70, t71
+	sltu  t72, $0, t72
+	b_print$ t72
+	ori   t73, $0, 3
+	ori   t74, $0, 1
+	slt   t75, t73, t74
+	b_print$ t75
+	ori   t76, $0, 8
+	ori   t77, $0, 3
+	slt   t78, t77, t76
+	xori  t78, t78, 1
+	b_print$ t78
+	ori   t79, $0, 3
+	ori   t80, $0, 3
+	slt   t81, t80, t79
+	b_print$ t81
+	ori   t82, $0, 4
+	ori   t83, $0, 8
+	slt   t84, t82, t83
+	xori  t84, t84, 1
+	b_print$ t84
+	j     l28
+l27:	ori   t85, $0, 1
+	b_print$ t85
+	j     l29
+l28:	ori   t86, $0, 0
+	b_print$ t86
+l29:	ori   t87, $0, 1
+	ori   t88, $0, 0
+	subu  t89, t87, t88
+	sltiu t89, t89, 1
+	beq   t89, $0, l31
+	j     l30
+l30:	ori   t90, $0, 1
+	b_print$ t90
+	j     l32
+l31:	ori   t91, $0, 0
+	b_print$ t91
+l32:	ori   t92, $0, 3
+	ori   t93, $0, 3
+	subu  t94, t92, t93
+	sltiu t94, t94, 1
+	beq   t94, $0, l33
+	j     l34
+l33:	ori   t95, $0, 1
+	b_print$ t95
+	j     l35
+l34:	ori   t96, $0, 0
+	b_print$ t96
+l35:	ori   t97, $0, 3
+	ori   t98, $0, 1
+	slt   t99, t97, t98
+	beq   t99, $0, l37
+	j     l36
+l36:	ori   t100, $0, 1
+	b_print$ t100
+	j     l38
+l37:	ori   t101, $0, 0
+	b_print$ t101
+l38:	ori   t102, $0, 8
+	ori   t103, $0, 3
+	slt   t104, t103, t102
+	beq   t104, $0, l39
+	j     l40
+l39:	ori   t105, $0, 1
+	b_print$ t105
+	j     l41
+l40:	ori   t106, $0, 0
+	b_print$ t106
+l41:	ori   t107, $0, 3
+	ori   t108, $0, 3
+	slt   t109, t108, t107
+	beq   t109, $0, l43
+	j     l42
+l42:	ori   t110, $0, 1
+	b_print$ t110
+	j     l44
+l43:	ori   t111, $0, 0
+	b_print$ t111
+l44:	ori   t112, $0, 4
+	ori   t113, $0, 8
+	slt   t114, t112, t113
+	beq   t114, $0, l45
+	j     l46
+l45:	ori   t115, $0, 1
+	b_print$ t115
+	j     l47
+l46:	ori   t116, $0, 0
+	b_print$ t116
+l47:
+l2:	lw    $ra, -4($fp)
+	addiu $sp, $fp, 8
+	lw    $fp, 0($fp)
+	jr    $ra
+
+	.text
+or:	sw    $fp, -4($sp)
+	addiu $fp, $sp, -4
+	sw    $ra, -4($fp)
+	addiu $sp, $fp, -4
+	j     l51
+l51:	j     l49
+l48:	ori   t0, $0, 1
+	b_print$ t0
+	j     l50
+l49:	ori   t1, $0, 0
+	b_print$ t1
+l50:	j     l55
+l55:	j     l52
+l52:	ori   t2, $0, 1
+	b_print$ t2
+	j     l54
+l53:	ori   t3, $0, 0
+	b_print$ t3
+l54:	j     l56
+l59:	j     l57
+l56:	ori   t4, $0, 1
+	b_print$ t4
+	j     l58
+l57:	ori   t5, $0, 0
+	b_print$ t5
+l58:	j     l60
+l63:	j     l60
+l60:	ori   t6, $0, 1
+	b_print$ t6
+	j     l62
+l61:	ori   t7, $0, 0
+	b_print$ t7
+l62:	lw    $ra, -4($fp)
+	addiu $sp, $fp, 4
+	lw    $fp, 0($fp)
+	jr    $ra
+
+	.text
+and:	sw    $fp, -4($sp)
+	addiu $fp, $sp, -4
+	sw    $ra, -4($fp)
+	addiu $sp, $fp, -4
+	j     l65
+l67:	j     l65
+l64:	ori   t0, $0, 1
+	b_print$ t0
+	j     l66
+l65:	ori   t1, $0, 0
+	b_print$ t1
+l66:	j     l69
+l71:	j     l68
+l68:	ori   t2, $0, 1
+	b_print$ t2
+	j     l70
+l69:	ori   t3, $0, 0
+	b_print$ t3
+l70:	j     l75
+l75:	j     l73
+l72:	ori   t4, $0, 1
+	b_print$ t4
+	j     l74
+l73:	ori   t5, $0, 0
+	b_print$ t5
+l74:	j     l79
+l79:	j     l76
+l76:	ori   t6, $0, 1
+	b_print$ t6
+	j     l78
+l77:	ori   t7, $0, 0
+	b_print$ t7
+l78:	lw    $ra, -4($fp)
+	addiu $sp, $fp, 4
+	lw    $fp, 0($fp)
+	jr    $ra
+
+	.text
+f:	sw    $fp, -4($sp)
+	addiu $fp, $sp, -4
+	sw    $ra, -4($fp)
+	addiu $sp, $fp, -4
+	lw    t0, 4($fp)
+	ori   t1, $0, 1
+	addu  t2, t0, t1
+	or    $v0, $0, t2
+	lw    $ra, -4($fp)
+	addiu $sp, $fp, 8
+	lw    $fp, 0($fp)
+	jr    $ra
+
+	.text
+q:	sw    $fp, -4($sp)
+	addiu $fp, $sp, -4
+	sw    $ra, -4($fp)
+	addiu $sp, $fp, -8
+	ori   t0, $0, 0
+	sw    t0, -8($fp)
+l80:	lw    t1, -8($fp)
+	ori   t2, $0, 2
+	slt   t3, t1, t2
+	beq   t3, $0, l82
+	j     l81
+l81:	lw    t4, -8($fp)
+	addiu $sp, $sp, -4
+	sw    t4, 0($sp)
+	jal   p
+	lw    t5, -8($fp)
+	addiu $sp, $sp, -4
+	sw    t5, 0($sp)
+	jal   f
+	or    t6, $0, $v0
+	sw    t6, -8($fp)
+	j     l80
+l82:	lw    $ra, -4($fp)
+	addiu $sp, $fp, 4
+	lw    $fp, 0($fp)
+	jr    $ra
+
+	.text
+r:	sw    $fp, -4($sp)
+	addiu $fp, $sp, -4
+	sw    $ra, -4($fp)
+	addiu $sp, $fp, -4
+	lw    t0, 4($fp)
+	la    t1, global2
+	lw    t1, 0(t1)
+	addu  t2, t0, t1
+	sw    t2, 4($fp)
+	lw    t3, 4($fp)
+	la    t3, global1
+	sw    t3, 0(t3)
+	lw    $ra, -4($fp)
+	addiu $sp, $fp, 8
+	lw    $fp, 0($fp)
+	jr    $ra
+
+	.text
+arith:	sw    $fp, -4($sp)
+	addiu $fp, $sp, -4
+	sw    $ra, -4($fp)
+	addiu $sp, $fp, -4
+	ori   t0, $0, 33
+	ori   t1, $0, 3
+	ori   t2, $0, 30
+	addu  t3, t1, t2
+	subu  t4, t0, t3
+	sltiu t4, t4, 1
+	b_print$ t4
+	ori   t5, $0, 33
+	ori   t6, $0, 3
+	ori   t7, $0, 11
+	mult  t6, t7
+	mflo  t8
+	subu  t9, t5, t8
+	sltiu t9, t9, 1
+	b_print$ t9
+	ori   t10, $0, 33
+	ori   t11, $0, 40
+	ori   t12, $0, 7
+	subu  t13, t11, t12
+	subu  t14, t10, t13
+	sltiu t14, t14, 1
+	b_print$ t14
+	ori   t15, $0, 33
+	ori   t16, $0, 99
+	ori   t17, $0, 3
+	div   t16, t17
+	mflo  t18
+	subu  t19, t15, t18
+	sltiu t19, t19, 1
+	b_print$ t19
+	ori   t20, $0, 33
+	ori   t21, $0, 67
+	ori   t22, $0, 34
+	div   t21, t22
+	mfhi  t23
+	subu  t24, t20, t23
+	sltiu t24, t24, 1
+	b_print$ t24
+	ori   t25, $0, 33
+	ori   t26, $0, 33
+	subu  t27, $0, t26
+	subu  t28, $0, t27
+	subu  t29, t25, t28
+	sltiu t29, t29, 1
+	b_print$ t29
+	lw    $ra, -4($fp)
+	addiu $sp, $fp, 4
+	lw    $fp, 0($fp)
+	jr    $ra
+
+	.text
+main:	sw    $fp, -4($sp)
+	addiu $fp, $sp, -4
+	sw    $ra, -4($fp)
+	addiu $sp, $fp, -8
+	ori   t0, $0, 34
+	sw    t0, -8($fp)
+	jal   q
+	ori   t1, $0, 2
+	i_print$ t1
+	jal   or
+	ori   t2, $0, 3
+	i_print$ t2
+	jal   and
+	ori   t3, $0, 4
+	i_print$ t3
+	jal   arith
+	ori   t4, $0, 5
+	i_print$ t4
+	ori   t5, $0, 33
+	la    t5, global2
+	sw    t5, 0(t5)
+	la    t6, global1
+	lw    t6, 0(t6)
+	ori   t7, $0, 1
+	addu  t8, t6, t7
+	la    t9, global2
+	lw    t9, 0(t9)
+	subu  t10, t8, t9
+	sltiu t10, t10, 1
+	b_print$ t10
+	la    t11, global1
+	lw    t11, 0(t11)
+	lw    t12, -8($fp)
+	addu  t13, t11, t12
+	ori   t14, $0, 2
+	la    t15, global2
+	lw    t15, 0(t15)
+	mult  t14, t15
+	mflo  t16
+	subu  t17, t13, t16
+	sltiu t17, t17, 1
+	b_print$ t17
+	la    t18, global2
+	lw    t18, 0(t18)
+	addiu $sp, $sp, -4
+	sw    t18, 0($sp)
+	jal   r
+	la    t19, global2
+	lw    t19, 0(t19)
+	ori   t20, $0, 2
+	mult  t19, t20
+	mflo  t21
+	la    t22, global1
+	lw    t22, 0(t22)
+	subu  t23, t21, t22
+	sltiu t23, t23, 1
+	b_print$ t23
+	ori   t24, $0, 14
+	ori   t25, $0, 1
+	addiu $sp, $sp, -4
+	sw    t25, 0($sp)
+	jal   f
+	or    t26, $0, $v0
+	ori   t27, $0, 2
+	addiu $sp, $sp, -4
+	sw    t27, 0($sp)
+	jal   f
+	or    t28, $0, $v0
+	ori   t29, $0, 3
+	addiu $sp, $sp, -4
+	sw    t29, 0($sp)
+	jal   f
+	or    t30, $0, $v0
+	ori   t31, $0, 4
+	addiu $sp, $sp, -4
+	sw    t31, 0($sp)
+	jal   f
+	or    t32, $0, $v0
+	addu  t33, t30, t32
+	addu  t34, t28, t33
+	addu  t35, t26, t34
+	subu  t36, t24, t35
+	sltiu t36, t36, 1
+	b_print$ t36
+	lw    $ra, -4($fp)
+	addiu $sp, $fp, 4
+	lw    $fp, 0($fp)
+	jr    $ra

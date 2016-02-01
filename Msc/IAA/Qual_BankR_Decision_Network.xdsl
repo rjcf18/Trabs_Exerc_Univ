@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="tutorial4" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="VSuccess">
+			<state id="Success" />
+			<state id="Failure" />
+			<probabilities>0.381 0.619</probabilities>
+		</cpt>
+		<decision id="Invest">
+			<state id="Invest" />
+			<state id="DoNotInvest" />
+		</decision>
+		<utility id="Gain">
+			<parents>VSuccess Invest</parents>
+			<utilities>2150000 150000 -850000 150000</utilities>
+		</utility>
+		<cpt id="BR">
+			<state id="B" />
+			<state id="NB" />
+			<parents>VSuccess</parents>
+			<probabilities>0.348 0.652 0.552 0.448</probabilities>
+		</cpt>
+		<cpt id="Copy_of_IR">
+			<state id="Positive" />
+			<state id="Average" />
+			<state id="Negative" />
+			<parents>BR</parents>
+			<probabilities>0.244 0.263 0.493 0.377 0.37 0.253</probabilities>
+		</cpt>
+		<cpt id="Copy_of_MR">
+			<state id="Positive" />
+			<state id="Average" />
+			<state id="Negative" />
+			<parents>BR</parents>
+			<probabilities>0.106 0.217 0.677 0.356 0.322 0.322</probabilities>
+		</cpt>
+		<cpt id="Copy_of_FF">
+			<state id="Positive" />
+			<state id="Average" />
+			<state id="Negative" />
+			<parents>BR</parents>
+			<probabilities>0.014 0.041 0.945 0.391 0.488 0.121</probabilities>
+		</cpt>
+		<cpt id="CR">
+			<state id="Positive" />
+			<state id="Average" />
+			<state id="Negative" />
+			<parents>BR</parents>
+			<probabilities>0.03299999999999992 0.161 0.806 0.529 0.419 0.052</probabilities>
+		</cpt>
+		<cpt id="Copy_of_CO">
+			<state id="Positive" />
+			<state id="Average" />
+			<state id="Negative" />
+			<parents>BR</parents>
+			<probabilities>0.005 0.041 0.954 0.633 0.363 0.004000000000000004</probabilities>
+		</cpt>
+		<cpt id="Copy_of_OP">
+			<state id="Positive" />
+			<state id="Average" />
+			<state id="Negative" />
+			<parents>BR</parents>
+			<probabilities>0.18 0.226 0.594 0.419 0.232 0.349</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="Tutorial 4 - Creating Influence Diagrams" faultnameformat="nodestate">
+			<comment>Tutorial 4 - Creating Influence Diagrams \n\nPart of GeNIe Help.\n\nGeNIe Help Online : http://www.sis.pitt.edu/~genie/GeNIeHelp/\n\nDownload GeNIe at : http://www.sis.pitt.edu/~genie</comment>
+			<node id="Invest">
+				<name>Invest?</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>427 67 507 105</position>
+			</node>
+			<node id="Gain">
+				<name>Financial Gain</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>426 170 503 218</position>
+			</node>
+			<node id="VSuccess">
+				<name>Venture Success</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>313 55 391 103</position>
+			</node>
+			<node id="Copy_of_IR">
+				<name>IR</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>147 79 208 119</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="Copy_of_MR">
+				<name>MR</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>120 134 185 178</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="Copy_of_FF">
+				<name>FF</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>206 38 267 78</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="CR">
+				<name>CR</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>153 241 213 279</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="Copy_of_CO">
+				<name>CO</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>123 187 190 232</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="Copy_of_OP">
+				<name>OP</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>221 234 291 276</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="BR">
+				<name>Bankruptcy Prediction</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>228 143 334 187</position>
+				<barchart width="137" height="59" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

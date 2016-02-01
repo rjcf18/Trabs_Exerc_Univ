@@ -1,0 +1,30 @@
+	.text
+factorial:
+	sw    $fp, -4($sp)
+	addiu $fp, $sp, -4
+	sw    $ra, -4($fp)
+	addiu $sp, $fp, -8
+	ori   t0, $0, 1
+	sw    t0, -8($fp)
+	lw    t1, 4($fp)
+	ori   t2, $0, 0
+	slt   t3, t2, t1
+	beq   t3, $0, l1
+	j     l0
+l0:	lw    t4, 4($fp)
+	lw    t5, 4($fp)
+	ori   t6, $0, 1
+	subu  t7, t5, t6
+	addiu $sp, $sp, -4
+	sw    t7, 0($sp)
+	jal   factorial
+	or    t8, $0, $v0
+	mult  t4, t8
+	mflo  t9
+	sw    t9, -8($fp)
+l1:	lw    t10, -8($fp)
+	or    $v0, $0, t10
+	lw    $ra, -4($fp)
+	addiu $sp, $fp, 8
+	lw    $fp, 0($fp)
+	jr    $ra

@@ -1,0 +1,11 @@
+id(triangular, fun, int, [id(n,int)], [id(a,int), id(b,int)]).
+
+function(triangular, [
+  i_lstore(a, i_aload(t0, n)),
+  cjump(i_lt(t3, i_value(t2, 0), i_lload(t1, a)), l0, l1),
+  label(l0),
+  i_lstore(b, i_call(t7, triangular, [i_sub(t6, i_aload(t4, n), i_value(t5, 1))])),
+  i_lstore(a, i_add(t10, i_lload(t8, a), i_lload(t9, b))),
+  label(l1),
+  i_return(i_lload(t11, a))]).
+

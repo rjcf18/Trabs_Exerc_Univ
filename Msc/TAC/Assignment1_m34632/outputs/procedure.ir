@@ -1,0 +1,20 @@
+true.
+
+function @p
+	fp0 <- r_load @x
+	fp1 <- r_aload @y
+	fp2 <- r_mul fp0, fp1
+	@x <- r_store fp2
+true.
+
+function @main
+	fp0 <- r_value 1.5
+	@x <- r_store fp0
+	t0 <- i_value 3
+	fp1 <- itor t0
+	call @p, [ fp1 ]
+	fp2 <- r_load @x
+	r_print fp2
+true.
+
+

@@ -1,0 +1,18 @@
+(id @factorial fun int [(int @n)] [(int @r)])
+
+function @factorial
+	t0 <- i_value 1
+	@r <- i_lstore t0
+	t1 <- i_aload @n
+	t2 <- i_value 0
+	t3 <- i_lt t2, t1
+	cjump t3, l0, l1
+l0:	t4 <- i_aload @n
+	t5 <- i_aload @n
+	t6 <- i_value 1
+	t7 <- i_sub t5, t6
+	t8 <- i_call @factorial, [t7]
+	t9 <- i_mul t4, t8
+	@r <- i_lstore t9
+l1:	t10 <- i_lload @r
+	i_return t10

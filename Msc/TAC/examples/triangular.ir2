@@ -1,0 +1,21 @@
+(id @triangular fun int [(int @n)] [(int @a) (int @b)])
+
+function @triangular
+	t0 <- i_aload @n
+	@a <- i_lstore t0
+	t1 <- i_lload @a
+	t2 <- i_value 0
+	t3 <- i_lt t2, t1
+	cjump t3, l0, l1
+l0:	t4 <- i_aload @n
+	t5 <- i_value 1
+	t6 <- i_sub t4, t5
+	t7 <- i_call @triangular, [t6]
+	@b <- i_lstore t7
+	t8 <- i_lload @a
+	t9 <- i_lload @b
+	t10 <- i_add t8, t9
+	@a <- i_lstore t10
+l1:	t11 <- i_lload @a
+	i_return t11
+

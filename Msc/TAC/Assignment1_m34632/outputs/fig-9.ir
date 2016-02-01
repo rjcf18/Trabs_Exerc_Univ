@@ -1,0 +1,64 @@
+	t0 <- i_value 26
+	@n <- i_store t0
+
+true.
+
+function @sub
+	t1 <- i_aload @i1
+	t2 <- i_aload @i2
+	t3 <- i_sub t1, t2
+	i_return t3
+true.
+
+function @fibonacci
+	t0 <- i_aload @n
+	t1 <- i_value 0
+	t2 <- i_eq t0, t1
+	cjump t2, l4, l3
+l3:
+	t3 <- i_aload @n
+	t4 <- i_value 1
+	t5 <- i_eq t3, t4
+	t2 <- i_copy t5
+l4:
+	cjump t2, l0, l1
+l0:
+	t6 <- i_aload @n
+	@r <- i_lstore t6
+	jump l2
+l1:
+	t7 <- i_aload @n
+	t8 <- i_value 1
+	t9 <- i_sub t7, t8
+	t10 <- i_call @fibonacci, [ t9 ]
+	t11 <- i_aload @n
+	t12 <- i_value 2
+	t13 <- i_call @sub, [ t11, t12 ]
+	t14 <- i_call @fibonacci, [ t13 ]
+	t15 <- i_add t10, t14
+	@r <- i_lstore t15
+l2:
+	t16 <- i_lload @r
+	i_return t16
+true.
+
+function @main
+	t0 <- i_load @n
+	t1 <- i_call @fibonacci, [ t0 ]
+	@fib <- i_lstore t1
+	t2 <- i_lload @fib
+	i_print t2
+	t3 <- i_value 14
+	t4 <- i_value 3
+	t5 <- i_value 4
+	t6 <- i_mul t4, t5
+	t7 <- i_add t3, t6
+	t8 <- i_call @fibonacci, [ t7 ]
+	i_print t8
+	t9 <- i_value 121393
+	i_print t9
+	t10 <- i_value 0
+	i_return t10
+true.
+
+

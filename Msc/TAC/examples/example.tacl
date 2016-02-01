@@ -1,0 +1,14 @@
+fun int example(int n)
+[
+  var int r;
+
+  r = 1;
+
+  while (n > 0)
+  [
+    r = r * n;
+    n = n - 1;
+  ]
+
+  ^ r
+]

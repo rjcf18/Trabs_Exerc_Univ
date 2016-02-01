@@ -1,0 +1,23 @@
+function @example
+	t0 <- i_value 1
+	@r <- i_lstore t0
+l0:
+	t1 <- i_aload @n
+	t2 <- i_value 0
+	t3 <- i_lt t2, t1
+l1:
+	t4 <- i_lload @r
+	t5 <- i_aload @n
+	t6 <- i_mul t4, t5
+	@r <- i_lstore t6
+	t7 <- i_aload @n
+	t8 <- i_value 1
+	t9 <- i_sub t7, t8
+	@n <- i_astore t9
+	jump l0
+l2:
+	t10 <- i_lload @r
+	i_return t10
+true.
+
+

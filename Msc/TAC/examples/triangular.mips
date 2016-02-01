@@ -1,0 +1,31 @@
+	.text
+triangular:
+	sw    $fp, -4($sp)
+	addiu $fp, $sp, -4
+	sw    $ra, -4($fp)
+	addiu $sp, $fp, -12
+	lw    t0, 4($fp)
+	sw    t0, -8($fp)
+	lw    t1, -8($fp)
+	ori   t2, $0, 0
+	slt   t3, t2, t1
+	beq   t3, $0, l1
+	j     l0
+l0:	lw    t4, 4($fp)
+	ori   t5, $0, 1
+	subu  t6, t4, t5
+	addiu $sp, $sp, -4
+	sw    t6, 0($sp)
+	jal   triangular
+	or    t7, $0, $v0
+	sw    t7, -12($fp)
+	lw    t8, -8($fp)
+	lw    t9, -12($fp)
+	addu  t10, t8, t9
+	sw    t10, -8($fp)
+l1:	lw    t11, -8($fp)
+	or    $v0, $0, t11
+	lw    $ra, -4($fp)
+	addiu $sp, $fp, 8
+	lw    $fp, 0($fp)
+	jr    $ra

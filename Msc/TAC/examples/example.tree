@@ -1,0 +1,13 @@
+id(example, fun, int, [id(n,int)], [id(r,int)]).
+
+function(example, [
+  i_lstore(r, i_value(t0, 1)),
+  label(l0),
+  cjump(i_lt(t3, i_value(t2, 0), i_aload(t1, n)), l1, l2),
+  label(l1),
+  i_lstore(r, i_mul(t6, i_lload(t4, r), i_aload(t5, n))),
+  i_astore(n, i_sub(t9, i_aload(t7, n), i_value(t8, 1))),
+  jump(l0),
+  label(l2),
+  i_return(i_lload(t10, r))]).
+

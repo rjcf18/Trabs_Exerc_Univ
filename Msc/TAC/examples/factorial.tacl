@@ -1,0 +1,9 @@
+fun int factorial(int n)
+[
+  var int r = 1;
+
+  if (n > 0)
+    r = n * factorial(n - 1);
+
+  ^ r
+]

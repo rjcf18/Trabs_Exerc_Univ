@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network1" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="BR">
+			<state id="B" />
+			<state id="NB" />
+			<probabilities>0.428 0.5720000000000001</probabilities>
+		</cpt>
+		<cpt id="IR">
+			<state id="Positive" />
+			<state id="Average" />
+			<state id="Negative" />
+			<parents>BR</parents>
+			<probabilities>0.244 0.263 0.493 0.377 0.37 0.253</probabilities>
+		</cpt>
+		<cpt id="MR">
+			<state id="Positive" />
+			<state id="Average" />
+			<state id="Negative" />
+			<parents>BR</parents>
+			<probabilities>0.106 0.217 0.677 0.356 0.322 0.322</probabilities>
+		</cpt>
+		<cpt id="FF">
+			<state id="Positive" />
+			<state id="Average" />
+			<state id="Negative" />
+			<parents>BR</parents>
+			<probabilities>0.014 0.041 0.945 0.391 0.488 0.121</probabilities>
+		</cpt>
+		<cpt id="CR">
+			<state id="Positive" />
+			<state id="Average" />
+			<state id="Negative" />
+			<parents>BR</parents>
+			<probabilities>0.03299999999999992 0.161 0.806 0.529 0.419 0.052</probabilities>
+		</cpt>
+		<cpt id="CO">
+			<state id="Positive" />
+			<state id="Average" />
+			<state id="Negative" />
+			<parents>BR</parents>
+			<probabilities>0.005 0.041 0.954 0.633 0.363 0.004000000000000004</probabilities>
+		</cpt>
+		<cpt id="OP">
+			<state id="Positive" />
+			<state id="Average" />
+			<state id="Negative" />
+			<parents>BR</parents>
+			<probabilities>0.18 0.226 0.594 0.419 0.232 0.349</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="Network1" faultnameformat="nodestate">
+			<node id="IR">
+				<name>IR</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>229 177 275 205</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="MR">
+				<name>MR</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>418 122 464 150</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="FF">
+				<name>FF</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>602 178 648 206</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="CR">
+				<name>CR</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>422 363 468 391</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="CO">
+				<name>CO</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>239 326 285 354</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="OP">
+				<name>OP</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>601 329 647 357</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="BR">
+				<name>Bankruptcy (Class)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>388 240 494 284</position>
+				<barchart active="true" width="137" height="59" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

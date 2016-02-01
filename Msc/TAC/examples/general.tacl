@@ -1,0 +1,124 @@
+# global variables
+
+var int global1 = 32;
+var int global2;
+var bool gbool = true;
+
+# procedure
+proc p(int which)
+[
+  print which;
+
+  if (which == 1)
+  [
+    # truisms
+    print true;
+    print 1 == 1;
+    print 1 != 2;
+    print 1 < 2;
+    print 4 <= 5;
+    print 3 > -4;
+    print 9 >= 9;
+    print ! (1 > 2);
+
+    if (true)	   print true; else print false;
+    if (1 == 1)	   print true; else print false;
+    if (1 != 2)	   print true; else print false;
+    if (1 < 2)	   print true; else print false;
+    if (4 <= 5)	   print true; else print false;
+    if (3 > -4)	   print true; else print false;
+    if (9 >= 9)	   print true; else print false;
+    if (! (1 > 2)) print true; else print false;
+  ]
+  else
+  [
+    # falsehoods
+    print false;
+    print 1 == 0;
+    print 3 != 3;
+    print 3 < 1;
+    print 8 <= 3;
+    print 3 > 3;
+    print 4 >= 8;
+
+    if (false)	[print true;] else print false;
+    if (1 == 0)	[print true;] else print false;
+    if (3 != 3)	[print true;] else print false;
+    if (3 < 1)	[print true;] else print false;
+    if (8 <= 3)	[print true;] else print false;
+    if (3 > 3)	[print true;] else print false;
+    if (4 >= 8)	[print true;] else print false;
+  ]
+]
+
+# or truth table
+proc or()
+[
+  if (false || false) print true; else print false;
+  if (false || true)  print true; else print false;
+  if (true || false)  print true; else print false;
+  if (true || true)   print true; else print false;
+]
+
+# and truth table
+proc and()
+[
+  if (false && false) print true; else print false;
+  if (false && true)  print true; else print false;
+  if (true && false)  print true; else print false;
+  if (true && true)   print true; else print false;
+]
+
+# a function
+fun int f(int k) = k + 1;
+
+# a parameterless procedure
+proc q()
+[
+  var int local = 0;
+
+  while (local < 2)
+  [
+    p(local);
+
+    local = f(local);
+  ]
+]
+
+proc r(int arg)
+[
+  arg = arg + global2;
+  global1 = arg;
+]
+
+proc arith()
+[
+  print 33 == 3 + 30;
+  print 33 == 3 * 11;
+  print 33 == 40 - 7;
+  print 33 == 99 / 3;
+  print 33 == 67 % 34;
+  print 33 == - - 33;
+]
+
+proc main()
+[
+  var int local = 34;
+
+  q();
+  print 2;
+  or();
+  print 3;
+  and();
+  print 4;
+  arith();
+  print 5;
+  global2 = 33;
+  print global1 + 1 == global2;
+  print global1 + local == 2 * global2;
+  r(global2);
+  print global2 * 2 == global1;
+
+  # registers live across call(s)
+  print 14 == f(1) + (f(2) + (f(3) + f(4)));
+]

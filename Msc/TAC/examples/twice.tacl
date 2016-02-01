@@ -1,0 +1,1 @@
+fun int twice(int n) = 2 * n;

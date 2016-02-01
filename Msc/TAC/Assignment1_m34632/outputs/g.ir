@@ -1,0 +1,25 @@
+function @g
+	t0 <- i_value 0
+	fp0 <- itor t0
+	@s <- r_lstore fp0
+l0:
+	t2 <- i_aload @n
+	t3 <- i_value 1
+	t4 <- i_le t3, t2
+l1:
+	fp1 <- r_lload @s
+	t5 <- i_aload @n
+	fp2 <- itor t5
+	fp3 <- r_add fp1, fp2
+	@s <- r_lstore fp3
+	t7 <- i_aload @n
+	t8 <- i_value 1
+	t9 <- i_sub t7, t8
+	@n <- i_astore t9
+	jump l0
+l2:
+	fp4 <- r_lload @s
+	r_return fp4
+true.
+
+
