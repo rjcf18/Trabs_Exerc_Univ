@@ -1,24 +1,27 @@
 # Pepper
 
-A simple "bot", or "assistant" which responds to several commands, using TTS and speech recognition
+A simple "bot", or "assistant" which responds to several commands, using TTS and speech recognition.
 
 
 ## Dependencies
 
-### There are several dependencies to solve in order to run this project. There is a makefile to make the process easier.
+### There are several dependencies to solve in order to run this project. There is a makefile to make the process easier. 
 
+	$ make install
 
 ### Install PyAudio
-
-portaudio.h may not link correctly on Mac OSX machines, if so happens run:
-
-	$ pip install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio
 
 In most machines just run:
 
 	$ pip install pyaudio
    or
+
 	$ apt-get install python-pyaudio
+
+
+portaudio.h may not link correctly on Mac OSX machines, if so happens run:
+
+	$ pip install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio
 
 ### SpeechRecognition - library using CMU Sphinx project, Google services, or Wit.ai
 
