@@ -1,9 +1,9 @@
 # Dependencies
 
-## There are several dependencies to solve in order to run this project
+## There are several dependencies to solve in order to run this project. There is a makefile to make the process easier.
 
 
-## Install PyAudio
+### Install PyAudio
 
 portaudio.h may not link correctly on Mac OSX machines, if so happens run:
 
@@ -15,32 +15,32 @@ In most machines just run:
    or
 	$ apt-get install python-pyaudio
 
-## SpeechRecognition - library using CMU Sphinx project, Google services, or Wit.ai
+### SpeechRecognition - library using CMU Sphinx project, Google services, or Wit.ai
 
 	$ pip install SpeechRecognition
     
-## gTTS - Google Text-To-Speech
+### gTTS - Google Text-To-Speech
 
 	$ pip install gtts
 
-## mpg321
+### mpg321
 
 	$ apt-get install mpg321
 
-## WolframAlpha
+### WolframAlpha
 
 	$ pip install wolframalpha
 
-## python-geoip
+### python-geoip
 
 	$ pip install python-geoip
 	$ pip install python-geoip-geolite2
 
-## requests
+### requests
 
 	$ pip install requests
 
-### Running
+# Running
 In order to run the program just run the following command after installing all the dependencies:
 
 	$ python main.py
