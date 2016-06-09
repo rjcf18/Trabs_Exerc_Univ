@@ -6,6 +6,9 @@ import time
 import webbrowser
 import wolframalpha
 import sys
+import ipgetter
+from weather_report import *
+from geoip import geolite2
 from gtts import gTTS
 
 logger = logging.getLogger(__name__)
@@ -17,18 +20,21 @@ class Pepper(object):
 
     # Built-in words
 
-    PEPPER_NAMES = ["peppa", "pepa", "pepper", "peper", "pepar", "peppar"]
+    NAMES = ["peppa", "pepa", "pepper", "peper", "pepar", "peppar"]
 
-    PEPPER_TIME_COMMANDS = ["what's the time", "what time is it",
+    TIME_COMMANDS = ["what's the time", "what time is it",
                             "tell me the time", "report the time","time please",
                             "what day is it", "which day is today", "what day's it"
                             "report what day is it"]
 
-    PEPPER_GREETING = ["hello", "hi", "greetings"]
+    GREETING = ["hello", "hi", "greetings"]
 
-    PEPPER_OPEN_ACTIONS = ["browser", "map", "maps", "gmail", "g mail",
+    OPEN_ACTIONS = ["browser", "map", "maps", "gmail", "g mail",
                            "google mail", "facebook", "face book", "you tube",
-                           "youtube"]
+                           "youtube", "home folder", "musics folder", "musics",
+                           "music", "music folder", "pictures folder", "pictures"
+                           "videos", "videos folder", "downloads",
+                           "downloads folder", "documents", "documents folder"]
 
     STOP_LISTENING = ["go away", "stop listening", "shut down",
                                "shat dawn", "shut dawn", "shat down", "that is all"
@@ -36,6 +42,9 @@ class Pepper(object):
 
     SWEAR = ["say a swear word", "swear for me", "please swear",
              "please say a swear word", "please swear for me"]
+
+    WEATHER = ["report the weather", "weather", "tell me the weather",
+               "broadcast the weather", "weather broadcast", "weather report"]
 
 
 
@@ -51,6 +60,10 @@ class Pepper(object):
 
     @classmethod
     def handle_wolframalpha_search(self, query):
+        """
+        Handles all wolframalpha searches
+        """
+
         client = wolframalpha.Client(app_id)
         res = client.query(query)
 
@@ -71,7 +84,7 @@ class Pepper(object):
     @classmethod
     def handle_action(self, text, **kwargs):
         """
-        Action handler. Handles a text command accordingly.
+        Action handler. Handles a text command responding accordingly.
         """
 
         # Use lowercase for processing.
@@ -82,24 +95,24 @@ class Pepper(object):
         if any(word in text for word in self.STOP_LISTENING):
             self.speak("As you wish boss. Enjoy your day.")
             sys.exit()
-        elif any(word == text for word in self.PEPPER_NAMES):
+        elif any(word == text for word in self.NAMES):
             self.speak("Yes boss?")
         elif "how are you" in text:
             self.speak("I'm fine, thank you.")
         elif "thank you" in text:
             self.speak("Any time boss.")
-        elif any("day" in text for word in self.PEPPER_TIME_COMMANDS):
+        elif any("day" in text for word in self.TIME_COMMANDS):
             self.speak(time.strftime("%x"))
-        elif any(word in text for word in self.PEPPER_TIME_COMMANDS):
+        elif any(word in text for word in self.TIME_COMMANDS):
             self.speak(time.strftime("%X"))
-        elif any(word in text for word in self.PEPPER_GREETING):
+        elif any(word in text for word in self.GREETING):
             self.speak("Hello boss.")
         elif any(string == text for string in self.SWEAR):
             self.speak("I'm sorry boss, but I was not built to execute such a task.")
         elif "open" in text:
             obj = text.split("open ")[1]
 
-            if obj not in self.PEPPER_OPEN_ACTIONS:
+            if obj not in self.OPEN_ACTIONS:
                 self.speak("I'm sorry boss, but I'm unable to recognize the open command")
             else:
                 if "browser" in obj:
@@ -117,15 +130,63 @@ class Pepper(object):
                 elif "youtube" in obj:
                     self.speak("Opening youtube.")
                     webbrowser.open("https://www.youtube.com/")
+                elif "home folder" in obj:
+                    self.speak("Opening home folder.")
+                    folder = os.path.expanduser("~")
+                    os.system('xdg-open "%s"' % folder)
+                elif "music" in obj:
+                    self.speak("Opening music folder.")
+                    folder = os.path.expanduser("~/Music")
+                    os.system('xdg-open "%s"' % folder)
+                elif "pictures" in obj:
+                    self.speak("Opening pictures folder.")
+                    folder = os.path.expanduser("~/Pictures")
+                    os.system('xdg-open "%s"' % folder)
+                elif "videos" in obj:
+                    self.speak("Opening videos folder.")
+                    folder = os.path.expanduser("~/Videos")
+                    os.system('xdg-open "%s"' % folder)
+                elif "downloads" in obj:
+                    self.speak("Opening downloads folder.")
+                    folder = os.path.expanduser("~/Downloads")
+                    os.system('xdg-open "%s"' % folder)
+                elif "documents" in obj:
+                    self.speak("Opening documents folder.")
+                    folder = os.path.expanduser("~/Documents")
+                    os.system('xdg-open "%s"' % folder)
         elif "search" in text:
-            self.speak("Opening google search.")
-            url = "https://www.google.com.tr/search?q={}".format(text.split("search ")[1])
-            webbrowser.open(url)
+            txt_split = text.split(" ")
+            if txt_split[0]=="wolfram" and txt_split[1]=="search":
+                self.handle_wolframalpha_search(text.split("search ")[1])
+            else:
+                self.speak("Opening google search.")
+                url = "https://www.google.com.tr/search?q={}".format(text.split("search ")[1])
+                webbrowser.open(url)
         elif "calculate" in text:
             self.handle_wolframalpha_search(text.split("calculate ")[1])
+        elif any(word in text for word in self.WEATHER):
+            if " in " in text:
+                place = text.split(" in ")[1]
+                out = data_output(data_organizer(data_fetch(url_builder_city(place))))
+                if "brief" in text:
+                    self.speak(out[0])
+                elif "detailed" in text:
+                    self.speak(out[1])
+                else:
+                    self.speak(out[0])
+            else:
+                IP = ipgetter.myip()
+                match = geolite2.lookup(IP).to_dict()
+                coords = match['location']
+                data = data_organizer(data_fetch(url_builder_coords(coords[0], coords[1])))
+                out = data_output(data)
 
-
-
+                if "brief" in text:
+                    self.speak(out[0])
+                elif "detailed" in text:
+                    self.speak(out[1])
+                else:
+                    self.speak(out[0])
 
     @classmethod
     def initiate_Pepper(self):
