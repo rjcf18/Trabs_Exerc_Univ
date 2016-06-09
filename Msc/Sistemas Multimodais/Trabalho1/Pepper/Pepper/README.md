@@ -1,4 +1,4 @@
-### Dependencies
+# Dependencies
 
 ## There are several dependencies to solve in order to run this project
 
