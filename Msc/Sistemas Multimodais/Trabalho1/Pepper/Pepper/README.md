@@ -1,9 +1,11 @@
-# Pepper - A simple "bot", or "assistant" which responds to several commands, using TTS and speech recognition
+# Pepper
+
+A simple "bot", or "assistant" which responds to several commands, using TTS and speech recognition
 
 
-# Dependencies
+## Dependencies
 
-## There are several dependencies to solve in order to run this project. There is a makefile to make the process easier.
+### There are several dependencies to solve in order to run this project. There is a makefile to make the process easier.
 
 
 ### Install PyAudio
@@ -47,6 +49,10 @@ In most machines just run:
 In order to run the program just run the following command after installing all the dependencies:
 
 	$ python main.py
+
+Or just use the Makefile:
+
+	$ make run
 
 
 
