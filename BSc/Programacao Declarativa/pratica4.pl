@@ -38,6 +38,17 @@ lista([]).
 
 lista([_|Xs]):-
 	lista(Xs).
+	
+lmax([], [], []).
+lmax([E1|T1], [E2|T2], [E|T]):-
+	maior(E1,E2,E),
+	lmax(T1,T2,T).
+	
+maior(A,A,A).
+maior(A,B,A):-
+	A>B.
+maior(A,B,B):-
+	B>A.
 
 double([],[]).
 double([X|Xs], [X|[X|Ys]]):-
