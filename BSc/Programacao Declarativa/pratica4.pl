@@ -20,6 +20,11 @@ times(0,_,0).
 times(s(X), Y, Z):-
 	times(X,Y,W),
 	plus(W, Y, Z).
+	
+factorial(0, s(0)).
+factorial(s(X), Y):-
+	factorial(X, W),
+	mult(s(X), W, Y).
 
 exp(X, s(0), X).
 exp(_, 0, s(0)).
