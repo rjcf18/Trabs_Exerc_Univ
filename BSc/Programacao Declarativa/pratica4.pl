@@ -49,6 +49,12 @@ maior(A,B,A):-
 	A>B.
 maior(A,B,B):-
 	B>A.
+	
+peval([E], _, E).
+peval([E|T], X, Y):-
+	peval(T, X, W),
+	length(T, L),
+	Y is W+E*(X**L).
 
 double([],[]).
 double([X|Xs], [X|[X|Ys]]):-
