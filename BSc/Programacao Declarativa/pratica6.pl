@@ -45,3 +45,13 @@ filme('Accao', 'Adasdasasd', 'Cenas', 2012, ['addas', 'Chris Evans', 'Mark Ruffa
 obtem_realizadores(Rs):-
 	findall(R,filme(_,_,R,_,_),Rs).
 
+% dictionary: list of key,value tuples
+dic([]).
+dic([(_,_)|T]):-
+  dic(T).
+
+%lookup(Key, Dictionary, Value)
+lookup(Key, [(Key, Value)|_], Value).
+lookup(Key, [(_, _)|Dict], Value):-
+  lookup(Key, Dict, Value).
+
