@@ -1,0 +1,26 @@
+(id @n var int -123)
+(id @abs fun int [(int @a)] [(int @r)])
+(id @main fun void [] [])
+
+function @abs
+	t0 <- i_aload @a
+	@r <- i_lstore t0
+	t1 <- i_aload @a
+	t2 <- i_value 0
+	t3 <- i_lt t1, t2
+	cjump t3, l0, l1
+l0:	t4 <- i_lload @r
+	t5 <- i_inv t4
+	@r <- i_lstore t5
+l1:	t6 <- i_lload @r
+	i_return t6
+
+function @main
+	t0 <- i_value 1
+  	t1 <- i_aload @n
+	t2 <- i_inv t0
+	t3 <- i_call @abs, [t2]
+	t4 <- i_call @abs, [t3]
+	t5 <- i_mul t0, t4
+	i_print t5
+	return

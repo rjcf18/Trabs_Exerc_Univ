@@ -1,0 +1,9 @@
+  ######################################
+ #  TAC 2016/2017: TACL IR generator  #
+######################################
+
+- In order to compile the program just run "make"
+- Run all the linear ast examples in the examples folder by executing "run-all"
+- IR following the syntax presented in the class slides
+
+Ricardo Fusco, m34632

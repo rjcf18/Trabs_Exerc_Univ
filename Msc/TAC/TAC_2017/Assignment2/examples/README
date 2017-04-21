@@ -1,0 +1,7 @@
+Examples for assignment 2
+
+Files contents:
+  .tacl files: TACL code
+  .ir2  files: IR with declarations
+  .mips files: MIPS code, with IR temporaries
+  .asm  files: MIPS code with registers
