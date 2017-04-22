@@ -1,0 +1,31 @@
+(id @sat fun int [(int @b) (int @v) (int @t)] [])
+(id @k var int 321)
+(id @main fun void [] [(int @s)])
+
+function @sat
+	t0 <- i_aload @v
+	t1 <- i_aload @b
+	t2 <- i_lt t0, t1
+	cjump t2, l0, l1
+l0:	t3 <- i_aload @b
+	@v <- i_astore t3
+	jump l2
+l1:	t4 <- i_aload @v
+	t5 <- i_aload @t
+	t6 <- i_lt t5, t4
+	cjump t6, l3, l4
+l3:	t7 <- i_aload @t
+	@v <- i_astore t7
+l4:l2:	t8 <- i_aload @v
+	i_return t8
+
+function @main
+	t0 <- i_value 100
+	t1 <- i_inv t0
+	t2 <- i_gload @k
+	t3 <- i_value 100
+	t4 <- i_call @sat, [t1,t2,t3]
+	@s <- i_lstore t4
+	t5 <- i_lload @s
+	i_print t5
+	return

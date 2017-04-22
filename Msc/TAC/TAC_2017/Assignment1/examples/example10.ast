@@ -1,0 +1,4 @@
+(fun "twice" [(arg "n" int)]
+  (body [] 
+    nil
+    (times (int_literal 2): int (id "n" arg int): int): int))

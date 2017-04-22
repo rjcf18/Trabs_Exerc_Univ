@@ -1,0 +1,30 @@
+(id @mod fun int [(int @a) (int @b)] [(int @m)])
+(id @m var int 3500)
+(id @n var int 17)
+(id @main fun void [] [])
+
+function @mod
+	t0 <- i_aload @a
+	@m <- i_lstore t0
+l0:	t1 <- i_lload @m
+	t2 <- i_aload @b
+	t3 <- i_lt t1, t2
+	cjump t3, l2, l1
+l1:	t4 <- i_lload @m
+	t5 <- i_aload @b
+	t6 <- i_sub t4, t5
+	@m <- i_lstore t6
+	jump l0
+l2:	t7 <- i_lload @m
+	i_return t7
+
+function @main
+	t0 <- i_value 0
+	t1 <- i_gload @m
+	t2 <- i_gload @n
+	t3 <- i_call @mod, [t1,t2]
+	t4 <- i_gload @n
+	t5 <- i_mul t3, t4
+	t6 <- i_eq t0, t5
+	b_print t6
+	return

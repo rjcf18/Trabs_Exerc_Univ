@@ -1,0 +1,360 @@
+import java_cup.runtime.*;
+import java.io.*;
+import Assembly.*;
+
+parser code {:
+
+  public static void main(String args[]) throws Exception {
+    IR_Parser parser = new IR_Parser(new Yylex(new InputStreamReader(System.in)));
+    Symbol result = null;
+
+    try {
+      result = parser.parse();
+      IR ir = (IR)result.value;
+
+      // start visiting the AST nodes for the IR
+      ir.accept(new Assembly_Gen());
+
+    }
+    catch(Exception e) {
+      System.err.print("** Caught: ");
+      e.printStackTrace();
+    }
+
+    if (result != null && result.sym == sym.EOF)
+      System.exit(0);
+    else
+      System.exit(1);
+  }
+
+  public void report_error(String message, Object error_info) {
+    Symbol info = (Symbol) error_info;
+
+    System.err.print(message + ": line " + (info.right + 1) + ": " );
+    System.err.println("unexpected token '" + info.value + "'");
+  }
+
+  public void report_fatal_error(String message, Object o) {
+    System.err.println(message);
+  }
+:} ;
+
+
+//reserved words
+terminal FUNCTION;
+terminal ID;
+terminal FUN;
+terminal VAR;
+terminal ARG;
+terminal LOCAL;
+terminal INT;
+terminal BOOL;
+terminal VOID;
+
+// instructions
+terminal IADD;
+terminal ISUB;
+terminal IMUL;
+terminal IDIV;
+terminal IEQ;
+terminal ILT;
+terminal INEQ;
+terminal ILE;
+terminal IINV;
+terminal ICOPY;
+terminal IVALUE;
+terminal IALOAD;
+terminal ILLOAD;
+terminal IGLOAD;
+terminal IASTORE;
+terminal ILSTORE;
+terminal IGSTORE;
+terminal ICALL;
+terminal IRETURN;
+terminal IPRINT;
+terminal BPRINT;
+terminal MOD;
+terminal NOT;
+terminal JUMP;
+terminal CJUMP;
+terminal PCALL;
+terminal PRETURN;
+
+
+// separators
+terminal OPPAR;
+terminal CLPAR;
+terminal OPBRACKET;
+terminal CLBRACKET;
+terminal COLON;
+terminal COMMA;
+terminal ARROW;
+
+// literals
+terminal String TEMP;
+terminal String LABEL;
+terminal String NAME ;
+terminal Integer INT_LITERAL ;
+terminal TRUE;
+terminal FALSE;
+//terminal Double REAL_LITERAL;
+
+
+// ignore the `Terminal "ERROR" was declared but never used' warning
+terminal	ERROR ;		// for signalling lexical errors
+
+// non terminals
+non terminal IR ir;
+non terminal GlobalDecls global_declarations;
+non terminal GlobalDecl global_declaration;
+non terminal VarDecl vardecl;
+non terminal FunDecl fundecl;
+non terminal String formal;
+non terminal FormalArgs formals;
+non terminal String local;
+non terminal LocalVars locals;
+non terminal String type;
+non terminal Integer value;
+non terminal Integer bool;
+non terminal Functions functions;
+non terminal Function function;
+non terminal Instructions instructions;
+non terminal Instruction instruction;
+non terminal TwoOperand two_operand; /*instructions with 2 operands*/
+non terminal OneOperand one_operand; /*instructions with one operand*/
+non terminal DataTransfer data_transfer; /* data transfer instructions*/
+non terminal Call call;
+non terminal Print print;
+non terminal Jump jump;
+non terminal Cjump cjump;
+non terminal Label label;
+non terminal Return ret;
+non terminal CallArgs call_args;
+non terminal CallArgs more_call_args;
+
+
+// grammar rules / productions
+
+// ir is a (non-empty) set of global symbol declarations
+// followed by functions and their instructions
+ir ::= global_declarations:gs functions:f
+        {:
+           RESULT = new IR(gs, f);
+
+        :};
+
+// declarations of global symbols
+global_declarations ::=  global_declaration:g global_declarations:gs
+                         {: GlobalDecls lst = new GlobalDecls();
+
+                            lst.addElement(g);
+
+                            for(int i = 0; i < gs.size(); i++){
+                		            lst.addElement(gs.elementAt(i));
+                		        }
+
+                            RESULT = lst;
+                         :}
+	     	               | global_declaration:g
+                         {:
+                            //System.out.println("globaldecl!!");
+                            GlobalDecls lst = new GlobalDecls();
+                            lst.addElement(g);
+                            RESULT = lst;
+                         :};
+
+global_declaration ::=  vardecl:v {: RESULT = v;:}
+                      | fundecl:f {: RESULT = f;:};
+
+//function or procedure global symbol declaration
+fundecl ::= OPPAR ID NAME:id FUN type:t OPBRACKET formals:fs CLBRACKET OPBRACKET locals:ls CLBRACKET CLPAR
+           {: RESULT = new FunDecl(id, t, fs, ls); :};
+
+// variable global symbol declaration
+
+vardecl ::= OPPAR ID NAME:id VAR type:t value:v CLPAR
+            {: RESULT = new VarDecl(id, t, v); :}
+          | OPPAR ID NAME:id VAR type:t CLPAR
+            {: RESULT = new VarDecl(id, t, null); :};
+
+
+//formal arguments
+formal ::= OPPAR type NAME:id CLPAR
+               {: RESULT = id; :};
+
+formals ::= formal:f formals:fs
+                {: FormalArgs lst = new FormalArgs();
+
+                  lst.addElement(f);
+
+                  for(int i = 0; i < fs.size(); i++){
+                      lst.addElement(fs.elementAt(i));
+                  }
+
+                  RESULT = lst;
+                :} | {: RESULT = new FormalArgs(); :};
+
+//local variables
+local ::= OPPAR type NAME:id CLPAR
+               {: RESULT = id; :};
+
+locals ::= local:l locals:ls
+                {: LocalVars lst = new LocalVars();
+
+                  lst.addElement(l);
+
+                  for(int i = 0; i < ls.size(); i++){
+                      lst.addElement(ls.elementAt(i));
+                  }
+
+                  RESULT = lst;
+                :} | {: RESULT = new LocalVars(); :};
+
+type ::=   BOOL {: RESULT = "bool"; :}
+         | INT {: RESULT = "int"; :}
+         | VOID {: RESULT = "void"; :};
+         //| REAL {: RESULT = "real"; :}
+
+value ::=   INT_LITERAL:i {: RESULT = i; :}
+          | bool:b {: RESULT = b; :} ;
+
+bool ::= TRUE {: RESULT = new Integer(1); :}
+       | FALSE {: RESULT = new Integer(0); :} ;
+
+// function header
+functions ::=  function:f functions:fs
+                {: Functions lst = new Functions();
+
+                  lst.addElement(f);
+
+                  for(int i = 0; i < fs.size(); i++){
+                      lst.addElement(fs.elementAt(i));
+                  }
+
+                  RESULT = lst;
+                :}
+              | function:f
+                {:
+                   Functions lst = new Functions();
+                   lst.addElement(f);
+                   RESULT = lst;
+                :};
+
+function ::= FUNCTION NAME:id instructions:insts
+             {: RESULT = new Function(id, insts); :};
+
+
+//instructions
+instructions ::=  instruction:inst instructions:insts
+                  {: Instructions lst = new Instructions();
+
+                     lst.addElement(inst);
+
+                     for(int i = 0; i < insts.size(); i++){
+                         lst.addElement(insts.elementAt(i));
+                     }
+
+                     RESULT = lst;
+                  :}
+                | instruction:i
+                  {: Instructions lst = new Instructions();
+                     lst.addElement(i);
+                     RESULT = lst;
+                  :};
+
+instruction ::=   two_operand:i {: RESULT = i; :} // two operand instructions
+                | one_operand:i {: RESULT = i; :} //one operand instructions
+                | data_transfer:i {: RESULT = i; :} // data transfer instructions
+                | call:i {: RESULT = i; :}
+                | print:i {: RESULT = i; :}
+                | jump:i {: RESULT = i; :}
+                | cjump:i {: RESULT = i; :}
+                | label:i {: RESULT = i; :}
+                | ret:i {: RESULT = i; :} /* return */ ;
+
+
+two_operand ::= TEMP:t1 ARROW IADD TEMP:t2 COMMA TEMP:t3
+                  {: RESULT = new TwoOperand("i_add", t1, t2, t3); :}
+                | TEMP:t1 ARROW ISUB TEMP:t2 COMMA TEMP:t3
+                  {: RESULT = new TwoOperand("i_sub", t1, t2, t3); :}
+                | TEMP:t1 ARROW IMUL TEMP:t2 COMMA TEMP:t3
+                  {: RESULT = new TwoOperand("i_mul", t1, t2, t3); :}
+                | TEMP:t1 ARROW IDIV TEMP:t2 COMMA TEMP:t3
+                  {: RESULT = new TwoOperand("i_div", t1, t2, t3); :}
+                | TEMP:t1 ARROW MOD TEMP:t2 COMMA TEMP:t3
+                  {: RESULT = new TwoOperand("mod", t1, t2, t3); :}
+                | TEMP:t1 ARROW IEQ TEMP:t2 COMMA TEMP:t3
+                  {: RESULT = new TwoOperand("i_eq", t1, t2, t3); :}
+                | TEMP:t1 ARROW ILT TEMP:t2 COMMA TEMP:t3
+                  {: RESULT = new TwoOperand("i_lt", t1, t2, t3); :}
+                | TEMP:t1 ARROW INEQ TEMP:t2 COMMA TEMP:t3
+                  {: RESULT = new TwoOperand("i_ne", t1, t2, t3); :}
+                | TEMP:t1 ARROW ILE TEMP:t2 COMMA TEMP:t3
+                  {: RESULT = new TwoOperand("i_le", t1, t2, t3); :} ;
+
+
+one_operand ::= TEMP:t1 ARROW IINV TEMP:t2
+                {: RESULT = new OneOperand("i_inv", t1, t2); :}
+              | TEMP:t1 ARROW NOT TEMP:t2
+                {: RESULT = new OneOperand("not", t1, t2); :}
+              | TEMP:t1 ARROW ICOPY TEMP:t2
+                {: RESULT = new OneOperand("i_copy", t1, t2); :} ;
+
+data_transfer ::= TEMP:t ARROW IVALUE value:v
+                  {: RESULT = new DataTransfer("i_value", t, v); :}
+                | TEMP:t ARROW IALOAD NAME:id
+                  {: RESULT = new DataTransfer("i_aload", t, id); :}
+                | TEMP:t ARROW ILLOAD NAME:id
+                  {: RESULT = new DataTransfer("i_lload", t, id); :}
+                | TEMP:t ARROW IGLOAD NAME:id
+                  {: RESULT = new DataTransfer("i_gload", t, id); :}
+                | NAME:id ARROW IASTORE TEMP:t
+                  {: RESULT = new DataTransfer("i_astore", t, id); :}
+                | NAME:id ARROW ILSTORE TEMP:t
+                  {: RESULT = new DataTransfer("i_lstore", t, id); :}
+                | NAME:id ARROW IGSTORE TEMP:t
+                  {: RESULT = new DataTransfer("i_gstore", t, id); :} ;
+
+call ::= TEMP:tmp ARROW ICALL NAME:id COMMA OPBRACKET call_args:args CLBRACKET
+         {: RESULT = new Call(id, tmp, args); :}
+       | PCALL NAME:id COMMA OPBRACKET call_args:args CLBRACKET
+         {: RESULT = new Call(id, null, args); :} ;
+
+print ::= IPRINT TEMP:t {: RESULT = new Print("i_print", t); :}
+        | BPRINT TEMP:t {: RESULT = new Print("b_print", t); :};
+
+label ::= LABEL:l COLON {: RESULT = new Label(l); :} ;
+
+cjump ::= CJUMP TEMP:t COMMA LABEL:l1 COMMA LABEL:l2
+          {: RESULT = new Cjump(t, l1, l2); :};
+
+jump ::= JUMP LABEL:l {: RESULT = new Jump(l); :} ;
+
+ret ::= IRETURN TEMP:t {: RESULT = new Return(t); :}
+      | PRETURN {: RESULT = new Return(null); :} ;
+
+call_args ::= TEMP:tmp more_call_args:cs
+              {: CallArgs lst = new CallArgs();
+
+                 lst.addElement(tmp);
+
+                 for(int i = 0; i < cs.size(); i++){
+                     lst.addElement(cs.elementAt(i));
+                 }
+
+                 RESULT = lst;
+              :}
+              | {: RESULT = new CallArgs(); :};
+
+more_call_args ::= COMMA TEMP:tmp more_call_args:cs
+                  {: CallArgs lst = new CallArgs();
+
+                     lst.addElement(tmp);
+
+                     for(int i = 0; i < cs.size(); i++){
+                         lst.addElement(cs.elementAt(i));
+                     }
+
+                     RESULT = lst;
+                  :}
+                  | {: RESULT = new CallArgs(); :};

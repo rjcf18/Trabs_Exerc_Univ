@@ -1,0 +1,7 @@
+(id @twice fun int [(int @n)] [])
+
+function @twice
+	t0 <- i_value 2
+	t1 <- i_aload @n
+	t2 <- i_mul t0, t1
+	i_return t2

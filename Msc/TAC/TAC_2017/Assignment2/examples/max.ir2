@@ -1,0 +1,26 @@
+(id @max fun int [(int @a) (int @b)] [(int @r)])
+(id @n var int 10)
+(id @main fun void [] [])
+
+function @max
+	t0 <- i_aload @a
+	@r <- i_lstore t0
+	t1 <- i_aload @b
+	t2 <- i_lload @r
+	t3 <- i_lt t2, t1
+	cjump t3, l0, l1
+l0:	t4 <- i_aload @b
+	@r <- i_lstore t4
+l1:	t5 <- i_lload @r
+	i_return t5
+
+function @main
+	t0 <- i_value 15
+	t1 <- i_value 4
+	t2 <- i_gload @n
+	t3 <- i_add t1, t2
+	t4 <- i_call @max, [t0,t3]
+	t5 <- i_value 2
+	t6 <- i_div t4, t5
+	i_print t6
+	return

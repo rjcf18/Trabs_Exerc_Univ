@@ -1,0 +1,338 @@
+import java_cup.runtime.*;
+import IR.*;
+
+parser code {:
+
+  public static void main(String args[]) throws Exception {
+    LinearAST parser = new LinearAST(new Yylex(System.in));
+    Symbol result = null;
+
+    try {
+      result = parser.parse();
+      AST ast = (AST)result.value;
+      // start visiting the AST nodes
+      ast.accept(new IR_Gen());
+
+    }
+    catch(Exception e) {
+      System.err.print("** Caught: ");
+      e.printStackTrace();
+    }
+
+    if (result != null && result.sym == sym.EOF)
+      System.exit(0);
+    else
+      System.exit(1);
+  }
+
+  public void report_error(String message, Object error_info) {
+    Symbol info = (Symbol) error_info;
+
+    System.err.print(message + ": line " + (info.right + 1) + ": " );
+    System.err.println("unexpected token '" + info.value + "'");
+  }
+
+  public void report_fatal_error(String message, Object o) {
+    System.err.println(message);
+  }
+:} ;
+
+
+//reserved words
+terminal ID;
+terminal FUN;
+terminal BODY;
+terminal ARG;
+terminal VAR;
+terminal ASSIGN;
+terminal WHILE;
+terminal IF;
+terminal PRINT;
+terminal BOOL;
+terminal INT;
+terminal INTLIT;
+terminal REALLIT;
+terminal REAL;
+terminal TRUE;
+terminal FALSE;
+terminal TOREAL;
+terminal LOCAL;
+terminal CALL;
+terminal NIL;
+
+// separators
+terminal OPPAR;
+terminal CLPAR;
+terminal OPBRACKET;
+terminal CLBRACKET;
+terminal COLON;
+
+// literals
+terminal String NAME ;
+terminal Integer INT_LITERAL ;
+terminal Double REAL_LITERAL;
+
+
+// operators
+terminal AND, OR;
+terminal EQ, NEQ, NOT;
+terminal LT, GT, LE, GE, INV;
+terminal PLUS, MINUS, TIMES, DIV, MOD;
+
+// ignore the `Terminal "ERROR" was declared but never used' warning
+terminal	ERROR ;		// for signalling lexical errors
+
+// non terminals
+non terminal AST ast;
+non terminal GlobalDecls global_declarations;
+non terminal GlobalDecl global_declaration;
+non terminal VarDecl vardecl;
+non terminal VarDecls vardecls;
+non terminal FunDef fundef;
+non terminal FormalArg formal_arg;
+non terminal FormalArgs formal_args;
+non terminal Body body;
+non terminal String type;
+non terminal String non_bool_type;
+non terminal Bool bool;
+non terminal String kind;
+non terminal Expression expression;
+non terminal IntLit int_literal;
+non terminal RealLit real_literal;
+non terminal ToReal toreal;
+non terminal CallFunc call_func;
+non terminal CallProc call_proc;
+non terminal Expressions expressions;
+non terminal ID id;
+non terminal CompoundStatement compound_statement;
+non terminal Statements statements;
+non terminal Statement statement;
+non terminal Conditional conditionalstmt;
+non terminal Assign assignment;
+non terminal Print print;
+non terminal While whileloop;
+
+
+// grammar rules / productions
+
+// ast is a (non-empty) set of variable,
+// function or procedure declaration ast nodes
+ast ::= global_declarations:gs
+        {: //System.out.println("ast!!");
+           RESULT = new AST(gs);
+
+        :};
+
+// global declarations
+global_declarations ::=  global_declaration:g global_declarations:gs
+                         {: GlobalDecls lst = new GlobalDecls();
+
+                            lst.addElement(g);
+
+                            for(int i = 0; i < gs.size(); i++){
+                		            lst.addElement(gs.elementAt(i));
+                		        }
+                            //System.out.println("globaldecl globaldecls!!");
+                            RESULT = lst;
+                         :}
+	     	               | global_declaration:g
+                         {:
+                            //System.out.println("globaldecl!!");
+                            GlobalDecls lst = new GlobalDecls();
+                            lst.addElement(g);
+                            RESULT = lst;
+                         :};
+
+global_declaration ::= vardecl:v {: RESULT = v;:} | fundef:f {: RESULT = f;:};
+
+//function or procedure declarations
+fundef ::= OPPAR FUN NAME:id OPBRACKET formal_args:fa CLBRACKET body:b CLPAR
+           {: RESULT = new FunDef(id, fa, b); :};
+
+// variable declarations
+vardecls ::= vardecl:v vardecls:vs
+             {: VarDecls lst = new VarDecls();
+
+               lst.addElement(v);
+
+               for(int i = 0; i < vs.size(); i++){
+                   lst.addElement(vs.elementAt(i));
+               }
+
+               RESULT = lst;
+            :} | {: RESULT = new VarDecls(); :};
+
+vardecl ::= OPPAR VAR id:id expression:exp CLPAR
+            {: RESULT = new VarDecl(id, exp); :}
+          | OPPAR VAR id:id NIL CLPAR
+            {: RESULT = new VarDecl(id, null); :} ;
+
+
+//formal arguments
+formal_arg ::= OPPAR ARG NAME:id type:t CLPAR
+               {: RESULT = new FormalArg(id, t); :};
+formal_args ::= formal_arg:f formal_args:fs
+                {: FormalArgs lst = new FormalArgs();
+
+                  lst.addElement(f);
+
+                  for(int i = 0; i < fs.size(); i++){
+                      lst.addElement(fs.elementAt(i));
+                  }
+
+                  RESULT = lst;
+                :} | {: RESULT = new FormalArgs(); :};
+
+//nil ::= NIL | OPBRACKET CLBRACKET ;
+
+// function/procedure body
+body ::=  OPPAR BODY OPBRACKET vardecls:vs CLBRACKET statement:s expression:e CLPAR
+          {: RESULT = new Body(vs, s, e); :}
+        | OPPAR BODY OPBRACKET vardecls:vs CLBRACKET NIL expression:e CLPAR
+          {: RESULT = new Body(vs, null, e); :}
+        | OPPAR BODY OPBRACKET vardecls:vs CLBRACKET statement:s NIL CLPAR
+          {: RESULT = new Body(vs, s, null); :}
+        | OPPAR BODY OPBRACKET vardecls:vs CLBRACKET NIL NIL CLPAR
+          {: RESULT = new Body(vs, null, null); :};
+
+// types
+type ::= non_bool_type:t {: RESULT = t;:} | BOOL {: RESULT = "bool"; :};
+
+non_bool_type ::= INT {: RESULT = "int"; :} | REAL {: RESULT = "real"; :} ;
+bool ::= TRUE COLON BOOL {: RESULT = new Bool("true"); RESULT.t = "bool"; :}
+       | FALSE COLON BOOL {: RESULT = new Bool("false"); RESULT.t = "bool"; :} ;
+
+kind ::=  VAR   {: RESULT = "var"; :}
+        | ARG   {: RESULT = "arg"; :}
+        | LOCAL {: RESULT = "local"; :} ;
+
+// expressions
+expression ::=
+          OPPAR OR expression:e1 expression:e2 CLPAR COLON BOOL
+          {: RESULT = new Or(e1, e2); RESULT.t = "bool"; :}
+        | OPPAR AND expression:e1 expression:e2 CLPAR COLON BOOL
+          {: RESULT = new And(e1, e2); RESULT.t = "bool"; :}
+        | OPPAR EQ expression:e1 expression:e2 CLPAR COLON BOOL
+          {: RESULT = new Eq(e1, e2); RESULT.t = "bool"; :}
+        | OPPAR NEQ expression:e1 expression:e2 CLPAR COLON BOOL
+          {: RESULT = new Neq(e1, e2); RESULT.t = "bool"; :}
+        | OPPAR LT expression:e1 expression:e2 CLPAR COLON BOOL
+          {: RESULT = new Lt(e1, e2); RESULT.t = "bool"; :}
+        | OPPAR LE expression:e1 expression:e2 CLPAR COLON BOOL
+          {: RESULT = new Le(e1, e2); RESULT.t = "bool"; :}
+        | OPPAR GT expression:e1 expression:e2 CLPAR COLON BOOL
+          {: RESULT = new Gt(e1, e2); RESULT.t = "bool"; :}
+        | OPPAR GE expression:e1 expression:e2 CLPAR COLON BOOL
+          {: RESULT = new Ge(e1, e2); RESULT.t = "bool"; :}
+        | OPPAR PLUS expression:e1 expression:e2 CLPAR COLON non_bool_type:t
+          {: RESULT = new Plus(e1, e2); RESULT.t = t; :}
+        | OPPAR MINUS expression:e1 expression:e2 CLPAR COLON non_bool_type:t
+          {: RESULT = new Minus(e1, e2); RESULT.t = t; :}
+        | OPPAR TIMES expression:e1 expression:e2 CLPAR COLON non_bool_type:t
+          {: RESULT = new Times(e1, e2); RESULT.t = t; :}
+        | OPPAR DIV expression:e1 expression:e2 CLPAR COLON non_bool_type:t
+          {: RESULT = new Div(e1, e2); RESULT.t = t; :}
+        | OPPAR MOD expression:e1 expression:e2 CLPAR COLON non_bool_type:t
+          {: RESULT = new Mod(e1, e2); RESULT.t = t; :}
+        | OPPAR NOT expression:e CLPAR COLON type:t
+          {: RESULT = new Not(e); RESULT.t = t; :}
+        | OPPAR INV expression:e CLPAR COLON non_bool_type:t
+          {: RESULT = new Inv(e); RESULT.t = t; :}
+        | id:id1 COLON type:t {: RESULT = id1; RESULT.t = t;:}
+        | int_literal:i {: RESULT = i; RESULT.t = "int"; :}
+        | real_literal:r {: RESULT = r; RESULT.t = "real"; :}
+        | bool:b {: RESULT = b; :}
+        | call_func:c {: RESULT = c;:}
+        | toreal:tr {: RESULT = tr; RESULT.t = "real"; :} ;
+
+expressions ::= expression:e expressions:es
+               {: Expressions lst = new Expressions();
+
+                lst.addElement(e);
+
+                for(int i = 0; i < es.size(); i++){
+                    lst.addElement(es.elementAt(i));
+                }
+
+                RESULT = lst;
+              :} |  {: RESULT = new Expressions(); :};
+
+int_literal ::= OPPAR INTLIT INT_LITERAL:i CLPAR COLON INT
+                {: RESULT = new IntLit(i); :};
+
+real_literal ::= OPPAR REALLIT REAL_LITERAL:r CLPAR COLON REAL
+                {: RESULT = new RealLit(r); :};
+
+toreal ::= OPPAR TOREAL expression:e CLPAR COLON REAL
+           {: RESULT = new ToReal(e); :};
+
+call_proc ::= OPPAR CALL NAME:id OPBRACKET expressions:exps CLBRACKET CLPAR
+              {: RESULT = new CallProc(id, exps); :};
+call_func ::= OPPAR CALL NAME:id OPBRACKET expressions:exps CLBRACKET CLPAR COLON type:t
+              {: RESULT = new CallFunc(id, exps); RESULT.t = t; :};
+
+
+id ::=  OPPAR ID NAME:id kind:k type:t CLPAR
+       {: RESULT = new ID(id, k, t); RESULT.t = "none";:};
+
+
+// statements
+statements ::= statement:s statements:stmts
+               {: Statements lst = new Statements();
+
+                  lst.addElement(s);
+
+                  for(int i = 0; i < stmts.size(); i++){
+                      lst.addElement(stmts.elementAt(i));
+                  }
+                  //System.out.println("statement statements!!");
+                  RESULT = lst;
+               :}
+               | statement:s
+               {:
+                  //System.out.println("statement!!");
+                  Statements lst = new Statements();
+                  lst.addElement(s);
+                  RESULT = lst;
+               :};
+
+compound_statement ::= OPBRACKET statements:stmts CLBRACKET
+                      {: CompoundStatement lst = new CompoundStatement();
+
+                         for(int i = 0; i < stmts.size(); i++){
+                             lst.addElement(stmts.elementAt(i));
+                         }
+
+                         //System.out.println("compound statement!!");
+                         RESULT = lst;
+                      :}
+                     | OPBRACKET CLBRACKET
+                       {:
+                          CompoundStatement lst = new CompoundStatement();
+                          //System.out.println("empty compound statement!!");
+                          RESULT = lst;
+                       :};
+
+statement ::= compound_statement:stmts {: RESULT = stmts; :}
+              | assignment:a {: RESULT = a; :}  | call_proc:c {: RESULT = c; :}
+              | print:p {: RESULT = p; :} | whileloop:w {: RESULT = w; :}
+              | conditionalstmt:cond {: RESULT = cond; :};
+
+
+// dangling else ambiguity problem solved by expecting 1 shift/reduce conflict
+conditionalstmt ::= OPPAR IF expression:exp statement:stmt NIL CLPAR
+                    {: RESULT = new Conditional(exp, stmt, null); :}
+                  | OPPAR IF expression:exp statement:stmt1 statement:stmt2 CLPAR
+                    {: RESULT = new Conditional(exp, stmt1, stmt2); :};
+
+assignment ::= OPPAR ASSIGN id:id1 expression:exp CLPAR
+              {: //System.out.println("assign statement!!");
+                 RESULT = new Assign(id1, exp);
+              :};
+
+print ::= OPPAR PRINT expression:exp CLPAR
+          {: RESULT = new Print(exp); :};
+
+
+whileloop ::= OPPAR WHILE expression:exp statement:stmt CLPAR
+              {: RESULT = new While(exp, stmt); :};

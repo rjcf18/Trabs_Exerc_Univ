@@ -1,0 +1,64 @@
+(var (id "PI" var real) (real_literal 3.1416): real)
+
+(fun "perim" [(arg "r" real)]
+  (body []
+    nil
+    (times (times (toreal (int_literal 2): int): real (id "PI" var real): real): real (id "r" arg real): real): real))
+
+(fun "square" [(arg "x" real)]
+  (body []
+    nil
+    (times (id "x" arg real): real (id "x" arg real): real): real))
+
+(fun "area" [(arg "r" real)]
+  (body [] []
+    (times (id "PI" var real): real (call "square" [(id "r" arg real): real]): real): real))
+
+(fun "twice" [(arg "n" int)]
+  (body []
+    nil
+    (times (int_literal 2): int (id "n" arg int): int): int))
+
+(fun "loop" [(arg "t" int)]
+  (body [
+      (var (id "end" local bool) (eq (id "t" arg int): int (int_literal 0): int): bool)
+    ]
+    (if
+      (id "end" local bool): bool [] [
+        (print (id "t" arg int): int)
+        (call "loop" [(minus (id "t" arg int): int (int_literal 1): int): int])
+      ])
+    nil))
+
+(var (id "xtra" var bool) nil)
+
+(fun "noargs" []
+  (body [] [
+      (if
+        (id "xtra" var bool): bool [
+          (assign (id "xtra" var bool) (not (id "xtra" var bool): bool): bool)
+          (call "noargs" [])
+        ] [])
+      (while
+        (id "xtra" var bool): bool
+        (print (id "PI" var real): real))
+    ]
+    nil))
+
+(fun "main" []
+  (body [
+      (var (id "n" local int) (int_literal 14): int)
+    ] [
+      (while
+        (lt (id "n" local int): int (int_literal 100): int): bool [
+          (assign (id "n" local int) (call "twice" [(call "twice" [(id "n" local int): int]): int]): int)
+          (print (id "n" local int): int)
+        ])
+      (if
+        (and (gt (id "n" local int): int (int_literal 200): int): bool (lt (id "n" local int): int (int_literal 500): int): bool): bool
+        (print (call "perim" [(toreal (int_literal 1): int): real]): real)
+        (print (call "area" [(real_literal 12.3): real]): real))
+      (assign (id "xtra" var bool) true: bool)
+      (call "noargs" [])
+    ]
+    nil))
